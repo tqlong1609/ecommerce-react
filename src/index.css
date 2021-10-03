@@ -95,8 +95,13 @@ img.medium {
   margin-bottom: 0.5rem;
 }
 
+/* Rating */
 .rating span {
   color: yellow;
+  margin: 0.1rem;
+}
+.rating span:last-child {
+  color: #404040;
 }
 
 .price {
