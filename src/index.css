@@ -1,13 +1,114 @@
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
 body {
+  font-size: 1.6rem;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  height: 100vh;
+  font-family: Verdana, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#root {
+  height: 100%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas: "header" "main" "footer";
+  grid-template-columns: 1fr;
+  grid-template-rows: 5rem 1fr 5rem;
+  height: 100%;
+}
+
+header {
+  grid-area: header;
+  background-color: #203040;
+}
+
+main {
+  grid-area: main;
+  padding: 1rem;
+}
+
+footer {
+  grid-area: footer;
+  background-color: #203040;
+  color: white;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: orange;
+}
+
+header a {
+  color: white;
+  padding: 1rem;
+}
+
+.row.center {
+  justify-content: center;
+}
+
+a.brand {
+  font-weight: bold;
+  font-size: 3rem;
+  color: white;
+}
+
+/* ----- */
+img {
+  border-radius: 0.5rem;
+}
+
+img.medium {
+  width: 100%;
+  max-width: 29rem;
+}
+
+.card {
+  border-radius: 0.5rem;
+  border: 0.1rem #c0c0c0 solid;
+  background-color: #f8f8f8;
+  margin: 1rem;
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+.card-body > * {
+  margin-bottom: 0.5rem;
+}
+
+.rating span {
+  color: yellow;
+}
+
+.price {
+  font-size: 2rem;
+}
+
+h1 {
+  font-size: 1.8rem;
+  padding: 1rem 0;
+}
+
+h2 {
+  font-size: 1.6rem;
+  padding: 1rem 0;
 }
