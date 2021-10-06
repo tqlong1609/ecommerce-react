@@ -1,6 +1,11 @@
 import React from 'react'
 
-export default function AlertBox(props) {
+interface IAlertBoxProps {
+    children: any,
+    variant?: string
+}
+
+export default function AlertBox(props: IAlertBoxProps) {
     const {children, variant} = props
     return (
         <div className={`alert alert-${variant || 'info'}`}>

@@ -2,26 +2,27 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import AlertBox from "../components/AlertBox";
 import LoadingBox from "../components/LoadingBox";
-import Products from "../components/Products";
+import Products, { IProduct } from "../components/Products";
+
+interface IError {
+  message: string
+}
 
 export default function HomeScreen() {
-  const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [products, setProducts] = useState<Array<IProduct>>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
   useEffect(() => {
     const getProductAPI = async () => {
       setIsLoading(true);
       try {
         const { data } = await axios.get("/api/products");
         setProducts(data);
-        setIsLoading(false);
-
       } catch (error) {
-        console.log('error',error);
+        const result = (error as IError).message;
+        setError(result);
+      } finally {
         setIsLoading(false);
-
-        setError(error.message);
-
       }
     };
     getProductAPI();
@@ -34,7 +35,7 @@ export default function HomeScreen() {
       {isLoading ? (
         <LoadingBox />
       ) : error ? (
-        <AlertBox variant="danger">{error}</AlertBox>
+        <AlertBox variant="info">{error}</AlertBox>
       ) : (
         <main className="row center">
           {products.map((product) => (

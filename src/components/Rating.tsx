@@ -1,6 +1,11 @@
 import React from "react";
 
-export default function Rating(props) {
+interface IRatingProps {
+  rating: number,
+  numReviewer: number
+}
+
+export default function Rating(props: IRatingProps) {
   const { rating, numReviewer } = props;
   return (
     <div className="rating">

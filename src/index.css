@@ -164,7 +164,7 @@ h2 {
   color: green;
 }
 
-.error {
+.danger {
   color: red
 }
 
@@ -185,8 +185,10 @@ button.block {
 
 .alert-info {
   color: blue;
+  background-color: #e0e0ff;
 }
 
 .alert-danger {
   color: red;
+  background-color: #ffe0e0e0;
 }
