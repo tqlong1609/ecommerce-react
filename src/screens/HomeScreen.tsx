@@ -1,33 +1,24 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { listProducts } from "../actions";
+import { listProducts } from "../state/actions";
 import AlertBox from "../components/AlertBox";
 import LoadingBox from "../components/LoadingBox";
-import Products, { IProduct } from "../components/Products";
-
+import Products from "../components/Products";
+import { IProductListState, State } from '../state'
 export interface IError {
   message: string
 }
 
-interface I { products: Array<IProduct>, isLoading: boolean, error: string }
+export default function HomeScreen(): React.ReactElement {
+  const state = useSelector((state: State) => state.productList)
 
-interface IProductList {
-  productList: I
-}
-
-export default function HomeScreen() {
-  const state = useSelector<any>(state => state.productList)
   const dispatch = useDispatch()
-  console.log('state',state);
-  
-  const { products, isLoading, error } = state as I
+  const { products = [], isLoading, error } = state as IProductListState
+
   useEffect(() => {
     dispatch(listProducts)
   }, [])
-  if (!products) {
-    return <div>Waiting data...</div>;
-  }
+
   return (
     <div>
       {isLoading ? (

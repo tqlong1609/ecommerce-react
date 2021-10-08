@@ -18,7 +18,7 @@ interface IProductsProps {
   product: IProduct
 }
 
-export default function Products(props: IProductsProps) {
+export default function Products(props: IProductsProps): React.ReactElement {
   const { product } = props;
   return (
     <div key={product._id} className="card">

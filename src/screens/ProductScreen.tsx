@@ -11,7 +11,7 @@ interface IProductScreenProps {
   }
 }
 
-export default function ProductScreen(props: IProductScreenProps) {
+export default function ProductScreen(props: IProductScreenProps): React.ReactElement {
   const product = data.products.find(
     (item) => item._id.toString() === props.match.params.id
   );

@@ -5,7 +5,7 @@ interface IRatingProps {
   numReviewer: number
 }
 
-export default function Rating(props: IRatingProps) {
+export default function Rating(props: IRatingProps): React.ReactElement {
   const { rating, numReviewer } = props;
   return (
     <div className="rating">
