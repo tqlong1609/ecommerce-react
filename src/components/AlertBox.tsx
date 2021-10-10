@@ -2,7 +2,7 @@ import React from 'react'
 
 interface IAlertBoxProps {
     children: React.ReactChild,
-    variant?: string
+    variant?: 'danger' | 'info'
 }
 
 export default function AlertBox(props: IAlertBoxProps): React.ReactElement {

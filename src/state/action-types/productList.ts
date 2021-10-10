@@ -3,3 +3,4 @@ export enum EProductList {
     PRODUCT_LIST_SUCCESS = "PRODUCT_LIST_SUCCESS",
     PRODUCT_LIST_FAIL = "PRODUCT_LIST_FAIL",
 }
+

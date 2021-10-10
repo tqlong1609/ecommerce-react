@@ -1,12 +1,12 @@
-import { Action } from "../actions";
+import { ActionProductList } from "../actions";
 import { IProductListState } from ".";
-import {EProductList} from '../action-types'
+import { EProductList } from '../action-types'
 
 const initState: IProductListState = { isLoading: true, products: [] }
 
 export const productList = (
   state: IProductListState = initState,
-  action: Action
+  action: ActionProductList
 ): IProductListState => {
   switch (action.type) {
     case EProductList.PRODUCT_LIST_REQUEST:

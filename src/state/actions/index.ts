@@ -1,5 +1,5 @@
 import { IProduct } from '../../components/Products'
-import { EProductList } from '../action-types'
+import { EProductDetail, EProductList } from '../action-types'
 export { listProducts } from './productList'
 
 interface ProductListRequestAction {
@@ -11,9 +11,28 @@ interface ProductListSuccessAction {
     payload: Array<IProduct>
 }
 
-interface ProductListFail {
+interface ProductListFailAction {
     type: EProductList.PRODUCT_LIST_FAIL
     payload: string
 }
 
-export type Action = ProductListRequestAction | ProductListSuccessAction | ProductListFail
+interface ProductDetailRequestAction {
+    type: EProductDetail.PRODUCT_DETAIL_REQUEST
+}
+
+interface ProductDetailSuccessAction {
+    type: EProductDetail.PRODUCT_DETAIL_SUCCESS
+    payload: IProduct
+}
+
+interface ProductDetailFailAction {
+    type: EProductDetail.PRODUCT_DETAIL_FAIL
+    payload: string
+}
+
+export interface IErrorResponse {
+    response: { data: { message: string }, status: number }
+}
+
+export type ActionProductList = ProductListRequestAction | ProductListSuccessAction | ProductListFailAction
+export type ActionProductDetail = ProductDetailRequestAction | ProductDetailSuccessAction | ProductDetailFailAction
