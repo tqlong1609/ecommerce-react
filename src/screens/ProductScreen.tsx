@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Rating from "../components/Rating";
@@ -6,22 +6,29 @@ import { productDetail } from "../state/actions/productList";
 import { State } from '../state'
 import LoadingBox from "../components/LoadingBox";
 import AlertBox from "../components/AlertBox";
+import {RouteComponentProps} from 'react-router'
 
-interface IProductScreenProps {
-  match: {
-    params: {
-      id: string,
-    }
-  }
+interface IMatchParams {
+  id: string
 }
 
-export default function ProductScreen(props: IProductScreenProps): React.ReactElement | null {
+export default function ProductScreen(props: RouteComponentProps<IMatchParams>): React.ReactElement | null {
   const dispatch = useDispatch()
   const id = props.match.params.id
   const { isLoading, error, product } = useSelector((state: State) => state.productDetail)
+  const [valueQty, setValueQty] = useState<number>(1)
   useEffect(() => {
     dispatch(productDetail(id))
   }, [])
+
+  const changeQty = (value: React.ChangeEvent<HTMLSelectElement>) => {
+    setValueQty(+value.target.value)
+  }
+
+  const onClickAddToCart = () => {
+    props.history.push(`/cart/${id}?qty=${valueQty}`)
+  }
+
   if (isLoading) {
     return <LoadingBox />
   } else if (error) {
@@ -74,9 +81,25 @@ export default function ProductScreen(props: IProductScreenProps): React.ReactEl
                       </div>
                     </div>
                   </li>
-                  <li>
-                    <button className="primary block">Add to Cart</button>
-                  </li>
+                  {
+                    product.countInStock > 0 && (
+                      <>
+                        <li className="row">
+                          <div>Qty</div>
+                          <select value={valueQty} onChange={changeQty}>
+                            {
+                              [...Array(product.countInStock).keys()].map(item => (
+                                <option key={item} value={item + 1}>{item + 1}</option>
+                              ))
+                            }
+                          </select>
+                        </li>
+                        <li>
+                          <button className="primary block" onClick={onClickAddToCart}>Add to Cart</button>
+                        </li>
+                      </>
+                    )
+                  }
                 </ul>
               </div>
             </div>

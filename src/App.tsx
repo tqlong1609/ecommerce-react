@@ -1,10 +1,11 @@
 import React from "react";
 
 import { BrowserRouter, Route } from "react-router-dom";
+import CartScreen from "./screens/CartScreen";
 import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
 
-function App() {
+function App(): React.ReactElement {
   return (
     <div className="grid-container">
       <header className="row">
@@ -21,6 +22,7 @@ function App() {
       <BrowserRouter>
         <Route path="/" component={HomeScreen} exact />
         <Route path="/product/:id" component={ProductScreen} />
+        <Route path="/cart/:id?" component={CartScreen} />
       </BrowserRouter>
 
       <footer className="row center">All right reserved</footer>

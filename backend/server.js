@@ -7,7 +7,6 @@ app.get("/api/products", (req, res) => {
   res.send(data.products);
 });
 
-// ????
 app.get("/api/products/:id", (req, res) => {
   const productById = data.products.find((item) => item._id.toString() === req.params.id);
   if (!productById) {
