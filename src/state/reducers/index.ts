@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { IProduct } from '../../components/Products';
-import {  } from '../reducers/productList';
+import { productsCart } from './cartItem';
 import { productDetail } from './productDetail';
 import { productList } from './productList'
 
@@ -16,9 +16,14 @@ export interface IProductDetailState {
     error?: string
 }
 
+export interface IProductCart extends IProduct{
+    qty: number
+}
+
 const reducer = combineReducers({
     productList: productList,
-    productDetail: productDetail
+    productDetail: productDetail,
+    cartProducts: productsCart
 });
 
 export default reducer

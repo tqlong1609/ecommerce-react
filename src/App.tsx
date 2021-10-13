@@ -1,32 +1,32 @@
 import React from "react";
 
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Link, Route } from "react-router-dom";
 import CartScreen from "./screens/CartScreen";
 import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
 
 function App(): React.ReactElement {
   return (
-    <div className="grid-container">
-      <header className="row">
-        <div>
-          <a className="brand" href="index.html">
-            amazona
-          </a>
-        </div>
-        <div>
-          <a href="cart.html">Cart</a>
-          <a href="signin.html">Sign in</a>
-        </div>
-      </header>
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className="grid-container">
+        <header className="row">
+          <div>
+            <Link className="brand" to="/">
+              amazona
+            </Link>
+          </div>
+          <div>
+            <Link to="cart.html">Cart</Link>
+            <Link to="signin.html">Sign in</Link>
+          </div>
+        </header>
         <Route path="/" component={HomeScreen} exact />
         <Route path="/product/:id" component={ProductScreen} />
         <Route path="/cart/:id?" component={CartScreen} />
-      </BrowserRouter>
 
-      <footer className="row center">All right reserved</footer>
-    </div>
+        <footer className="row center">All right reserved</footer>
+      </div>
+    </BrowserRouter>
   );
 }
 

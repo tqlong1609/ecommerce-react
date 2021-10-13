@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Rating from "../components/Rating";
-import { productDetail } from "../state/actions/productList";
+import { productDetail } from "../state/actions";
 import { State } from '../state'
 import LoadingBox from "../components/LoadingBox";
 import AlertBox from "../components/AlertBox";
@@ -19,7 +19,7 @@ export default function ProductScreen(props: RouteComponentProps<IMatchParams>):
   const [valueQty, setValueQty] = useState<number>(1)
   useEffect(() => {
     dispatch(productDetail(id))
-  }, [])
+  }, [dispatch, id])
 
   const changeQty = (value: React.ChangeEvent<HTMLSelectElement>) => {
     setValueQty(+value.target.value)
