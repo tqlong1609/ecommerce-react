@@ -20,14 +20,12 @@ export const productsCart = (state = initState, action: ActionProductAddToCart):
                     action.payload :
                     productCart
                 )
-                return {productsCart: cartUpdated}
+                return { ...state, productsCart: cartUpdated }
             } else {
-                console.log('state',state);
-                
-                return {productsCart: [...state.productsCart, action.payload]}
+                return { ...state, productsCart: [...state.productsCart, action.payload] }
             }
         }
         default:
-            return {productsCart: state.productsCart}
+            return { ...state, productsCart: state.productsCart }
     }
 }

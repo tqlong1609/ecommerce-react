@@ -18,7 +18,7 @@ function App(): React.ReactElement {
             </Link>
           </div>
           <div>
-            <Link to="cart.html">
+            <Link to="/cart/:id?">
               Cart
               {productsCart.length > 0 && <span className="badge">{productsCart.length}</span>}
             </Link>
