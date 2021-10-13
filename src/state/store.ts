@@ -3,7 +3,7 @@ import reducer from './reducers'
 import thunk from "redux-thunk";
 import { PRODUCT_CART_ITEM_KEY } from "../constants";
 
-// localStorage.clear()  
+// localStorage.clear()
 
 const initialState = {
   cartProducts: {
