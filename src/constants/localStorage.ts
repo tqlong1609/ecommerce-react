@@ -1,0 +1,1 @@
+export const PRODUCT_CART_ITEM_KEY = 'PRODUCT_CART_ITEM'

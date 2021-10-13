@@ -22,6 +22,8 @@ export const productsCart = (state = initState, action: ActionProductAddToCart):
                 )
                 return {productsCart: cartUpdated}
             } else {
+                console.log('state',state);
+                
                 return {productsCart: [...state.productsCart, action.payload]}
             }
         }
