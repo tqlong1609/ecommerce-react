@@ -12,7 +12,7 @@ interface IMatchParams {
   id: string
 }
 
-export default function ProductScreen(props: RouteComponentProps<IMatchParams>): React.ReactElement | null {
+const ProductScreen: React.FC<RouteComponentProps<IMatchParams>> = (props) => {
   const dispatch = useDispatch()
   const id = props.match.params.id
   const { isLoading, error, product } = useSelector((state: State) => state.productDetail)
@@ -111,3 +111,5 @@ export default function ProductScreen(props: RouteComponentProps<IMatchParams>):
     return null
   }
 }
+
+export default ProductScreen

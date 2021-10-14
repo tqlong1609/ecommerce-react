@@ -10,7 +10,7 @@ interface IMatchProps {
     id: string,
 }
 
-export default function CartScreen(props: RouteComponentProps<IMatchProps>) {
+const CartScreen: React.FC<RouteComponentProps<IMatchProps>> = (props) => {
     const id = props.match.params.id
     const qty = props.location.search ? props.location.search.split('=')[1] : 2
     const dispatch = useDispatch()
@@ -85,3 +85,5 @@ export default function CartScreen(props: RouteComponentProps<IMatchProps>) {
         </div>
     )
 }
+
+export default CartScreen

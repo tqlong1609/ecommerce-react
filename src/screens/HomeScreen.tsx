@@ -9,7 +9,7 @@ export interface IError {
   message: string
 }
 
-export default function HomeScreen(): React.ReactElement {
+const HomeScreen: React.FC = () => {
   const state = useSelector((state: State) => state.productList)
 
   const dispatch = useDispatch()
@@ -35,3 +35,5 @@ export default function HomeScreen(): React.ReactElement {
     </div>
   );
 }
+
+export default HomeScreen
