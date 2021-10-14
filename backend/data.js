@@ -1,4 +1,19 @@
+import bcrypt from "bcrypt";
 const data = {
+  user: [
+    {
+      name: "tqlong1609",
+      email: "admin@example.com",
+      password: bcrypt.hashSync("1234567", 8),
+      isAdmin: true,
+    },
+    {
+      name: "user1",
+      email: "user1@example.com",
+      password: bcrypt.hashSync("1234567", 8),
+      isAdmin: false,
+    },
+  ],
   products: [
     {
       _id: 1,
@@ -10,7 +25,7 @@ const data = {
       brand: "Nike",
       rating: 4.5,
       numReviewer: 10,
-      description: 'hight quality product'
+      description: "hight quality product",
     },
     {
       _id: 2,
@@ -22,7 +37,7 @@ const data = {
       brand: "Pant",
       rating: 3.5,
       numReviewer: 25,
-      description: 'low quality product'
+      description: "low quality product",
     },
     {
       _id: 3,
@@ -34,7 +49,7 @@ const data = {
       brand: "Nike",
       rating: 3,
       numReviewer: 7,
-      description: 'hight quality product'
+      description: "hight quality product",
     },
     {
       _id: 4,
@@ -46,7 +61,7 @@ const data = {
       brand: "Puma",
       rating: 1.5,
       numReviewer: 40,
-      description: 'Low quality product'
+      description: "Low quality product",
     },
     {
       _id: 5,
@@ -58,7 +73,7 @@ const data = {
       brand: "Nike",
       rating: 4.3,
       numReviewer: 34,
-      description: 'hight quality product'
+      description: "hight quality product",
     },
     {
       _id: 6,
@@ -70,9 +85,9 @@ const data = {
       brand: "Adidas",
       rating: 5,
       numReviewer: 50,
-      description: 'hight quality product'
+      description: "hight quality product",
     },
   ],
 };
 
-export default data
+export default data;
