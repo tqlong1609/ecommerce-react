@@ -1,6 +1,6 @@
 import { IProductCart } from "."
 import { ECartItems } from "../action-types/cartItems";
-import { ActionProductAddToCart } from '../actions'
+import { ActionCartProduct } from '../actions'
 
 interface IProductCartState {
     productsCart: Array<IProductCart>
@@ -12,7 +12,7 @@ const isExistInArray = (arrayProduct: Array<IProductCart>, product: IProductCart
     return arrayProduct.find(item => item._id === product._id) ? true : false
 }
 
-export const productsCart = (state = initState, action: ActionProductAddToCart): IProductCartState => {
+export const productsCart = (state = initState, action: ActionCartProduct): IProductCartState => {
     switch (action.type) {
         case ECartItems.ADD_PRODUCT_CART: {
             if (state.productsCart?.length > 0 && isExistInArray(state.productsCart, action.payload)) {
@@ -24,6 +24,10 @@ export const productsCart = (state = initState, action: ActionProductAddToCart):
             } else {
                 return { ...state, productsCart: [...state.productsCart, action.payload] }
             }
+        }
+        case ECartItems.REMOVE_PRODUCT_CART: {
+            const cartUpdated = state.productsCart.filter(product => product._id !== action.payload.productId)
+            return { ...state, productsCart: cartUpdated }
         }
         default:
             return { ...state, productsCart: state.productsCart }

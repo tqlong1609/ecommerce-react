@@ -38,11 +38,17 @@ export interface IErrorResponse {
 }
 
 // Add Product Cart
-export interface IProductAddToCart {
+export interface IAddProductToCart {
     type: ECartItems.ADD_PRODUCT_CART,
     payload: IProductCart
 }
 
+export interface IRemoveProductFromCart {
+    type: ECartItems.REMOVE_PRODUCT_CART,
+    payload: { productId: number }
+
+}
+
 export type ActionProductList = ProductListRequestAction | ProductListSuccessAction | ProductListFailAction
 export type ActionProductDetail = ProductDetailRequestAction | ProductDetailSuccessAction | ProductDetailFailAction
-export type ActionProductAddToCart = IProductAddToCart
+export type ActionCartProduct = IAddProductToCart | IRemoveProductFromCart

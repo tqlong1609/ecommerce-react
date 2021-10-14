@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
-import { addCartItem } from '../state/actions/cartItems'
+import { addCartItem, removeCartItem } from '../state/actions/cartItems'
 import { State } from '../state'
 import AlertBox from '../components/AlertBox'
 import { Link } from 'react-router-dom'
@@ -11,17 +11,16 @@ interface IMatchProps {
 }
 
 const CartScreen: React.FC<RouteComponentProps<IMatchProps>> = (props) => {
-    const id = props.match.params.id
-    const qty = props.location.search ? props.location.search.split('=')[1] : 2
     const dispatch = useDispatch()
     const cartProducts = useSelector((state: State) => state.cartProducts)
     const { productsCart } = cartProducts
-    useEffect(() => {
-        dispatch(addCartItem(+id, +qty))
-    }, [dispatch, id, qty])
 
     const changeQty = (productID: number, value: React.ChangeEvent<HTMLSelectElement>) => {
         dispatch(addCartItem(productID, +value.target.value))
+    }
+
+    const onDeleteProduct = (productID: number) => {
+        dispatch(removeCartItem(productID))
     }
 
     return (
@@ -57,7 +56,7 @@ const CartScreen: React.FC<RouteComponentProps<IMatchProps>> = (props) => {
                                                 ${product.price}
                                             </div>
                                             <div>
-                                                <button>Delete</button>
+                                                <button onClick={() => onDeleteProduct(product._id)}>Delete</button>
                                             </div>
                                         </li>
                                     )
@@ -77,7 +76,7 @@ const CartScreen: React.FC<RouteComponentProps<IMatchProps>> = (props) => {
                             </h2>
                         </li>
                         <li>
-                            <button className="primary block">Proceed to Checkout</button>
+                            <button className={`primary block ${productsCart.length <= 0 && 'disabled'}`}>Proceed to Checkout</button>
                         </li>
                     </ul>
                 </div>

@@ -6,7 +6,8 @@ import { productDetail } from "../state/actions";
 import { State } from '../state'
 import LoadingBox from "../components/LoadingBox";
 import AlertBox from "../components/AlertBox";
-import {RouteComponentProps} from 'react-router'
+import { RouteComponentProps } from 'react-router'
+import { addCartItem } from "../state/actions/cartItems";
 
 interface IMatchParams {
   id: string
@@ -26,6 +27,7 @@ const ProductScreen: React.FC<RouteComponentProps<IMatchParams>> = (props) => {
   }
 
   const onClickAddToCart = () => {
+    dispatch(addCartItem(+id, valueQty))
     props.history.push(`/cart/${id}?qty=${valueQty}`)
   }
 
