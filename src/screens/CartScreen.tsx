@@ -15,11 +15,11 @@ const CartScreen: React.FC<RouteComponentProps<IMatchProps>> = (props) => {
     const cartProducts = useSelector((state: State) => state.cartProducts)
     const { productsCart } = cartProducts
 
-    const changeQty = (productID: number, value: React.ChangeEvent<HTMLSelectElement>) => {
+    const changeQty = (productID: string, value: React.ChangeEvent<HTMLSelectElement>) => {
         dispatch(addCartItem(productID, +value.target.value))
     }
 
-    const onDeleteProduct = (productID: number) => {
+    const onDeleteProduct = (productID: string) => {
         dispatch(removeCartItem(productID))
     }
 

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Rating from "./Rating";
 
 export interface IProduct {
-  _id: number,
+  _id: string,
   name: string,
   category: string,
   image: string,

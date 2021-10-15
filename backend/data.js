@@ -16,7 +16,6 @@ const data = {
   ],
   products: [
     {
-      _id: 1,
       name: "Nike Slim Shirt",
       category: "Shirts",
       image: "/images/p1.jpg",
@@ -28,7 +27,6 @@ const data = {
       description: "hight quality product",
     },
     {
-      _id: 2,
       name: "Nike Slim Pant",
       category: "Pant",
       image: "/images/p2.jpg",
@@ -40,7 +38,6 @@ const data = {
       description: "low quality product",
     },
     {
-      _id: 3,
       name: "Nike Slim Pant 2",
       category: "Pant",
       image: "/images/p3.jpg",
@@ -52,7 +49,6 @@ const data = {
       description: "hight quality product",
     },
     {
-      _id: 4,
       name: "Nike Slim White Pant",
       category: "Pant",
       image: "/images/p4.jpg",
@@ -64,7 +60,6 @@ const data = {
       description: "Low quality product",
     },
     {
-      _id: 5,
       name: "Nike White Shirt 1",
       category: "Shirts",
       image: "/images/p5.jpg",
@@ -76,7 +71,6 @@ const data = {
       description: "hight quality product",
     },
     {
-      _id: 6,
       name: "Nike Slim Shirt 2",
       category: "Shirts",
       image: "/images/p6.jpg",

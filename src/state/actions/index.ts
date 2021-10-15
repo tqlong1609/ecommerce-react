@@ -45,7 +45,7 @@ export interface IAddProductToCart {
 
 export interface IRemoveProductFromCart {
     type: ECartItems.REMOVE_PRODUCT_CART,
-    payload: { productId: number }
+    payload: { productId: string }
 
 }
 
