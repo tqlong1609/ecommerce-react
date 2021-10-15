@@ -8,7 +8,7 @@ const generateToken = (user) => {
       email: user.email,
       isAdmin: user.isAdmin,
     },
-    process.env.JWT_SECRET, // create a .env file
+    process.env.JWT_SECRET || 'default_jwt_secret', // create a .env file
     {
       expiresIn: "30d",
     }
