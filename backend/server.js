@@ -2,8 +2,13 @@ import express from "express";
 import mongoose from "mongoose";
 import userRouter from "./routes/userRoute.js";
 import productRouter from "./routes/productRouter.js";
+import env from "dotenv";
+
+env.config(); // config environment .env file
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/amazona");
 
 app.use("/api/users", userRouter);
