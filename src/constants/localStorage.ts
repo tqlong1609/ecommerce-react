@@ -1,1 +1,2 @@
 export const PRODUCT_CART_ITEM_KEY = 'PRODUCT_CART_ITEM'
+export const USER_SIGN_IN_KEY = 'USER_SIGN_IN_KEY'

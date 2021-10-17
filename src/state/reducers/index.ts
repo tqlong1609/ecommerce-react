@@ -3,6 +3,7 @@ import { IProduct } from '../../components/Products';
 import { productsCart } from './cartItem';
 import { productDetail } from './productDetail';
 import { productList } from './productList'
+import { userLogin } from './userLogin';
 
 export interface IProductListState {
     isLoading: boolean,
@@ -16,14 +17,15 @@ export interface IProductDetailState {
     error?: string
 }
 
-export interface IProductCart extends IProduct{
+export interface IProductCart extends IProduct {
     qty: number
 }
 
 const reducer = combineReducers({
     productList: productList,
     productDetail: productDetail,
-    cartProducts: productsCart
+    cartProducts: productsCart,
+    userLogin: userLogin
 });
 
 export default reducer

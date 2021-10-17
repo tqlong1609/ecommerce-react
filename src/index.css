@@ -242,3 +242,23 @@ form label {
   margin: 1rem 0;
   display: block;
 }
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  margin-top: 0.5rem;
+  left: 10px;
+  border-radius: 5px;
+  padding: 1rem;
+  z-index: 1;
+  background-color: #203040;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
 import { addCartItem, removeCartItem } from '../state/actions/cartItems'
@@ -13,6 +13,7 @@ interface IMatchProps {
 const CartScreen: React.FC<RouteComponentProps<IMatchProps>> = (props) => {
     const dispatch = useDispatch()
     const cartProducts = useSelector((state: State) => state.cartProducts)
+    const { user } = useSelector((state: State) => state.userLogin)
     const { productsCart } = cartProducts
 
     const changeQty = (productID: string, value: React.ChangeEvent<HTMLSelectElement>) => {
@@ -21,6 +22,12 @@ const CartScreen: React.FC<RouteComponentProps<IMatchProps>> = (props) => {
 
     const onDeleteProduct = (productID: string) => {
         dispatch(removeCartItem(productID))
+    }
+
+    const onCLickCheckout = () => {
+        if (productsCart.length > 0) {
+            props.history.push(!user ? '/signin?redirect=shipping' : '/shipping')
+        }
     }
 
     return (
@@ -76,7 +83,7 @@ const CartScreen: React.FC<RouteComponentProps<IMatchProps>> = (props) => {
                             </h2>
                         </li>
                         <li>
-                            <button className={`primary block ${productsCart.length <= 0 && 'disabled'}`}>Proceed to Checkout</button>
+                            <button className={`primary block ${productsCart.length <= 0 && 'disabled'}`} onClick={onCLickCheckout}>Proceed to Checkout</button>
                         </li>
                     </ul>
                 </div>

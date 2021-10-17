@@ -1,20 +1,46 @@
-import React, { ChangeEvent, useState } from 'react'
+import React, { ChangeEvent, useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { signIn } from '../state/actions';
+import { RouteComponentProps } from 'react-router-dom'
+import { State } from '../state';
+import AlertBox from '../components/AlertBox';
+import LoadingBox from '../components/LoadingBox';
+export interface IUserLogin {
+    _id: string,
+    name: string,
+    email: string,
+    token: string
+}
 
 interface SigninScreenProps {
     name: string
 }
-const SigninScreen: React.FC<SigninScreenProps> = () => {
+const SigninScreen: React.FC<RouteComponentProps<SigninScreenProps>> = (props) => {
+    const dispatch = useDispatch()
+    const { user, isLoading, error } = useSelector((state: State) => state.userLogin)
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    const redirect = props.location.search.split('=')?.[1] === 'shipping' ? '/shipping' : '/'
+    useEffect(() => {
+        if (user) {
+            props.history.push(redirect)
+        }
+    }, [user, props.history, redirect])
+
     const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
-        e.target.value && setEmail(e.target.value)
+        setEmail(e.target.value)
     }
+
     const onChangePassword = (e: ChangeEvent<HTMLInputElement>) => {
-        e.target.value && setPassword(e.target.value)
+        setPassword(e.target.value)
     }
+
     const onClickSignIn = (e: React.FormEvent) => {
         e.preventDefault()
+        dispatch(signIn(email, password))
     }
     return (
         <div>
@@ -22,6 +48,9 @@ const SigninScreen: React.FC<SigninScreenProps> = () => {
                 <div>
                     <h1>Sign In</h1>
                 </div>
+                {
+                    isLoading ? <LoadingBox /> : error ? <AlertBox variant="danger">{error}</AlertBox> : null
+                }
                 <div>
                     <label htmlFor="email">Email address</label>
                     <input value={email} type="email" name="email" id="email" required

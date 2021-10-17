@@ -1,10 +1,13 @@
 import { IProductCart } from '..'
 import { IProduct } from '../../components/Products'
-import { EProductDetail, EProductList } from '../action-types'
+import { IUserLogin } from '../../screens/SigninScreen'
+import { EProductDetail, EProductList, EUserLogin } from '../action-types'
 import { ECartItems } from '../action-types/cartItems'
 export { listProducts } from './productList'
 export { productDetail } from './productDetail'
+export { signIn } from './userLogin'
 
+// Product list
 interface ProductListRequestAction {
     type: EProductList.PRODUCT_LIST_REQUEST
 }
@@ -19,6 +22,7 @@ interface ProductListFailAction {
     payload: string
 }
 
+// product detail
 interface ProductDetailRequestAction {
     type: EProductDetail.PRODUCT_DETAIL_REQUEST
 }
@@ -33,22 +37,41 @@ interface ProductDetailFailAction {
     payload: string
 }
 
-export interface IErrorResponse {
-    response: { data: { message: string }, status: number }
-}
-
-// Add Product Cart
-export interface IAddProductToCart {
+// Product Cart
+interface IAddProductToCart {
     type: ECartItems.ADD_PRODUCT_CART,
     payload: IProductCart
 }
 
-export interface IRemoveProductFromCart {
+interface IRemoveProductFromCart {
     type: ECartItems.REMOVE_PRODUCT_CART,
     payload: { productId: string }
 
 }
 
+// User login
+interface IUserSignIn {
+    type: EUserLogin.SIGN_IN_REQUEST,
+}
+
+interface IUserSignInSuccess {
+    type: EUserLogin.SIGN_IN_SUCCESS,
+    payload: IUserLogin
+}
+
+interface IUserSignInFail {
+    type: EUserLogin.SIGN_IN_FAIL,
+    payload: string
+}
+
+interface IUserSignOut {
+    type: EUserLogin.SIGN_OUT,
+}
+
+export interface IErrorResponse {
+    response: { data: { message: string }, status: number }
+}
 export type ActionProductList = ProductListRequestAction | ProductListSuccessAction | ProductListFailAction
 export type ActionProductDetail = ProductDetailRequestAction | ProductDetailSuccessAction | ProductDetailFailAction
 export type ActionCartProduct = IAddProductToCart | IRemoveProductFromCart
+export type ActionUserLogin = IUserSignIn | IUserSignInSuccess | IUserSignInFail | IUserSignOut
