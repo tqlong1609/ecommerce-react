@@ -13,20 +13,17 @@ export interface IUserLogin {
     token: string
 }
 
-interface SigninScreenProps {
-    name: string
-}
-const SigninScreen: React.FC<RouteComponentProps<SigninScreenProps>> = (props) => {
+const SigninScreen: React.FC<RouteComponentProps> = (props) => {
     const dispatch = useDispatch()
     const { user, isLoading, error } = useSelector((state: State) => state.userLogin)
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const redirect = props.location.search.split('=')?.[1] === 'shipping' ? '/shipping' : '/'
+    const redirect = props.location.search.split('=')?.[1] === 'shipping' ? 'shipping' : ''
     useEffect(() => {
         if (user) {
-            props.history.push(redirect)
+            props.history.push('/' + redirect)
         }
     }, [user, props.history, redirect])
 
@@ -44,7 +41,7 @@ const SigninScreen: React.FC<RouteComponentProps<SigninScreenProps>> = (props) =
     }
     return (
         <div>
-            <form action="onSignIn" className=".form">
+            <form onSubmit={onClickSignIn} className=".form">
                 <div>
                     <h1>Sign In</h1>
                 </div>
@@ -62,10 +59,10 @@ const SigninScreen: React.FC<RouteComponentProps<SigninScreenProps>> = (props) =
                         placeholder="Enter your password" onChange={onChangePassword} />
                 </div>
                 <div>
-                    <button type="submit" className="primary" onClick={onClickSignIn}>Sign In</button>
+                    <button type="submit" className="primary" >Sign In</button>
                 </div>
                 <div>
-                    New customer? <Link to={'/signUp.html'}>Create your account</Link>
+                    New customer? <Link to={`/signup${redirect && '?redirect=' + redirect}`}>Create your account</Link>
                 </div>
             </form>
         </div>

@@ -3,7 +3,7 @@ import { IProduct } from '../../components/Products';
 import { productsCart } from './cartItem';
 import { productDetail } from './productDetail';
 import { productList } from './productList'
-import { userLogin } from './userLogin';
+import { usersLogin, usersRegister } from './users';
 
 export interface IProductListState {
     isLoading: boolean,
@@ -25,7 +25,8 @@ const reducer = combineReducers({
     productList: productList,
     productDetail: productDetail,
     cartProducts: productsCart,
-    userLogin: userLogin
+    userLogin: usersLogin,
+    userRegister: usersRegister
 });
 
 export default reducer

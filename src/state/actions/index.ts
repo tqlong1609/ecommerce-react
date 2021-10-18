@@ -1,11 +1,11 @@
 import { IProductCart } from '..'
 import { IProduct } from '../../components/Products'
 import { IUserLogin } from '../../screens/SigninScreen'
-import { EProductDetail, EProductList, EUserLogin } from '../action-types'
+import { EProductDetail, EProductList, EUser } from '../action-types'
 import { ECartItems } from '../action-types/cartItems'
 export { listProducts } from './productList'
 export { productDetail } from './productDetail'
-export { signIn } from './userLogin'
+export { signIn, signOut, instanceOfIUserLogin, registerUser } from './users'
 
 // Product list
 interface ProductListRequestAction {
@@ -51,21 +51,35 @@ interface IRemoveProductFromCart {
 
 // User login
 interface IUserSignIn {
-    type: EUserLogin.SIGN_IN_REQUEST,
+    type: EUser.SIGN_IN_REQUEST,
 }
 
 interface IUserSignInSuccess {
-    type: EUserLogin.SIGN_IN_SUCCESS,
+    type: EUser.SIGN_IN_SUCCESS,
     payload: IUserLogin
 }
 
 interface IUserSignInFail {
-    type: EUserLogin.SIGN_IN_FAIL,
+    type: EUser.SIGN_IN_FAIL,
     payload: string
 }
 
 interface IUserSignOut {
-    type: EUserLogin.SIGN_OUT,
+    type: EUser.SIGN_OUT,
+}
+
+// User register
+interface IUserRegisterRequest {
+    type: EUser.REGISTER_USER_REQUEST
+}
+
+interface IUserRegisterSuccess {
+    type: EUser.REGISTER_USER_SUCCESS,
+}
+
+interface IUserRegisterFail {
+    type: EUser.REGISTER_USER_FAIL,
+    payload: string
 }
 
 export interface IErrorResponse {
@@ -74,4 +88,4 @@ export interface IErrorResponse {
 export type ActionProductList = ProductListRequestAction | ProductListSuccessAction | ProductListFailAction
 export type ActionProductDetail = ProductDetailRequestAction | ProductDetailSuccessAction | ProductDetailFailAction
 export type ActionCartProduct = IAddProductToCart | IRemoveProductFromCart
-export type ActionUserLogin = IUserSignIn | IUserSignInSuccess | IUserSignInFail | IUserSignOut
+export type ActionUser = IUserSignIn | IUserSignInSuccess | IUserSignInFail | IUserSignOut | IUserRegisterRequest | IUserRegisterSuccess | IUserRegisterFail

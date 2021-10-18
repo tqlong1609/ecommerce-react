@@ -6,7 +6,8 @@ import CartScreen from "./screens/CartScreen";
 import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
 import SigninScreen from "./screens/SigninScreen";
-import { signOut } from "./state/actions/userLogin";
+import { SignupScreen } from "./screens/SignupScreen";
+import { signOut } from "./state/actions/users";
 import { State } from './state/reducers'
 
 function App(): React.ReactElement {
@@ -44,6 +45,7 @@ function App(): React.ReactElement {
         <Route path="/product/:id" component={ProductScreen} />
         <Route path="/cart/:id?" component={CartScreen} />
         <Route path="/signin" component={SigninScreen} />
+        <Route path="/signup" component={SignupScreen} />
         <footer className="row center">All right reserved</footer>
       </div>
     </BrowserRouter>
