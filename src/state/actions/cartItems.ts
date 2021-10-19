@@ -5,6 +5,7 @@ import { State } from "..";
 import { IProduct } from "../../components/Products";
 import { PRODUCT_CART_ITEM_KEY } from "../../constants";
 import { SHIPPING_ADDRESS_KEY } from "../../constants/localStorage";
+import { EPaymentMethod } from "../../screens/PaymentScreen";
 import { ECartItems } from "../action-types/cartItems";
 
 export interface IShippingAddress {
@@ -33,4 +34,8 @@ export const removeCartItem = (productId: string) => async (dispatch: Dispatch<A
 export const saveShippingAddress = (data: IShippingAddress) => (dispatch: Dispatch<ActionCartProduct>) => {
     dispatch({ type: ECartItems.SHIPPING_ADDRESS, payload: data })
     localStorage.setItem(SHIPPING_ADDRESS_KEY, JSON.stringify(data))
+}
+
+export const savePaymentMethod = (method: EPaymentMethod) => (dispatch: Dispatch<ActionCartProduct>) => {
+    dispatch({ type: ECartItems.PAYMENT_METHOD, payload: method })
 }

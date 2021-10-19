@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Link, Route } from "react-router-dom";
 import CartScreen from "./screens/CartScreen";
 import HomeScreen from "./screens/HomeScreen";
+import { PaymentScreen } from "./screens/PaymentScreen";
 import ProductScreen from "./screens/ProductScreen";
 import { ShippingAddressScreen } from "./screens/ShippingAddressScreen";
 import SigninScreen from "./screens/SigninScreen";
@@ -48,6 +49,7 @@ function App(): React.ReactElement {
         <Route path="/signin" component={SigninScreen} />
         <Route path="/signup" component={SignupScreen} />
         <Route path="/shipping" component={ShippingAddressScreen} />
+        <Route path="/payment" component={PaymentScreen} />
         <footer className="row center">All right reserved</footer>
       </div>
     </BrowserRouter>

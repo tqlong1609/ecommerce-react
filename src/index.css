@@ -240,7 +240,6 @@ form > div {
 
 form label {
   margin: 1rem 0;
-  display: block;
 }
 
 .dropdown {
@@ -291,4 +290,8 @@ form label {
 
 .choose_map {
   background-color: gray !important;
+}
+
+input[type="radio"] {
+  margin-right: 10px;
 }

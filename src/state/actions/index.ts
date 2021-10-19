@@ -1,5 +1,6 @@
 import { IProductCart } from '..'
 import { IProduct } from '../../components/Products'
+import { EPaymentMethod } from '../../screens/PaymentScreen'
 import { IUserLogin } from '../../screens/SigninScreen'
 import { EProductDetail, EProductList, EUser } from '../action-types'
 import { ECartItems } from '../action-types/cartItems'
@@ -88,10 +89,15 @@ interface IShippingAddressRequest {
     payload: IShippingAddress
 }
 
+interface IPaymentMethodRequest {
+    type: ECartItems.PAYMENT_METHOD,
+    payload: EPaymentMethod
+}
+
 export interface IErrorResponse {
     response: { data: { message: string }, status: number }
 }
 export type ActionProductList = ProductListRequestAction | ProductListSuccessAction | ProductListFailAction
 export type ActionProductDetail = ProductDetailRequestAction | ProductDetailSuccessAction | ProductDetailFailAction
-export type ActionCartProduct = IAddProductToCart | IRemoveProductFromCart | IShippingAddressRequest
+export type ActionCartProduct = IAddProductToCart | IRemoveProductFromCart | IShippingAddressRequest | IPaymentMethodRequest
 export type ActionUser = IUserSignIn | IUserSignInSuccess | IUserSignInFail | IUserSignOut | IUserRegisterRequest | IUserRegisterSuccess | IUserRegisterFail

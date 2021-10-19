@@ -1,4 +1,5 @@
 import { IProductCart } from "."
+import { EPaymentMethod } from "../../screens/PaymentScreen";
 import { ECartItems } from "../action-types/cartItems";
 import { ActionCartProduct } from '../actions'
 import { IShippingAddress } from "../actions/cartItems";
@@ -6,6 +7,7 @@ import { IShippingAddress } from "../actions/cartItems";
 interface IProductCartState {
     productsCart: Array<IProductCart>
     shippingAddress?: IShippingAddress
+    paymentMethod?: EPaymentMethod
 }
 
 const initState: IProductCartState = { productsCart: [] }
@@ -33,6 +35,9 @@ export const productsCart = (state = initState, action: ActionCartProduct): IPro
         }
         case ECartItems.SHIPPING_ADDRESS: {
             return { ...state, shippingAddress: action.payload }
+        }
+        case ECartItems.PAYMENT_METHOD: {
+            return { ...state, paymentMethod: action.payload }
         }
         default:
             return { ...state, productsCart: state.productsCart }

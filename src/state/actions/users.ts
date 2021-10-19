@@ -3,7 +3,7 @@ import { Dispatch } from "react";
 import { ActionUser, IErrorResponse } from ".";
 import { EUser } from "../action-types";
 import { IUserLogin } from '../../screens/SigninScreen'
-import { USER_SIGN_IN_KEY } from "../../constants";
+import { PRODUCT_CART_ITEM_KEY, USER_SIGN_IN_KEY, SHIPPING_ADDRESS_KEY } from "../../constants";
 import { State } from "..";
 import { IError } from "../../screens/HomeScreen";
 
@@ -59,4 +59,6 @@ export const registerUser = (user: IUserRegister) => async (dispatch: Dispatch<A
 export const signOut = () => async (dispatch: Dispatch<ActionUser>) => {
     dispatch({ type: EUser.SIGN_OUT })
     localStorage.removeItem(USER_SIGN_IN_KEY)
+    localStorage.removeItem(PRODUCT_CART_ITEM_KEY)
+    localStorage.removeItem(SHIPPING_ADDRESS_KEY)
 }
