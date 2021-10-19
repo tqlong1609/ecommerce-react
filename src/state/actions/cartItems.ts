@@ -4,7 +4,16 @@ import { ActionCartProduct } from ".";
 import { State } from "..";
 import { IProduct } from "../../components/Products";
 import { PRODUCT_CART_ITEM_KEY } from "../../constants";
+import { SHIPPING_ADDRESS_KEY } from "../../constants/localStorage";
 import { ECartItems } from "../action-types/cartItems";
+
+export interface IShippingAddress {
+    name: string,
+    address: string,
+    city: string,
+    country: string,
+    postCode: number
+}
 
 export const addCartItem
     = (productId: string, qty: number) => async (dispatch: Dispatch<ActionCartProduct>, getState: () => State) => {
@@ -19,4 +28,9 @@ export const addCartItem
 export const removeCartItem = (productId: string) => async (dispatch: Dispatch<ActionCartProduct>, getState: () => State) => {
     dispatch({ type: ECartItems.REMOVE_PRODUCT_CART, payload: { productId } })
     localStorage.setItem(PRODUCT_CART_ITEM_KEY, JSON.stringify(getState().cartProducts.productsCart))
+}
+
+export const saveShippingAddress = (data: IShippingAddress) => (dispatch: Dispatch<ActionCartProduct>) => {
+    dispatch({ type: ECartItems.SHIPPING_ADDRESS, payload: data })
+    localStorage.setItem(SHIPPING_ADDRESS_KEY, JSON.stringify(data))
 }

@@ -30,8 +30,6 @@ export const SignupScreen: React.FC<RouteComponentProps> = (props) => {
         e.preventDefault()
         if (password !== confirmPassword) {
             setErrorValidate('Password and confirm password not match')
-        } else if (!name || !email || !password || !confirmPassword) {
-            setErrorValidate('Input value are not validate')
         } else {
             setErrorValidate('')
             dispatch(registerUser({ email, name, password }))
@@ -53,19 +51,19 @@ export const SignupScreen: React.FC<RouteComponentProps> = (props) => {
                 }
                 <div>
                     <label htmlFor="name">Name</label>
-                    <input type="text" name="name" id="name" onChange={value => setName(value.target.value)} />
+                    <input type="text" name="name" id="name" onChange={value => setName(value.target.value)} required />
                 </div>
                 <div>
                     <label htmlFor="email">Email address</label>
-                    <input type="email" name="email" id="email" onChange={value => setEmail(value.target.value)} />
+                    <input type="email" name="email" id="email" onChange={value => setEmail(value.target.value)} required />
                 </div>
                 <div>
                     <label htmlFor="password">Password</label>
-                    <input type="password" name="password" id="password" onChange={value => setPassword(value.target.value)} />
+                    <input type="password" name="password" id="password" onChange={value => setPassword(value.target.value)} required />
                 </div>
                 <div>
                     <label htmlFor="confirm-password">Confirm password</label>
-                    <input type="password" name="confirm-password" id="confirm-password" onChange={value => setConfirmPassword(value.target.value)} />
+                    <input type="password" name="confirm-password" id="confirm-password" onChange={value => setConfirmPassword(value.target.value)} required />
                 </div>
                 <button type="submit" className="primary block">Register</button>
                 <div>

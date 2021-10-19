@@ -1,9 +1,11 @@
 import { IProductCart } from "."
 import { ECartItems } from "../action-types/cartItems";
 import { ActionCartProduct } from '../actions'
+import { IShippingAddress } from "../actions/cartItems";
 
 interface IProductCartState {
     productsCart: Array<IProductCart>
+    shippingAddress?: IShippingAddress
 }
 
 const initState: IProductCartState = { productsCart: [] }
@@ -28,6 +30,9 @@ export const productsCart = (state = initState, action: ActionCartProduct): IPro
         case ECartItems.REMOVE_PRODUCT_CART: {
             const cartUpdated = state.productsCart.filter(product => product._id !== action.payload.productId)
             return { ...state, productsCart: cartUpdated }
+        }
+        case ECartItems.SHIPPING_ADDRESS: {
+            return { ...state, shippingAddress: action.payload }
         }
         default:
             return { ...state, productsCart: state.productsCart }

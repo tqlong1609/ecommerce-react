@@ -265,5 +265,30 @@ form label {
 
 .loading {
   /* error loading ??? */
-  display: block !important
+  display: block !important;
+}
+
+/* Checkout */
+
+.checkout-steps {
+  justify-content: start;
+  align-items: flex-start;
+}
+
+.checkout-steps > div {
+  border-top: 0.3rem solid gray;
+  color: gray;
+  flex: 1;
+  padding: 1rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.checkout-steps > div.active {
+  color: #f08000;
+  border-top-color: currentColor;
+}
+
+.choose_map {
+  background-color: gray !important;
 }

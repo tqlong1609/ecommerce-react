@@ -3,6 +3,7 @@ import { IProduct } from '../../components/Products'
 import { IUserLogin } from '../../screens/SigninScreen'
 import { EProductDetail, EProductList, EUser } from '../action-types'
 import { ECartItems } from '../action-types/cartItems'
+import { IShippingAddress } from './cartItems'
 export { listProducts } from './productList'
 export { productDetail } from './productDetail'
 export { signIn, signOut, instanceOfIUserLogin, registerUser } from './users'
@@ -82,10 +83,15 @@ interface IUserRegisterFail {
     payload: string
 }
 
+interface IShippingAddressRequest {
+    type: ECartItems.SHIPPING_ADDRESS,
+    payload: IShippingAddress
+}
+
 export interface IErrorResponse {
     response: { data: { message: string }, status: number }
 }
 export type ActionProductList = ProductListRequestAction | ProductListSuccessAction | ProductListFailAction
 export type ActionProductDetail = ProductDetailRequestAction | ProductDetailSuccessAction | ProductDetailFailAction
-export type ActionCartProduct = IAddProductToCart | IRemoveProductFromCart
+export type ActionCartProduct = IAddProductToCart | IRemoveProductFromCart | IShippingAddressRequest
 export type ActionUser = IUserSignIn | IUserSignInSuccess | IUserSignInFail | IUserSignOut | IUserRegisterRequest | IUserRegisterSuccess | IUserRegisterFail
