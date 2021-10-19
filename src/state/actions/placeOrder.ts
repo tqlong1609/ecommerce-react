@@ -1,9 +1,10 @@
 import axios from "axios";
 import { Dispatch } from "react";
-import { ActionCartProduct, ActionPlaceOrder, IErrorResponse } from ".";
+import { ActionCartProduct, ActionOrderDetail, ActionPlaceOrder, IErrorResponse } from ".";
 import { IProductCart, State } from "..";
 import { PRODUCT_CART_ITEM_KEY } from "../../constants";
-import { EPlaceOrder } from "../action-types";
+import { IError } from "../../screens/HomeScreen";
+import { EOrderDetail, EPlaceOrder } from "../action-types";
 import { ECartItems } from "../action-types/cartItems";
 import { IProductCartState } from "../reducers/cartItem";
 
@@ -39,6 +40,26 @@ export const createPlaceOrder = (order: IPlaceOrderPosting) => async (dispatch: 
             payload: e.response.status ?
                 e.response.data.message :
                 (error as Error).message
+        })
+    }
+}
+
+export const getOrderById = (id: string) => async (dispatch: Dispatch<ActionOrderDetail>, getState: () => State) => {
+    dispatch({ type: EOrderDetail.GET_ORDER_REQUEST })
+    const token = getState().userLogin.user?.token
+    try {
+        const { data } = await axios.get(`/api/orders/${id}`, {
+            headers: {
+                Authorization: 'Bearer ' + token
+            }
+        })
+        console.log('data', data);
+
+        dispatch({ type: EOrderDetail.GET_ORDER_SUCCESS, payload: data as IPlaceOrderPostingResponse })
+    } catch (error) {
+        dispatch({
+            type: EOrderDetail.GET_ORDER_FAIL,
+            payload: (error as IErrorResponse).response?.data?.message || (error as IError).message
         })
     }
 }

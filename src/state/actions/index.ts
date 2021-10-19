@@ -2,10 +2,10 @@ import { IOrderPlace, IProductCart } from '..'
 import { IProduct } from '../../components/Products'
 import { EPaymentMethod } from '../../screens/PaymentScreen'
 import { IUserLogin } from '../../screens/SigninScreen'
-import { EPlaceOrder, EProductDetail, EProductList, EUser } from '../action-types'
+import { EOrderDetail, EPlaceOrder, EProductDetail, EProductList, EUser } from '../action-types'
 import { ECartItems } from '../action-types/cartItems'
 import { IShippingAddress } from './cartItems'
-import { IPlaceOrderPostingResponse, clearOrder } from './placeOrder'
+import { IPlaceOrderPostingResponse } from './placeOrder'
 export { listProducts } from './productList'
 export { productDetail } from './productDetail'
 export { signIn, signOut, instanceOfIUserLogin, registerUser } from './users'
@@ -115,6 +115,20 @@ interface IPlaceOrderReset {
     type: EPlaceOrder.PLACE_ORDER_RESET,
 }
 
+interface IGetOrderRequest {
+    type: EOrderDetail.GET_ORDER_REQUEST
+}
+
+interface IGetOrderSuccess {
+    type: EOrderDetail.GET_ORDER_SUCCESS,
+    payload: IPlaceOrderPostingResponse
+}
+
+interface IGetOrderFail {
+    type: EOrderDetail.GET_ORDER_FAIL,
+    payload: string
+}
+
 export interface IErrorResponse {
     response: { data: { message: string }, status: number }
 }
@@ -123,3 +137,4 @@ export type ActionProductDetail = ProductDetailRequestAction | ProductDetailSucc
 export type ActionCartProduct = IAddProductToCart | IRemoveProductFromCart | IShippingAddressRequest | IPaymentMethodRequest | IClearCart
 export type ActionUser = IUserSignIn | IUserSignInSuccess | IUserSignInFail | IUserSignOut | IUserRegisterRequest | IUserRegisterSuccess | IUserRegisterFail
 export type ActionPlaceOrder = IPlaceOrderRequest | IPlaceOrderSuccess | IPlaceOrderFail | IPlaceOrderReset
+export type ActionOrderDetail = IGetOrderRequest | IGetOrderSuccess | IGetOrderFail

@@ -1,0 +1,5 @@
+export enum EOrderDetail {
+    'GET_ORDER_REQUEST' = 'GET_ORDER_REQUEST',
+    'GET_ORDER_SUCCESS' = 'GET_ORDER_SUCCESS',
+    'GET_ORDER_FAIL' = 'GET_ORDER_FAIL'
+}

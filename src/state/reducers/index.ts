@@ -7,6 +7,7 @@ import { usersLogin, usersRegister } from './users';
 import { EPaymentMethod } from "../../screens/PaymentScreen";
 import { IPlaceOrderPostingResponse } from '../actions/placeOrder';
 import { orderPlace } from './orderPlace';
+import { orderDetail } from './orderDetail';
 
 export interface IOrderPlace {
     _id: string,
@@ -48,7 +49,8 @@ const reducer = combineReducers({
     cartProducts: productsCart,
     userLogin: usersLogin,
     userRegister: usersRegister,
-    orderPlace: orderPlace
+    orderPlace: orderPlace,
+    orderDetail: orderDetail
 });
 
 export default reducer
