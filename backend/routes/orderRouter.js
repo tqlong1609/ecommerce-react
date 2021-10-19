@@ -19,12 +19,10 @@ orderRouter.post(
         shippingPrice: req.body.shippingPrice,
         taxPrice: req.body.taxPrice,
         totalPrice: req.body.totalPrice,
-        user: req.user_id,
+        user: req.user._id,
       });
       const orderCreated = await order.save();
-      res
-        .status(201)
-        .send({ message: "New Order Create", order: orderCreated });
+      res.status(201).send(orderCreated);
     }
   })
 );

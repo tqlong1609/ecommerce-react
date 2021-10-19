@@ -1,9 +1,23 @@
 import { combineReducers } from 'redux';
 import { IProduct } from '../../components/Products';
-import { productsCart } from './cartItem';
+import { productsCart, IProductCartState } from './cartItem';
 import { productDetail } from './productDetail';
 import { productList } from './productList'
 import { usersLogin, usersRegister } from './users';
+import { EPaymentMethod } from "../../screens/PaymentScreen";
+import { IPlaceOrderPostingResponse } from '../actions/placeOrder';
+import { orderPlace } from './orderPlace';
+
+export interface IOrderPlace {
+    _id: string,
+    shippingAddress: string,
+    paymentMethod: EPaymentMethod,
+    itemPrice: number,
+    shippingPrice: number,
+    taxPrice: number
+    totalPrice: number,
+    user?: string,
+}
 
 export interface IProductListState {
     isLoading: boolean,
@@ -17,6 +31,13 @@ export interface IProductDetailState {
     error?: string
 }
 
+export interface IOrderPlaceState {
+    isLoading?: boolean,
+    error?: string,
+    order?: IPlaceOrderPostingResponse,
+    isSuccess?: boolean
+}
+
 export interface IProductCart extends IProduct {
     qty: number
 }
@@ -26,7 +47,8 @@ const reducer = combineReducers({
     productDetail: productDetail,
     cartProducts: productsCart,
     userLogin: usersLogin,
-    userRegister: usersRegister
+    userRegister: usersRegister,
+    orderPlace: orderPlace
 });
 
 export default reducer

@@ -1,10 +1,11 @@
-import { IProductCart } from '..'
+import { IOrderPlace, IProductCart } from '..'
 import { IProduct } from '../../components/Products'
 import { EPaymentMethod } from '../../screens/PaymentScreen'
 import { IUserLogin } from '../../screens/SigninScreen'
-import { EProductDetail, EProductList, EUser } from '../action-types'
+import { EPlaceOrder, EProductDetail, EProductList, EUser } from '../action-types'
 import { ECartItems } from '../action-types/cartItems'
 import { IShippingAddress } from './cartItems'
+import { IPlaceOrderPostingResponse, clearOrder } from './placeOrder'
 export { listProducts } from './productList'
 export { productDetail } from './productDetail'
 export { signIn, signOut, instanceOfIUserLogin, registerUser } from './users'
@@ -51,6 +52,10 @@ interface IRemoveProductFromCart {
 
 }
 
+interface IClearCart {
+    type: ECartItems.CART_EMPTY
+}
+
 // User login
 interface IUserSignIn {
     type: EUser.SIGN_IN_REQUEST,
@@ -94,10 +99,27 @@ interface IPaymentMethodRequest {
     payload: EPaymentMethod
 }
 
+interface IPlaceOrderRequest {
+    type: EPlaceOrder.PLACE_ORDER_REQUEST
+}
+
+interface IPlaceOrderSuccess {
+    type: EPlaceOrder.PLACE_ORDER_SUCCESS,
+    payload: IPlaceOrderPostingResponse
+}
+interface IPlaceOrderFail {
+    type: EPlaceOrder.PLACE_ORDER_FAIL,
+    payload: string
+}
+interface IPlaceOrderReset {
+    type: EPlaceOrder.PLACE_ORDER_RESET,
+}
+
 export interface IErrorResponse {
     response: { data: { message: string }, status: number }
 }
 export type ActionProductList = ProductListRequestAction | ProductListSuccessAction | ProductListFailAction
 export type ActionProductDetail = ProductDetailRequestAction | ProductDetailSuccessAction | ProductDetailFailAction
-export type ActionCartProduct = IAddProductToCart | IRemoveProductFromCart | IShippingAddressRequest | IPaymentMethodRequest
+export type ActionCartProduct = IAddProductToCart | IRemoveProductFromCart | IShippingAddressRequest | IPaymentMethodRequest | IClearCart
 export type ActionUser = IUserSignIn | IUserSignInSuccess | IUserSignInFail | IUserSignOut | IUserRegisterRequest | IUserRegisterSuccess | IUserRegisterFail
+export type ActionPlaceOrder = IPlaceOrderRequest | IPlaceOrderSuccess | IPlaceOrderFail | IPlaceOrderReset

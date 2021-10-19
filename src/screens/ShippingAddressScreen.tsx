@@ -15,14 +15,12 @@ export const ShippingAddressScreen: React.FC<RouteComponentProps> = (props) => {
     const [address, setAddress] = useState<string | undefined>(shippingAddress?.address)
     const [city, setCity] = useState<string | undefined>(shippingAddress?.city)
     const [country, setCountry] = useState<string | undefined>(shippingAddress?.country)
-    const [postCode, setPostCode] = useState<number>(shippingAddress?.postCode || 0)
+    const [postalCode, setpostalCode] = useState<number>(shippingAddress?.postalCode || 0)
     const dispatch = useDispatch()
     const onSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        console.log(name + " " + address + " " + city + " " + country + " " + postCode);
-
-        if (name && address && city && country && postCode) {
-            dispatch(saveShippingAddress({ name, address, city, country, postCode }))
+        if (name && address && city && country && postalCode) {
+            dispatch(saveShippingAddress({ name, address, city, country, postalCode }))
             props.history.push('/payment')
         }
     }
@@ -52,7 +50,7 @@ export const ShippingAddressScreen: React.FC<RouteComponentProps> = (props) => {
                 <div>
                     <label htmlFor="postal_code">Postal Code</label>
                     <input type="number" name="postal_code" id="postal_code"
-                        value={postCode + ''} onChange={e => setPostCode(+e.target.value)} required />
+                        value={postalCode + ''} onChange={e => setpostalCode(+e.target.value)} required />
                 </div>
                 <div>
                     <label htmlFor="country">Country</label>

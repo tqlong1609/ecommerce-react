@@ -13,7 +13,7 @@ export interface IShippingAddress {
     address: string,
     city: string,
     country: string,
-    postCode: number
+    postalCode: number
 }
 
 export const addCartItem
