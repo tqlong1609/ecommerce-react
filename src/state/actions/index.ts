@@ -129,6 +129,24 @@ interface IGetOrderFail {
     payload: string
 }
 
+interface IGetOrderPaymentRequest {
+    type: EOrderDetail.GET_ORDER_PAYMENT_REQUEST
+}
+
+interface IGetOrderPaymentSuccess {
+    type: EOrderDetail.GET_ORDER_PAYMENT_SUCCESS,
+    payload: any
+}
+
+interface IGetOrderPaymentFail {
+    type: EOrderDetail.GET_ORDER_PAYMENT_FAIL,
+    payload: string
+}
+
+interface IGetOrderPaymentReset {
+    type: EOrderDetail.GET_ORDER_PAYMENT_RESET
+}
+
 export interface IErrorResponse {
     response: { data: { message: string }, status: number }
 }
@@ -138,3 +156,4 @@ export type ActionCartProduct = IAddProductToCart | IRemoveProductFromCart | ISh
 export type ActionUser = IUserSignIn | IUserSignInSuccess | IUserSignInFail | IUserSignOut | IUserRegisterRequest | IUserRegisterSuccess | IUserRegisterFail
 export type ActionPlaceOrder = IPlaceOrderRequest | IPlaceOrderSuccess | IPlaceOrderFail | IPlaceOrderReset
 export type ActionOrderDetail = IGetOrderRequest | IGetOrderSuccess | IGetOrderFail
+export type ActionOrderPayment = IGetOrderPaymentRequest | IGetOrderPaymentSuccess | IGetOrderPaymentFail | IGetOrderPaymentReset

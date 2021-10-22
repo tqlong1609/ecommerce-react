@@ -1,7 +1,7 @@
 import React from 'react'
 
 interface IAlertBoxProps {
-    children: React.ReactChild | (string | JSX.Element)[],
+    children: React.ReactChild | (string | JSX.Element | undefined)[],
     variant?: 'danger' | 'info'
 }
 

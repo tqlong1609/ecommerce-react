@@ -12,6 +12,12 @@ export interface IProductCartState {
     shippingPrice?: number,
     taxPrice?: number
     totalPrice?: number,
+    paymentResult?: {
+        id?: string,
+        status?: string,
+        email_address?: string,
+        time_update?: string,
+    }
 }
 
 const initState: IProductCartState = { productsCart: [] }

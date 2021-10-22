@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import AlertBox from '../components/AlertBox';
 import LoadingBox from '../components/LoadingBox';
 import { State } from '../state';
-import { getOrderById } from '../state/actions/placeOrder';
+import { clearOrderPayment, getOrderById, orderPayment } from '../state/actions/placeOrder';
 
 interface OrderScreenProps {
     id: string
@@ -23,12 +23,15 @@ declare global {
 export const OrderScreen: React.FC<RouteComponentProps<OrderScreenProps>> = (props) => {
     const dispatch = useDispatch()
     const { isLoading, error, order } = useSelector((state: State) => state.orderDetail)
+    const { error: errorPayment, isLoading: isLoadingPayment, isSuccess: isSuccessPayment } = useSelector((state: State) => state.orderPayment)
     const [isSdkPaypal, setIsSdkPaypal] = useState<boolean>(false)
     const id = props.match.params.id
 
-    const handleSuccess = () => {
-        console.log('handle success');
+    const handleSuccess = (dataPaypal: any) => {
+        const { id, update_time, status, payer: { email_address } } = dataPaypal
+        dispatch(orderPayment(id, update_time, status, email_address, order?._id || id))
     }
+
     useEffect(() => {
         const getPayPalSDKClientId = async () => {
             const { data } = await axios.get('/api/config/paypal')
@@ -36,20 +39,26 @@ export const OrderScreen: React.FC<RouteComponentProps<OrderScreenProps>> = (pro
             script.type = 'text/javascript'
             script.src = `https://www.paypal.com/sdk/js?client-id=${data}`
             script.async = true
+            script.onload = () => {
+                setIsSdkPaypal(true)
+            }
             document.body.appendChild(script)
         }
-        if (!order?._id) {
+        if (!order?._id || isSuccessPayment) {
+            dispatch(clearOrderPayment())
             dispatch(getOrderById(id))
         } else {
             if (!order.isPaid) {
                 if (!window?.paypal) {
                     getPayPalSDKClientId()
+                    console.log('getPayPalSDKClientId', getPayPalSDKClientId);
                 } else {
                     setIsSdkPaypal(true)
+                    console.log('setIsSdkPaypal');
                 }
             }
         }
-    }, [dispatch, id, isSdkPaypal, order])
+    }, [dispatch, id, isSdkPaypal, order, isSuccessPayment])
     if (!order) {
         return null
     }
@@ -77,7 +86,9 @@ export const OrderScreen: React.FC<RouteComponentProps<OrderScreenProps>> = (pro
                                     <p>
                                         <strong>Method: </strong> {order?.paymentMethod} <br />
                                     </p>
-                                    {order.isPaid ? <AlertBox variant="info">Paid</AlertBox> : <AlertBox variant="danger">Not Paid</AlertBox>}
+                                    {order.isPaid ?
+                                        <AlertBox variant="info">Paid at: {order.paymentResult?.time_update}</AlertBox> :
+                                        <AlertBox variant="danger">Not Paid</AlertBox>}
                                 </div>
                             </li>
                             <li>
@@ -140,7 +151,12 @@ export const OrderScreen: React.FC<RouteComponentProps<OrderScreenProps>> = (pro
                                     !order.isPaid && (
                                         <li>
                                             {
-                                                !isSdkPaypal ? <LoadingBox /> : <PayPalButton amount={order.totalPrice} onSuccess={handleSuccess} />
+                                                !isSdkPaypal ?
+                                                    <LoadingBox /> : <>
+                                                        {errorPayment && <AlertBox variant="danger">{errorPayment}</AlertBox>}
+                                                        {isLoadingPayment && <LoadingBox />}
+                                                        <PayPalButton amount={order.totalPrice} onSuccess={handleSuccess} />
+                                                    </>
                                             }
                                         </li>
                                     )

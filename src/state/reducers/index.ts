@@ -8,6 +8,7 @@ import { EPaymentMethod } from "../../screens/PaymentScreen";
 import { IPlaceOrderPostingResponse } from '../actions/placeOrder';
 import { orderPlace } from './orderPlace';
 import { orderDetail } from './orderDetail';
+import { orderPayment } from './orderPayment'
 
 export interface IOrderPlace {
     _id: string,
@@ -39,6 +40,12 @@ export interface IOrderPlaceState {
     isSuccess?: boolean
 }
 
+export interface IOrderPaymentState {
+    isLoading?: boolean,
+    error?: string,
+    isSuccess?: boolean
+}
+
 export interface IProductCart extends IProduct {
     qty: number
 }
@@ -50,7 +57,8 @@ const reducer = combineReducers({
     userLogin: usersLogin,
     userRegister: usersRegister,
     orderPlace: orderPlace,
-    orderDetail: orderDetail
+    orderDetail: orderDetail,
+    orderPayment: orderPayment
 });
 
 export default reducer

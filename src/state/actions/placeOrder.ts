@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Dispatch } from "react";
-import { ActionCartProduct, ActionOrderDetail, ActionPlaceOrder, IErrorResponse } from ".";
+import { ActionCartProduct, ActionOrderDetail, ActionOrderPayment, ActionPlaceOrder, IErrorResponse } from ".";
 import { IProductCart, State } from "..";
 import { PRODUCT_CART_ITEM_KEY } from "../../constants";
 import { IError } from "../../screens/HomeScreen";
@@ -53,7 +53,6 @@ export const getOrderById = (id: string) => async (dispatch: Dispatch<ActionOrde
                 Authorization: 'Bearer ' + token
             }
         })
-        console.log('data', data);
 
         dispatch({ type: EOrderDetail.GET_ORDER_SUCCESS, payload: data as IPlaceOrderPostingResponse })
     } catch (error) {
@@ -64,6 +63,31 @@ export const getOrderById = (id: string) => async (dispatch: Dispatch<ActionOrde
     }
 }
 
+export const orderPayment
+    = (id: string, time_update: string, status: string, email_address: string, idOrder: string) => async (
+        dispatch: Dispatch<ActionOrderPayment>, getState: () => State) => {
+        dispatch({ type: EOrderDetail.GET_ORDER_PAYMENT_REQUEST })
+        const token = getState().userLogin.user?.token
+
+        try {
+            const { data } = await axios.put(`/api/orders/${idOrder}/pay`, { id, time_update, status, email_address }, {
+                headers: {
+                    Authorization: 'Bearer ' + token
+                }
+            })
+            dispatch({ type: EOrderDetail.GET_ORDER_PAYMENT_SUCCESS, payload: data })
+        } catch (error) {
+            dispatch({
+                type: EOrderDetail.GET_ORDER_PAYMENT_FAIL,
+                payload: (error as IErrorResponse).response?.data?.message || (error as IError).message
+            })
+        }
+    }
+
 export const clearOrder = () => (dispatch: Dispatch<ActionPlaceOrder>) => {
     dispatch({ type: EPlaceOrder.PLACE_ORDER_RESET })
+}
+
+export const clearOrderPayment = () => (dispatch: Dispatch<ActionOrderPayment>) => {
+    dispatch({ type: EOrderDetail.GET_ORDER_PAYMENT_RESET })
 }
