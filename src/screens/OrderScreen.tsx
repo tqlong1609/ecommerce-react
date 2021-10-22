@@ -44,7 +44,7 @@ export const OrderScreen: React.FC<RouteComponentProps<OrderScreenProps>> = (pro
             }
             document.body.appendChild(script)
         }
-        if (!order?._id || isSuccessPayment) {
+        if (!order?._id || isSuccessPayment || (order && order._id !== id)) {
             dispatch(clearOrderPayment())
             dispatch(getOrderById(id))
         } else {

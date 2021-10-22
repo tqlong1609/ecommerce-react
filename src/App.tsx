@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Link, Route } from "react-router-dom";
 import CartScreen from "./screens/CartScreen";
 import HomeScreen from "./screens/HomeScreen";
+import { OrderHistory } from "./screens/OrderHistory";
 import { OrderScreen } from "./screens/OrderScreen";
 import { PaymentScreen } from "./screens/PaymentScreen";
 import { PlaceOrderScreen } from "./screens/PlaceOrderScreen";
@@ -40,7 +41,13 @@ function App(): React.ReactElement {
             {!user ? <Link to="/signin">Sign in</Link> : <div className="dropdown">
               <Link to="#"> {user.name} <i className="fa fa-caret-down"></i> </Link>
               <ul className="dropdown-content">
-                <Link to="#signout" onClick={onSignOut}>Sign Out</Link>
+                <li>
+                  <Link to="#signout" onClick={onSignOut}>Sign Out</Link>
+                </li>
+                <li>
+                  {/* Lỗi request liên tục nếu /order/history */}
+                  <Link to="/orderhistory" >Order History</Link>
+                </li>
               </ul>
             </div>}
           </div>
@@ -54,6 +61,7 @@ function App(): React.ReactElement {
         <Route path="/payment" component={PaymentScreen} />
         <Route path="/placeorder" component={PlaceOrderScreen} />
         <Route path="/order/:id" component={OrderScreen} />
+        <Route path="/orderhistory" component={OrderHistory} />
         <footer className="row center">All right reserved</footer>
       </div>
     </BrowserRouter>

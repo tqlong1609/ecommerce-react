@@ -1,8 +1,8 @@
-import { IOrderPlace, IProductCart } from '..'
+import { IProductCart } from '..'
 import { IProduct } from '../../components/Products'
 import { EPaymentMethod } from '../../screens/PaymentScreen'
 import { IUserLogin } from '../../screens/SigninScreen'
-import { EOrderDetail, EPlaceOrder, EProductDetail, EProductList, EUser } from '../action-types'
+import { EOrderDetail, EOrderHistory, EPlaceOrder, EProductDetail, EProductList, EUser } from '../action-types'
 import { ECartItems } from '../action-types/cartItems'
 import { IShippingAddress } from './cartItems'
 import { IPlaceOrderPostingResponse } from './placeOrder'
@@ -147,6 +147,20 @@ interface IGetOrderPaymentReset {
     type: EOrderDetail.GET_ORDER_PAYMENT_RESET
 }
 
+interface IOrderHistoryRequest {
+    type: EOrderHistory.ORDER_HISTORY_REQUEST
+}
+
+interface IOrderHistorySuccess {
+    type: EOrderHistory.ORDER_HISTORY_SUCCESS,
+    payload: Array<IPlaceOrderPostingResponse>
+}
+
+interface IOrderHistoryFail {
+    type: EOrderHistory.ORDER_HISTORY_FAIL,
+    payload: string
+}
+
 export interface IErrorResponse {
     response: { data: { message: string }, status: number }
 }
@@ -157,3 +171,4 @@ export type ActionUser = IUserSignIn | IUserSignInSuccess | IUserSignInFail | IU
 export type ActionPlaceOrder = IPlaceOrderRequest | IPlaceOrderSuccess | IPlaceOrderFail | IPlaceOrderReset
 export type ActionOrderDetail = IGetOrderRequest | IGetOrderSuccess | IGetOrderFail
 export type ActionOrderPayment = IGetOrderPaymentRequest | IGetOrderPaymentSuccess | IGetOrderPaymentFail | IGetOrderPaymentReset
+export type ActionOrderHistory = IOrderHistoryRequest | IOrderHistorySuccess | IOrderHistoryFail

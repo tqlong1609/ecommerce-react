@@ -9,6 +9,7 @@ import { IPlaceOrderPostingResponse } from '../actions/placeOrder';
 import { orderPlace } from './orderPlace';
 import { orderDetail } from './orderDetail';
 import { orderPayment } from './orderPayment'
+import { orderHistory } from './orderHistory';
 
 export interface IOrderPlace {
     _id: string,
@@ -58,7 +59,8 @@ const reducer = combineReducers({
     userRegister: usersRegister,
     orderPlace: orderPlace,
     orderDetail: orderDetail,
-    orderPayment: orderPayment
+    orderPayment: orderPayment,
+    orderHistory: orderHistory
 });
 
 export default reducer
