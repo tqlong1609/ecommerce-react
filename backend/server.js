@@ -15,6 +15,13 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/amazona");
 app.use("/api/users", userRouter);
 app.use("/api/products", productRouter);
 app.use("/api/orders", orderRouter);
+app.get("/api/config/paypal", async (req, res) => {
+  if (process.env.PAYPAL_CLIENT_API) {
+    res.send(process.env.PAYPAL_CLIENT_API);
+  } else {
+    res.status(401).send({ message: "Not Found Paypal Client ID" });
+  }
+});
 // catch error inside router
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
