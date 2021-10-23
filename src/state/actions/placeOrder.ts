@@ -14,7 +14,10 @@ interface IPlaceOrderPosting extends IProductCartState {
 
 export interface IPlaceOrderPostingResponse extends IPlaceOrderPosting {
     isDelivered: boolean,
+    paidAt: string,
+    deliveredAt: string,
     isPaid: boolean,
+    createdAt: string,
     _id: string
 }
 

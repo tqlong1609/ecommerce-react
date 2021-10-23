@@ -209,6 +209,10 @@ button.block {
   width: 100%;
 }
 
+button.small {
+  font-size: 1.2rem;
+}
+
 /* Alert */
 .alert {
   padding: 1rem;
@@ -294,4 +298,24 @@ form label {
 
 input[type="radio"] {
   margin-right: 10px;
+}
+
+/* Form */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  border: 0.1rem solid #c0c0c0;
+  text-align: left;
+  padding: 0.5rem;
+}
+
+table tbody:nth-of-type(odd) {
+  background-color: #f4f4f4;
+}
+
+table button {
+  margin: 0 0.2rem;
 }

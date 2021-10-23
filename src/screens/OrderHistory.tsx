@@ -9,6 +9,8 @@ import { orderHistory } from '../state/actions/orderHistory';
 export const OrderHistory: React.FC<RouteComponentProps> = (props) => {
     const dispatch = useDispatch()
     const { error, isLoading, ordersHistory } = useSelector((state: State) => state.orderHistory)
+    console.log('ordersHistory', ordersHistory);
+
     useEffect(() => {
         dispatch(orderHistory())
     }, [])
@@ -37,19 +39,19 @@ export const OrderHistory: React.FC<RouteComponentProps> = (props) => {
                                                 {order._id}
                                             </td>
                                             <td>
-                                                {order.isPaid ? order.paymentResult?.time_update : 'No'}
+                                                {order.createdAt?.substring(0, 10)}
                                             </td>
                                             <td>
-                                                {order.totalPrice}
+                                                {order.totalPrice?.toFixed(2)}
                                             </td>
                                             <td>
-                                                {order.isPaid ? 'Yes' : 'No'}
+                                                {order.isPaid ? order.paidAt?.substring(0, 10) : 'No'}
                                             </td>
                                             <td>
-                                                {order.isDelivered ? 'Yes' : 'No'}
+                                                {order.isDelivered ? order.deliveredAt?.substring(0, 10) : 'No'}
                                             </td>
                                             <td>
-                                                <button onClick={() => props.history.push(`/order/${order._id}`)}>
+                                                <button className="small" onClick={() => props.history.push(`/order/${order._id}`)}>
                                                     Action
                                                 </button>
                                             </td>

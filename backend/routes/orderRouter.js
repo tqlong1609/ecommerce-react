@@ -55,14 +55,14 @@ orderRouter.put(
   expressAsyncHandler(async (req, res) => {
     const order = await Order.findById(req.params.id);
     if (order) {
-      (order.isPaid = true),
-        (order.paidAt = Date.now()),
-        (order.paymentResult = {
-          id: req.body.id,
-          status: req.body.status,
-          email_address: req.body.email_address,
-          time_update: req.body.time_update,
-        });
+      order.isPaid = true;
+      order.paidAt = Date.now();
+      order.paymentResult = {
+        id: req.body.id,
+        status: req.body.status,
+        email_address: req.body.email_address,
+        time_update: req.body.time_update,
+      };
       const orderUpdate = await order.save();
       res.send(orderUpdate);
     } else {
