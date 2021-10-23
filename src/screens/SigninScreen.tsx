@@ -10,7 +10,8 @@ export interface IUserLogin {
     _id: string,
     name: string,
     email: string,
-    token: string
+    token: string,
+    isAdmin: boolean
 }
 
 const SigninScreen: React.FC<RouteComponentProps> = (props) => {

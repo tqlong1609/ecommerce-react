@@ -176,13 +176,30 @@ interface IProfileUserFail {
     payload: string
 }
 
+interface IProfileUserUpdateRequest {
+    type: EUser.PROFILE_USER_UPDATE_REQUEST
+}
+
+interface IProfileUserUpdateSuccess {
+    type: EUser.PROFILE_USER_UPDATE_SUCCESS,
+}
+
+interface IProfileUserUpdateFail {
+    type: EUser.PROFILE_USER_UPDATE_FAIL,
+    payload: string
+}
+
+interface IProfileUserUpdateReset {
+    type: EUser.PROFILE_USER_UPDATE_RESET
+}
+
 export interface IErrorResponse {
     response: { data: { message: string }, status: number }
 }
 export type ActionProductList = ProductListRequestAction | ProductListSuccessAction | ProductListFailAction
 export type ActionProductDetail = ProductDetailRequestAction | ProductDetailSuccessAction | ProductDetailFailAction
 export type ActionCartProduct = IAddProductToCart | IRemoveProductFromCart | IShippingAddressRequest | IPaymentMethodRequest | IClearCart
-export type ActionUser = IUserSignIn | IUserSignInSuccess | IUserSignInFail | IUserSignOut | IUserRegisterRequest | IUserRegisterSuccess | IUserRegisterFail | IProfileUserRequest | IProfileUserSuccess | IProfileUserFail
+export type ActionUser = IUserSignIn | IUserSignInSuccess | IUserSignInFail | IUserSignOut | IUserRegisterRequest | IUserRegisterSuccess | IUserRegisterFail | IProfileUserRequest | IProfileUserSuccess | IProfileUserFail | IProfileUserUpdateRequest | IProfileUserUpdateReset | IProfileUserUpdateSuccess | IProfileUserUpdateFail
 export type ActionPlaceOrder = IPlaceOrderRequest | IPlaceOrderSuccess | IPlaceOrderFail | IPlaceOrderReset
 export type ActionOrderDetail = IGetOrderRequest | IGetOrderSuccess | IGetOrderFail
 export type ActionOrderPayment = IGetOrderPaymentRequest | IGetOrderPaymentSuccess | IGetOrderPaymentFail | IGetOrderPaymentReset

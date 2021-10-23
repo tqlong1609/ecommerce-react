@@ -12,7 +12,13 @@ interface IUserRegister {
     name: string,
     email: string,
     password: string,
-    isAdmin?: boolean
+    isAdmin?: boolean,
+}
+
+interface IUserUpdate {
+    name?: string,
+    email?: string,
+    password?: string
 }
 
 export const instanceOfIUserLogin = (object: any): object is IUserLogin => {
@@ -64,8 +70,7 @@ export const signOut = () => async (dispatch: Dispatch<ActionUser>) => {
     localStorage.removeItem(SHIPPING_ADDRESS_KEY)
 }
 
-export const getProfileUser = () => async (dispatch: Dispatch<ActionUser>, getState: () => State) => {
-    const id = getState().userLogin.user?._id
+export const getProfileUser = (id: string) => async (dispatch: Dispatch<ActionUser>, getState: () => State) => {
     dispatch({ type: EUser.PROFILE_USER_REQUEST })
     try {
         const { data } = await axios.get(`api/users/${id}`)
@@ -79,4 +84,25 @@ export const getProfileUser = () => async (dispatch: Dispatch<ActionUser>, getSt
                 (error as Error).message
         })
     }
+}
+
+export const updateProfileUser = (userUpdate: IUserUpdate) => async (dispatch: Dispatch<ActionUser>, getState: () => State) => {
+    dispatch({ type: EUser.PROFILE_USER_UPDATE_REQUEST })
+    try {
+        const token = getState().userLogin.user?.token
+        const { data } = await axios.put(`/api/users/profile`, userUpdate, {
+            headers: {
+                Authorization: 'Bearer ' + token
+            }
+        })
+        dispatch({ type: EUser.PROFILE_USER_UPDATE_SUCCESS })
+        dispatch({ type: EUser.SIGN_IN_SUCCESS, payload: data as IUserLogin })
+        localStorage.setItem(USER_SIGN_IN_KEY, JSON.stringify(data))
+    } catch (error) {
+        dispatch({ type: EUser.PROFILE_USER_UPDATE_FAIL, payload: (error as IError).message })
+    }
+}
+
+export const resetProfileUpdate = () => (dispatch: Dispatch<ActionUser>) => {
+    dispatch({ type: EUser.PROFILE_USER_UPDATE_RESET })
 }

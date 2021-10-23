@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { BrowserRouter, Link, Route } from "react-router-dom";
+import { RedirectSignInRoute } from "./components/RedirectSignInRoute";
 import CartScreen from "./screens/CartScreen";
 import HomeScreen from "./screens/HomeScreen";
 import { OrderHistoryScreen } from "./screens/OrderHistoryScreen";
@@ -43,7 +44,7 @@ function App(): React.ReactElement {
               <Link to="#"> {user.name} <i className="fa fa-caret-down"></i> </Link>
               <ul className="dropdown-content">
                 <li>
-                  <Link to="/profile" >Profile</Link>
+                  <Link to="/userprofile" >Profile</Link>
                 </li>
                 <li>
                   {/* Lỗi request liên tục nếu /order/history */}
@@ -66,7 +67,7 @@ function App(): React.ReactElement {
         <Route path="/placeorder" component={PlaceOrderScreen} />
         <Route path="/order/:id" component={OrderScreen} />
         <Route path="/orderhistory" component={OrderHistoryScreen} />
-        <Route path="/profile" component={ProfileScreen} />
+        <RedirectSignInRoute path="/userprofile" component={ProfileScreen} />
         <footer className="row center">All right reserved</footer>
       </div>
     </BrowserRouter>

@@ -1,8 +1,8 @@
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import { Dispatch } from 'react';
-import { ActionProductDetail, ActionProductList, IErrorResponse } from '.';
+import { ActionProductList } from '.';
 import { IError } from "../../screens/HomeScreen";
-import { EProductDetail, EProductList } from '../action-types';
+import { EProductList } from '../action-types';
 
 export const listProducts = async (dispatch: Dispatch<ActionProductList>) => {
   dispatch({
