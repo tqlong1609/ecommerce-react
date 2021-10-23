@@ -6,10 +6,9 @@ import LoadingBox from '../components/LoadingBox';
 import { State } from '../state';
 import { orderHistory } from '../state/actions/orderHistory';
 
-export const OrderHistory: React.FC<RouteComponentProps> = (props) => {
+export const OrderHistoryScreen: React.FC<RouteComponentProps> = (props) => {
     const dispatch = useDispatch()
     const { error, isLoading, ordersHistory } = useSelector((state: State) => state.orderHistory)
-    console.log('ordersHistory', ordersHistory);
 
     useEffect(() => {
         dispatch(orderHistory())

@@ -4,6 +4,7 @@ import { EPaymentMethod } from '../../screens/PaymentScreen'
 import { IUserLogin } from '../../screens/SigninScreen'
 import { EOrderDetail, EOrderHistory, EPlaceOrder, EProductDetail, EProductList, EUser } from '../action-types'
 import { ECartItems } from '../action-types/cartItems'
+import { IUserProfile } from '../reducers/users'
 import { IShippingAddress } from './cartItems'
 import { IPlaceOrderPostingResponse } from './placeOrder'
 export { listProducts } from './productList'
@@ -161,13 +162,27 @@ interface IOrderHistoryFail {
     payload: string
 }
 
+interface IProfileUserRequest {
+    type: EUser.PROFILE_USER_REQUEST
+}
+
+interface IProfileUserSuccess {
+    type: EUser.PROFILE_USER_SUCCESS,
+    payload: IUserProfile
+}
+
+interface IProfileUserFail {
+    type: EUser.PROFILE_USER_FAIL,
+    payload: string
+}
+
 export interface IErrorResponse {
     response: { data: { message: string }, status: number }
 }
 export type ActionProductList = ProductListRequestAction | ProductListSuccessAction | ProductListFailAction
 export type ActionProductDetail = ProductDetailRequestAction | ProductDetailSuccessAction | ProductDetailFailAction
 export type ActionCartProduct = IAddProductToCart | IRemoveProductFromCart | IShippingAddressRequest | IPaymentMethodRequest | IClearCart
-export type ActionUser = IUserSignIn | IUserSignInSuccess | IUserSignInFail | IUserSignOut | IUserRegisterRequest | IUserRegisterSuccess | IUserRegisterFail
+export type ActionUser = IUserSignIn | IUserSignInSuccess | IUserSignInFail | IUserSignOut | IUserRegisterRequest | IUserRegisterSuccess | IUserRegisterFail | IProfileUserRequest | IProfileUserSuccess | IProfileUserFail
 export type ActionPlaceOrder = IPlaceOrderRequest | IPlaceOrderSuccess | IPlaceOrderFail | IPlaceOrderReset
 export type ActionOrderDetail = IGetOrderRequest | IGetOrderSuccess | IGetOrderFail
 export type ActionOrderPayment = IGetOrderPaymentRequest | IGetOrderPaymentSuccess | IGetOrderPaymentFail | IGetOrderPaymentReset

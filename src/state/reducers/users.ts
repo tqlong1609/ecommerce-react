@@ -13,7 +13,21 @@ export interface IUserSignIn {
     error?: string,
 }
 
+export interface IUserProfile {
+    email?: string,
+    name?: string,
+    password?: string,
+    isAdmin?: boolean
+}
+
+export interface IUserProfileState {
+    isLoading?: boolean,
+    error?: string,
+    userProfile?: IUserProfile
+}
+
 const initState: IUserLoginState = { isLoading: false }
+const initProfileState: IUserProfileState = { isLoading: false }
 
 export const usersLogin = (state: IUserLoginState = initState, action: ActionUser): IUserLoginState => {
     switch (action.type) {
@@ -42,4 +56,18 @@ export const usersRegister = (state: IUserSignIn = initState, action: ActionUser
         default:
             return state
     }
+}
+
+export const usersProfile = (state = initProfileState, action: ActionUser): IUserProfileState => {
+    switch (action.type) {
+        case EUser.PROFILE_USER_REQUEST:
+            return { isLoading: true }
+        case EUser.PROFILE_USER_SUCCESS:
+            return { isLoading: false, userProfile: action.payload }
+        case EUser.PROFILE_USER_FAIL:
+            return { isLoading: false, error: action.payload }
+        default:
+            state;
+    }
+    return state
 }

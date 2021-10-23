@@ -6,6 +6,7 @@ import { IUserLogin } from '../../screens/SigninScreen'
 import { PRODUCT_CART_ITEM_KEY, USER_SIGN_IN_KEY, SHIPPING_ADDRESS_KEY } from "../../constants";
 import { State } from "..";
 import { IError } from "../../screens/HomeScreen";
+import { IUserProfile } from "../reducers/users";
 
 interface IUserRegister {
     name: string,
@@ -61,4 +62,21 @@ export const signOut = () => async (dispatch: Dispatch<ActionUser>) => {
     localStorage.removeItem(USER_SIGN_IN_KEY)
     localStorage.removeItem(PRODUCT_CART_ITEM_KEY)
     localStorage.removeItem(SHIPPING_ADDRESS_KEY)
+}
+
+export const getProfileUser = () => async (dispatch: Dispatch<ActionUser>, getState: () => State) => {
+    const id = getState().userLogin.user?._id
+    dispatch({ type: EUser.PROFILE_USER_REQUEST })
+    try {
+        const { data } = await axios.get(`api/users/${id}`)
+        dispatch({ type: EUser.PROFILE_USER_SUCCESS, payload: data as IUserProfile })
+    } catch (error) {
+        const e = error as IErrorResponse
+        dispatch({
+            type: EUser.PROFILE_USER_FAIL,
+            payload: e.response.status === 404 ?
+                e.response.data.message :
+                (error as Error).message
+        })
+    }
 }

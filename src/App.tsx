@@ -4,11 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Link, Route } from "react-router-dom";
 import CartScreen from "./screens/CartScreen";
 import HomeScreen from "./screens/HomeScreen";
-import { OrderHistory } from "./screens/OrderHistory";
+import { OrderHistoryScreen } from "./screens/OrderHistoryScreen";
 import { OrderScreen } from "./screens/OrderScreen";
 import { PaymentScreen } from "./screens/PaymentScreen";
 import { PlaceOrderScreen } from "./screens/PlaceOrderScreen";
 import ProductScreen from "./screens/ProductScreen";
+import { ProfileScreen } from "./screens/ProfileScreen";
 import { ShippingAddressScreen } from "./screens/ShippingAddressScreen";
 import SigninScreen from "./screens/SigninScreen";
 import { SignupScreen } from "./screens/SignupScreen";
@@ -42,11 +43,14 @@ function App(): React.ReactElement {
               <Link to="#"> {user.name} <i className="fa fa-caret-down"></i> </Link>
               <ul className="dropdown-content">
                 <li>
-                  <Link to="#signout" onClick={onSignOut}>Sign Out</Link>
+                  <Link to="/profile" >Profile</Link>
                 </li>
                 <li>
                   {/* Lỗi request liên tục nếu /order/history */}
                   <Link to="/orderhistory" >Order History</Link>
+                </li>
+                <li>
+                  <Link to="#signout" onClick={onSignOut}>Sign Out</Link>
                 </li>
               </ul>
             </div>}
@@ -61,7 +65,8 @@ function App(): React.ReactElement {
         <Route path="/payment" component={PaymentScreen} />
         <Route path="/placeorder" component={PlaceOrderScreen} />
         <Route path="/order/:id" component={OrderScreen} />
-        <Route path="/orderhistory" component={OrderHistory} />
+        <Route path="/orderhistory" component={OrderHistoryScreen} />
+        <Route path="/profile" component={ProfileScreen} />
         <footer className="row center">All right reserved</footer>
       </div>
     </BrowserRouter>

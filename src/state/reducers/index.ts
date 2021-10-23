@@ -3,7 +3,7 @@ import { IProduct } from '../../components/Products';
 import { productsCart, IProductCartState } from './cartItem';
 import { productDetail } from './productDetail';
 import { productList } from './productList'
-import { usersLogin, usersRegister } from './users';
+import { usersLogin, usersProfile, usersRegister } from './users';
 import { EPaymentMethod } from "../../screens/PaymentScreen";
 import { IPlaceOrderPostingResponse } from '../actions/placeOrder';
 import { orderPlace } from './orderPlace';
@@ -60,7 +60,8 @@ const reducer = combineReducers({
     orderPlace: orderPlace,
     orderDetail: orderDetail,
     orderPayment: orderPayment,
-    orderHistory: orderHistory
+    orderHistory: orderHistory,
+    userProfile: usersProfile
 });
 
 export default reducer
