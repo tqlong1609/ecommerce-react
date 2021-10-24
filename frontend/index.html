@@ -25,7 +25,7 @@
             <img src="/frontend/images/logo.png" alt="logo" width="125px" />
           </div>
           <nav>
-            <ul>
+            <ul id="menuItems">
               <li><a href="#">Home</a></li>
               <li><a href="#">Products</a></li>
               <li><a href="#">About</a></li>
@@ -38,6 +38,14 @@
             alt="cart"
             width="30px"
             height="30px"
+          />
+          <img
+            src="/frontend/images/menu.png"
+            alt="menu"
+            width="30px"
+            height="30px"
+            class="menu-icon"
+            onclick="onClickMenu()"
           />
         </div>
         <div class="row">
@@ -375,5 +383,18 @@
         </div>
       </div>
     </div>
+
+    <!-- script -->
+    <script>
+      const menuItems = document.getElementById("menuItems");
+      menuItems.style.maxHeight = "0px";
+      const onClickMenu = () => {
+        if (menuItems.style.maxHeight === "0px") {
+          menuItems.style.maxHeight = "200px";
+        } else {
+          menuItems.style.maxHeight = "0px";
+        }
+      };
+    </script>
   </body>
 </html>
