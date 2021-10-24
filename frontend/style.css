@@ -212,3 +212,22 @@ i.fa-quote-left {
   font-weight: 600;
   font-size: 15px;
 }
+
+.brands {
+  margin: 100px auto;
+}
+
+.col-5 {
+  width: 160px;
+}
+
+.col-5 img {
+  width: 100%;
+  filter: grayscale(100%);
+  cursor: pointer;
+  transition: filter 0.5s;
+}
+
+.col-5 img:hover {
+  filter: grayscale(0%);
+}
