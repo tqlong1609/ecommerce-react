@@ -173,3 +173,42 @@ small {
   color: #555;
   display: inline-block;
 }
+
+.testimonial {
+  margin-top: 80px;
+}
+
+.testimonial .col-3 {
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+  padding: 40px 20px;
+  cursor: pointer;
+  transition: transform 0.5s;
+}
+
+.testimonial .col-3:hover {
+  transform: translateY(-10px);
+}
+
+i.fa-quote-left {
+  font-size: 40px;
+  color: #ff832b;
+}
+
+.testimonial .col-3 p {
+  font-size: 14px;
+  margin: 20px 0;
+  color: #777;
+}
+
+.testimonial .col-3 img {
+  border-radius: 50%;
+  width: 70px;
+  margin-top: 30px;
+}
+
+.testimonial .col-3 h3 {
+  color: #555;
+  font-weight: 600;
+  font-size: 15px;
+}
