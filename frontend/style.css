@@ -108,3 +108,53 @@ a.btn:hover {
     padding: 25px 0;
 }
 
+h2 {
+  color: #555;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 80px;
+  position: relative;
+  line-height: 50px;
+}
+
+.title::after {
+  content: "";
+  width: 80px;
+  height: 5px;
+  position: absolute;
+  background: #ff832b;
+  border-radius: 5px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.col-4 {
+  flex-basis: 25%;
+  flex-wrap: wrap;
+  padding: 10px;
+  min-width: 200px;
+  transition: transform 0.3s;
+}
+
+.col-4:hover {
+  transform: translateY(-10px);
+}
+
+.col-4 img {
+  max-width: 100%;
+}
+
+.col-4 h4 {
+  font-weight: normal;
+  color:#555;
+}
+.rating i {
+  color: #ff832b;
+}
+
+.col-4 p {
+  font-size: 14px;
+}
