@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
 .narbar {
   display: flex;
   padding: 20px;
@@ -70,8 +74,18 @@ a.btn {
     color: #fff;
     display: inline-block;
     margin: 20px 0;
+    transition: background 0.4s;
+}
+
+a.btn:hover {
+    background: #ff2508;
 }
 
 .header {
     background: radial-gradient(#fff, #ffd6d6);
 }
+
+.header .row {
+    margin-top: 70px;
+}
+
