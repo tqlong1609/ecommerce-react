@@ -71,7 +71,7 @@ h1 {
   margin: 25px 0;
 }
 
-a.btn {
+.btn {
   background: var(--light-orange);
   padding: 8px 30px;
   border-radius: 50px;
@@ -81,7 +81,7 @@ a.btn {
   transition: background 0.4s;
 }
 
-a.btn:hover {
+.btn:hover {
   background: #ff2508;
 }
 
@@ -532,7 +532,7 @@ table tr td {
   margin-right: 10px;
 }
 
-.products-cart h4{
+.products-cart h4 {
   font-weight: 600;
   color: var(--light-gray);
 }
@@ -573,6 +573,86 @@ th:last-child {
   text-align: right;
 }
 
+/* account */
+.account-page {
+  background: radial-gradient(#fff, #ffd6d6);
+}
+
+.form-account {
+  width: 300px;
+  height: 400px;
+  background: #fff;
+  margin: auto;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+.header-form {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  position: relative;
+}
+
+.header-form span {
+  font-weight: bold;
+  color: #555;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 10px;
+}
+
+.form-account form {
+  padding: 0 20px;
+  position: absolute;
+  top: 130px;
+  max-width: 300px;
+}
+
+.form-account .btn {
+  display: block;
+  width: 100;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+}
+
+.form-account input {
+  width: 100%;
+  height: 35px;
+  padding: 10px;
+  margin: 5px auto;
+  border: 1px solid #ccc;
+}
+
+.form-account a {
+  display: block;
+  font-size: 12px;
+}
+
+#Indicator {
+  width: 30%;
+  height: 3px;
+  background: var(--light-orange);
+  border: none;
+  top: 40px;
+  position: absolute;
+  left: 0;
+  transform: translateX(30%);
+  transition: transform 0.3s;
+}
+
+#RegisterForm {
+  left: -300px;
+  transition: transform 0.3s;
+}
+
+#LoginForm {
+  left: 0;
+  transition: transform 0.3s;
+}
 
 @media only screen and (max-width: 600px) {
   .row {
@@ -600,5 +680,9 @@ th:last-child {
 
   .total-product table {
     max-width: 100%;
+  }
+
+  .account-page {
+    padding-bottom: 30px;
   }
 }
