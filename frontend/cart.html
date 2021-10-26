@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <title>Store | Ecommerce Website</title>
+  </head>
+  <body>
+    <div>
+      <div class="container">
+        <div class="narbar">
+          <div class="logo">
+            <img src="/frontend/images/logo.png" alt="logo" width="125px" />
+          </div>
+          <nav>
+            <ul id="menuItems">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Products</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Account</a></li>
+            </ul>
+          </nav>
+          <img
+            src="/frontend/images/cart.png"
+            alt="cart"
+            width="30px"
+            height="30px"
+          />
+          <img
+            src="/frontend/images/menu.png"
+            alt="menu"
+            width="30px"
+            height="30px"
+            onclick="onClickMenu()"
+            class="menu-icon"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="small-container products-cart">
+      <table>
+        <tr>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+        </tr>
+        <tr>
+          <td>
+            <div class="product-row">
+              <img src="/frontend/images/buy-1.jpg" alt="gallery-1" />
+              <div class="product-info">
+                <h4>Intelligent Cotton Fish</h4>
+                <p>Price: $50.00</p>
+                <a href="#">Remove</a>
+              </div>
+            </div>
+          </td>
+          <td>
+            <input type="number" value="1" min="1" />
+          </td>
+          <td>
+            <h4>$50.00</h4>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="product-row">
+              <img src="/frontend/images/buy-2.jpg" alt="gallery-1" />
+              <div class="product-info">
+                <h4>Intelligent Cotton Fish</h4>
+                <p>Price: $50.00</p>
+                <a href="#">Remove</a>
+              </div>
+            </div>
+          </td>
+          <td>
+            <input type="number" value="1" min="1" />
+          </td>
+          <td>
+            <h4>$50.00</h4>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="product-row">
+              <img src="/frontend/images/buy-3.jpg" alt="gallery-1" />
+              <div class="product-info">
+                <h4>Intelligent Cotton Fish</h4>
+                <p>Price: $50.00</p>
+                <a href="#">Remove</a>
+              </div>
+            </div>
+          </td>
+          <td>
+            <input type="number" value="1" min="1" />
+          </td>
+          <td>
+            <h4>$50.00</h4>
+          </td>
+        </tr>
+      </table>
+
+      <div class="total-product">
+          <table>
+              <tr>
+                  <td>Subtotal</td>
+                  <td>$200.00</td>
+              </tr>
+              <tr>
+                  <td>Tax</td>
+                  <td>$35.00</td>
+              </tr>
+              <tr>
+                  <td>Total</td>
+                  <td>$230.00</td>
+              </tr>
+          </table>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="footer-col-1">
+            <h3>Download Out App</h3>
+            <p>Download App for android and ios mobile phone</p>
+            <div class="logo-app">
+              <img src="/frontend/images/app-store.png" alt="app-store" />
+              <img src="/frontend/images/play-store.png" alt="app-store" />
+            </div>
+          </div>
+          <div class="footer-col-2">
+            <img src="/frontend/images/logo-white.png" alt="logo-white" />
+            <p>
+              Our purpose Is To Sustainably Make the Pleasure and Benefits of
+              Sports Accessible to The Many
+            </p>
+          </div>
+          <div class="footer-col-3">
+            <h3>Follow Me</h3>
+            <ul>
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">Instagram</a></li>
+              <li><a href="">Twitter</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+      const menuItems = document.getElementById("menuItems");
+      menuItems.style.maxHeight = "0px";
+      const onClickMenu = () => {
+        if (menuItems.style.maxHeight === "0px") {
+          menuItems.style.maxHeight = "200px";
+        } else {
+          menuItems.style.maxHeight = "0px";
+        }
+      };
+
+  </script>
+</html>

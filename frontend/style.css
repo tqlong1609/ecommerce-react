@@ -1,3 +1,7 @@
+:root {
+  --light-orange: #ff523b;
+  --light-gray: #555;
+}
 * {
   margin: 0;
   padding: 0;
@@ -31,11 +35,11 @@ nav ul li {
 
 a {
   text-decoration: none;
-  color: #555;
+  color: var(--light-gray);
 }
 
 p {
-  color: #555;
+  color: var(--light-gray);
 }
 
 .container {
@@ -68,7 +72,7 @@ h1 {
 }
 
 a.btn {
-  background: #ff523b;
+  background: var(--light-orange);
   padding: 8px 30px;
   border-radius: 50px;
   color: #fff;
@@ -146,7 +150,7 @@ a.btn:hover {
 
 .col-4 h4 {
   font-weight: normal;
-  color: #555;
+  color: var(--light-gray);
 }
 .rating i {
   color: #ff832b;
@@ -167,7 +171,7 @@ a.btn:hover {
 }
 
 small {
-  color: #555;
+  color: var(--light-gray);
   display: inline-block;
 }
 
@@ -206,7 +210,7 @@ i.fa-quote-left {
 }
 
 .testimonial .col-3 h3 {
-  color: #555;
+  color: var(--light-gray);
   font-weight: 600;
   font-size: 15px;
 }
@@ -319,7 +323,7 @@ ul {
 }
 
 select {
-  border: 1px solid #ff523b;
+  border: 1px solid var(--light-orange);
   padding: 5px;
 }
 
@@ -339,7 +343,7 @@ select option {
   display: inline-block;
   width: 40px;
   height: 40px;
-  border: 1px solid #ff523b;
+  border: 1px solid var(--light-orange);
   text-align: center;
   line-height: 40px;
   cursor: pointer;
@@ -348,7 +352,7 @@ select option {
 }
 
 .page-btn span:hover {
-  background: #ff523b;
+  background: var(--light-orange);
   color: #fff;
 }
 
@@ -365,7 +369,7 @@ select option {
 .select-selected {
   background-color: #fff;
   color: #000;
-  border: 1px solid #ff523b;
+  border: 1px solid var(--light-orange);
   border-radius: 3px;
 }
 
@@ -378,13 +382,13 @@ select option {
   width: 0;
   height: 0;
   border: 6px solid red;
-  border-color: #ff523b transparent transparent transparent;
+  border-color: var(--light-orange) transparent transparent transparent;
   /* background: red; */
 }
 
 /* Point the arrow upwards when the select box is open (active): */
 .select-selected.select-arrow-active:after {
-  border-color: transparent transparent #ff523b transparent;
+  border-color: transparent transparent var(--light-orange) transparent;
   top: 12px;
   /* background: red; */
 }
@@ -397,7 +401,7 @@ select option {
   /* border: 1px solid transparent; */
   /* border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent; */
   cursor: pointer;
-  color: #555;
+  color: var(--light-gray);
 }
 
 /* Style items (options): */
@@ -409,7 +413,7 @@ select option {
   right: 0;
   z-index: 99;
   margin-top: 10px;
-  border: 1px solid #ff523b;
+  border: 1px solid var(--light-orange);
   border-radius: 3px;
 }
 
@@ -427,7 +431,7 @@ select option {
 }
 
 .select-items div:hover {
-  background-color: #ff523b;
+  background-color: var(--light-orange);
   color: #fff;
 }
 
@@ -454,7 +458,7 @@ select option {
 }
 
 .single-product h4 {
-  color: #555;
+  color: var(--light-gray);
   font-size: 20px;
 }
 
@@ -496,6 +500,80 @@ input:focus {
   cursor: pointer;
 }
 
+table {
+  width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table tr th {
+  background: var(--light-orange);
+  color: #fff;
+  font-weight: normal;
+  font-size: 15px;
+  text-align: left;
+  padding: 5px 10px;
+}
+
+table tr td {
+  padding: 5px 10px;
+}
+
+.product-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-row img {
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+}
+
+.products-cart h4{
+  font-weight: 600;
+  color: var(--light-gray);
+}
+
+.products-cart p {
+  font-size: 15px;
+}
+
+.product-info a {
+  font-size: 13px;
+  color: var(--light-orange);
+}
+
+.products-cart input {
+  width: 50px;
+  height: 40px;
+  color: var(--light-gray);
+  font-size: 15px;
+  padding-left: 3px;
+}
+
+.total-product {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.total-product table {
+  width: 100%;
+  max-width: 370px;
+  border-top: 3px solid var(--light-orange);
+}
+
+td:last-child {
+  text-align: right;
+}
+
+th:last-child {
+  text-align: right;
+}
+
+
 @media only screen and (max-width: 600px) {
   .row {
     text-align: center;
@@ -518,5 +596,9 @@ input:focus {
 
   .single-product .col-2 {
     padding: 20px;
+  }
+
+  .total-product table {
+    max-width: 100%;
   }
 }
