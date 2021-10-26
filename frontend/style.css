@@ -108,10 +108,6 @@ a.btn:hover {
   padding: 25px 0;
 }
 
-h2 {
-  color: #555;
-}
-
 .title {
   text-align: center;
   margin-bottom: 80px;
@@ -336,7 +332,7 @@ select option {
 }
 
 .page-btn {
-margin: 0 auto 80px;
+  margin: 0 auto 80px;
 }
 
 .page-btn span {
@@ -351,9 +347,9 @@ margin: 0 auto 80px;
   transition: background 0.2s;
 }
 
-.page-btn span:hover{
+.page-btn span:hover {
   background: #ff523b;
-  color:#fff;
+  color: #fff;
 }
 
 /* Select custom */
@@ -394,7 +390,8 @@ margin: 0 auto 80px;
 }
 
 /* style the items (options), including the selected item: */
-.select-items div,.select-selected {
+.select-items div,
+.select-selected {
   /* color: #ffffff; */
   padding: 8px 16px;
   /* border: 1px solid transparent; */
@@ -430,18 +427,74 @@ margin: 0 auto 80px;
 }
 
 .select-items div:hover {
-  background-color: #ff523b ;
+  background-color: #ff523b;
   color: #fff;
 }
 
 .disable-select {
   user-select: none; /* supported by Chrome and Opera */
- -webkit-user-select: none; /* Safari */
- -khtml-user-select: none; /* Konqueror HTML */
- -moz-user-select: none; /* Firefox */
- -ms-user-select: none; /* Internet Explorer/Edge */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
+/* Single Product */
+.single-product {
+  margin-top: 80px;
+  padding: 0;
+}
+
+.single-product .row {
+  align-items: flex-start;
+}
+
+.single-product .col-2 img {
+  margin: 0;
+}
+
+.single-product h4 {
+  color: #555;
+  font-size: 20px;
+}
+
+.single-product select {
+  padding: 10px;
+  display: block;
+  margin: 20px 0;
+}
+
+.single-product input {
+  padding: 0 5px;
+  display: inline-block;
+  width: 50px;
+  height: 40px;
+  margin-right: 10px;
+  border: 1px solid #ff2508;
+  font-size: 20px;
+}
+
+.single-product h3 {
+  margin-top: 10px;
+}
+
+.single-product .fa {
+  color: #ff2508;
+  margin-left: 10px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.img-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.img-col {
+  cursor: pointer;
+}
 
 @media only screen and (max-width: 600px) {
   .row {
@@ -453,5 +506,17 @@ margin: 0 auto 80px;
   .col-3 {
     flex-basis: 100%;
     padding: 10px;
+  }
+
+  .single-product .col-2 {
+    text-align: left;
+  }
+
+  .single-product h1 {
+    font-size: 25px;
+  }
+
+  .single-product .col-2 {
+    padding: 20px;
   }
 }

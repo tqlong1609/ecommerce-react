@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <title>Store | Ecommerce Website</title>
+  </head>
+  <body>
+    <div>
+      <div class="container">
+        <div class="narbar">
+          <div class="logo">
+            <img src="/frontend/images/logo.png" alt="logo" width="125px" />
+          </div>
+          <nav>
+            <ul id="menuItems">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Products</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Account</a></li>
+            </ul>
+          </nav>
+          <img
+            src="/frontend/images/cart.png"
+            alt="cart"
+            width="30px"
+            height="30px"
+          />
+          <img
+            src="/frontend/images/menu.png"
+            alt="menu"
+            width="30px"
+            height="30px"
+            onclick="onClickMenu()"
+            class="menu-icon"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Detail Product -->
+    <div class="small-container single-product">
+      <div class="row">
+        <div class="col-2">
+          <img
+            src="/frontend/images/gallery-1.jpg"
+            alt="product-1"
+            id="ProductImg"
+          />
+          <div class="img-row">
+            <div class="img-col">
+              <img
+                src="/frontend/images/gallery-1.jpg"
+                alt="gallery-1"
+                class="small-image"
+              />
+            </div>
+            <div class="img-col">
+              <img
+                src="/frontend/images/gallery-2.jpg"
+                alt="gallery-2"
+                class="small-image"
+              />
+            </div>
+            <div class="img-col">
+              <img
+                src="/frontend/images/gallery-3.jpg"
+                alt="gallery-3"
+                class="small-image"
+              />
+            </div>
+            <div class="img-col">
+              <img
+                src="/frontend/images/gallery-4.jpg"
+                alt="gallery-4"
+                class="small-image"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <p>Home/T-Shirt</p>
+          <h1>Rustic Concrete Chair</h1>
+          <h4>$50.00</h4>
+          <select name="size" id="size">
+            <option>Select Size</option>
+            <option>XXL</option>
+            <option>XL</option>
+            <option>Large</option>
+            <option>Normal</option>
+            <option>Small</option>
+          </select>
+          <input type="number" value="1" min="1" />
+          <a href="#" class="btn">Add To Cart</a>
+          <h3>
+            Product Details
+            <li class="fa fa-indent"></li>
+          </h3>
+          <br />
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquid
+            esse, velit iure, nemo vero aliquam voluptate saepe incidunt quia,
+            tempore mollitia hic consequatur iste. Ex numquam accusantium unde
+            repudiandae.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="small-container">
+      <div class="row row-2">
+        <h2>Related Products</h2>
+        <p>View More</p> 
+      </div>
+    </div>
+
+    <!-- Relative products -->
+    <div class="small-container">
+      <div class="row">
+        <div class="col-4">
+          <img src="/frontend/images/product-9.jpg" alt="product-1" />
+          <h4>Fantastic Rubber Shoes</h4>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+          </div>
+          <p>$50.00</p>
+        </div>
+        <div class="col-4">
+          <img src="/frontend/images/product-10.jpg" alt="product-1" />
+          <h4>Fantastic Rubber Shoes</h4>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+          </div>
+          <p>$50.00</p>
+        </div>
+        <div class="col-4">
+          <img src="/frontend/images/product-11.jpg" alt="product-1" />
+          <h4>Fantastic Rubber Shoes</h4>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+          </div>
+          <p>$50.00</p>
+        </div>
+        <div class="col-4">
+          <img src="/frontend/images/product-12.jpg" alt="product-1" />
+          <h4>Fantastic Rubber Shoes</h4>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+          </div>
+          <p>$50.00</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="footer-col-1">
+            <h3>Download Out App</h3>
+            <p>Download App for android and ios mobile phone</p>
+            <div class="logo-app">
+              <img src="/frontend/images/app-store.png" alt="app-store" />
+              <img src="/frontend/images/play-store.png" alt="app-store" />
+            </div>
+          </div>
+          <div class="footer-col-2">
+            <img src="/frontend/images/logo-white.png" alt="logo-white" />
+            <p>
+              Our purpose Is To Sustainably Make the Pleasure and Benefits of
+              Sports Accessible to The Many
+            </p>
+          </div>
+          <div class="footer-col-3">
+            <h3>Follow Me</h3>
+            <ul>
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">Instagram</a></li>
+              <li><a href="">Twitter</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- script -->
+    <script>
+      const menuItems = document.getElementById("menuItems");
+      menuItems.style.maxHeight = "0px";
+      const onClickMenu = () => {
+        if (menuItems.style.maxHeight === "0px") {
+          menuItems.style.maxHeight = "200px";
+        } else {
+          menuItems.style.maxHeight = "0px";
+        }
+      };
+    </script>
+
+    <script>
+      const ProductImg = document.getElementById("ProductImg");
+      const listSmallImage = document.getElementsByClassName("small-image");
+      for (let i = 0; i < 4; i++) {
+        listSmallImage[i].addEventListener("click", function (e) {
+          ProductImg.src = listSmallImage[i].src;
+        });
+      }
+    </script>
+  </body>
+</html>
