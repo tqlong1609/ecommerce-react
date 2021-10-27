@@ -17,10 +17,10 @@ export interface IShippingAddress {
 }
 
 export const addCartItem
-    = (productId: string, qty: number) => async (dispatch: Dispatch<ActionCartProduct>, getState: () => State) => {
+    = (productId: string, qty: number, size: string) => async (dispatch: Dispatch<ActionCartProduct>, getState: () => State) => {
         const { data } = await axios.get(`/api/products/${productId}`)
         const product = data as IProduct
-        dispatch({ type: ECartItems.ADD_PRODUCT_CART, payload: { ...product, qty } })
+        dispatch({ type: ECartItems.ADD_PRODUCT_CART, payload: { ...product, qty, size } })
 
         // add to localStorage
         localStorage.setItem(PRODUCT_CART_ITEM_KEY, JSON.stringify(getState().cartProducts.productsCart))

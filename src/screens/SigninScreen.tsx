@@ -1,72 +1,84 @@
-import React, { ChangeEvent, useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { signIn } from '../state/actions';
-import { RouteComponentProps } from 'react-router-dom'
-import { State } from '../state';
-import AlertBox from '../components/AlertBox';
-import LoadingBox from '../components/LoadingBox';
-export interface IUserLogin {
-    _id: string,
-    name: string,
-    email: string,
-    token: string,
-    isAdmin: boolean
-}
+import React, { Fragment, useRef } from 'react'
+const SigninScreen: React.FC = () => {
+    const loginForm = useRef<HTMLFormElement>(null)
+    const registerForm = useRef<HTMLFormElement>(null)
+    const indicator = useRef<HTMLHRElement>(null)
+    const onRegisterIndicator = () => {
+        indicator.current!.style.transform = "translateX(190%)"
+        registerForm.current!.style.transform = "translateX(300px)";
+        loginForm.current!.style.transform = "translateX(300px)";
+    };
 
-const SigninScreen: React.FC<RouteComponentProps> = (props) => {
-    const dispatch = useDispatch()
-    const { user, isLoading, error } = useSelector((state: State) => state.userLogin)
-
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-
-    const redirect = props.location.search.split('=')?.[1] === 'shipping' ? 'shipping' : ''
-    useEffect(() => {
-        if (user) {
-            props.history.push('/' + redirect)
-        }
-    }, [user, props.history, redirect])
-
-    const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
-        setEmail(e.target.value)
-    }
-
-    const onChangePassword = (e: ChangeEvent<HTMLInputElement>) => {
-        setPassword(e.target.value)
-    }
-
-    const onClickSignIn = (e: React.FormEvent) => {
-        e.preventDefault()
-        dispatch(signIn(email, password))
-    }
+    const onLoginIndicator = () => {
+        indicator.current!.style.transform = "translateX(30%)";
+        registerForm.current!.style.transform = "translateX(0)";
+        loginForm.current!.style.transform = "translateX(0)";
+    };
     return (
-        <div>
-            <form onSubmit={onClickSignIn} className=".form">
-                <div>
-                    <h1>Sign In</h1>
+        <Fragment>
+            <div className="account-page">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-2">
+                            <img src="/images/image1.png" alt="image1" width="100%" />
+                        </div>
+                        <div className="col-2">
+                            <div className="form-account">
+                                <div className="header-form">
+                                    <span className="disable-select"
+                                        onClick={onLoginIndicator}
+                                    >Login</span
+                                    >
+                                    <span className="disable-select"
+                                        onClick={onRegisterIndicator}
+                                    >Register</span
+                                    >
+                                    <hr id="Indicator" ref={indicator} />
+                                </div>
+                                <form id="LoginForm" ref={loginForm}>
+                                    <input
+                                        type="text"
+                                        name="username"
+                                        id="username"
+                                        placeholder="Username"
+                                    />
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        id="password"
+                                        placeholder="Password"
+                                    />
+                                    <button type="submit" className="btn">Login</button>
+                                    <a href="#">Forgot Password</a>
+                                </form>
+
+                                <form id="RegisterForm" ref={registerForm}>
+                                    <input
+                                        type="text"
+                                        name="username"
+                                        id="username"
+                                        placeholder="Username"
+                                    />
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        id="email"
+                                        placeholder="Email"
+                                    />
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        id="password"
+                                        placeholder="Password"
+                                    />
+                                    <button type="submit" className="btn">Register</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                {
-                    isLoading ? <LoadingBox /> : error ? <AlertBox variant="danger">{error}</AlertBox> : null
-                }
-                <div>
-                    <label htmlFor="email">Email address</label>
-                    <input value={email} type="email" name="email" id="email" required
-                        placeholder="Enter your email" onChange={onChangeEmail} />
-                </div>
-                <div>
-                    <label htmlFor="password">Email address</label>
-                    <input value={password} type="password" name="password" id="password" required
-                        placeholder="Enter your password" onChange={onChangePassword} />
-                </div>
-                <div>
-                    <button type="submit" className="primary" >Sign In</button>
-                </div>
-                <div>
-                    New customer? <Link to={`/signup${redirect && '?redirect=' + redirect}`}>Create your account</Link>
-                </div>
-            </form>
-        </div>
+            </div>
+        </Fragment>
     );
 }
 

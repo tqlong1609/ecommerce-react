@@ -2,7 +2,7 @@ import axios from "axios";
 import { Dispatch } from "react";
 import { ActionUser, IErrorResponse } from ".";
 import { EUser } from "../action-types";
-import { IUserLogin } from '../../screens/SigninScreen'
+import { IUserLogin } from '../../screens/Signin'
 import { PRODUCT_CART_ITEM_KEY, USER_SIGN_IN_KEY, SHIPPING_ADDRESS_KEY } from "../../constants";
 import { State } from "..";
 import { IError } from "../../screens/HomeScreen";

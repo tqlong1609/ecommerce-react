@@ -48,7 +48,8 @@ export interface IOrderPaymentState {
 }
 
 export interface IProductCart extends IProduct {
-    qty: number
+    qty: number,
+    size: string
 }
 
 const reducer = combineReducers({

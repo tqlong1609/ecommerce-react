@@ -27,7 +27,7 @@ const ProductScreen: React.FC<RouteComponentProps<IMatchParams>> = (props) => {
   }
 
   const onClickAddToCart = () => {
-    dispatch(addCartItem(id, valueQty))
+    // dispatch(addCartItem(id, valueQty))
     props.history.push(`/cart/${id}?qty=${valueQty}`)
   }
 
@@ -52,7 +52,6 @@ const ProductScreen: React.FC<RouteComponentProps<IMatchParams>> = (props) => {
                 <li>
                   <Rating
                     rating={product.rating}
-                    numReviewer={product.numReviewer}
                   />
                 </li>
                 <li>Price: ${product.price}</li>

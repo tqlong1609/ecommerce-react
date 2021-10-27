@@ -2,13 +2,17 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { BrowserRouter, Link, Route } from "react-router-dom";
+import { Footer } from "./components/Footer";
+import { Header } from "./components/Header";
 import { RedirectSignInRoute } from "./components/RedirectSignInRoute";
+import { AllProducts } from "./screens/AllProducts";
 import CartScreen from "./screens/CartScreen";
 import HomeScreen from "./screens/HomeScreen";
 import { OrderHistoryScreen } from "./screens/OrderHistoryScreen";
 import { OrderScreen } from "./screens/OrderScreen";
 import { PaymentScreen } from "./screens/PaymentScreen";
 import { PlaceOrderScreen } from "./screens/PlaceOrderScreen";
+import ProductDetailScreen from "./screens/ProductDetailScreen";
 import ProductScreen from "./screens/ProductScreen";
 import { ProfileScreen } from "./screens/ProfileScreen";
 import { ShippingAddressScreen } from "./screens/ShippingAddressScreen";
@@ -28,37 +32,10 @@ function App(): React.ReactElement {
   }
   return (
     <BrowserRouter>
-      <div className="grid-container">
-        <header className="row">
-          <div>
-            <Link className="brand" to="/">
-              amazona
-            </Link>
-          </div>
-          <div>
-            <Link to="/cart">
-              Cart
-              {productsCart.length > 0 && <span className="badge">{productsCart.length}</span>}
-            </Link>
-            {!user ? <Link to="/signin">Sign in</Link> : <div className="dropdown">
-              <Link to="#"> {user.name} <i className="fa fa-caret-down"></i> </Link>
-              <ul className="dropdown-content">
-                <li>
-                  <Link to="/userprofile" >Profile</Link>
-                </li>
-                <li>
-                  {/* Lỗi request liên tục nếu /order/history */}
-                  <Link to="/orderhistory" >Order History</Link>
-                </li>
-                <li>
-                  <Link to="#signout" onClick={onSignOut}>Sign Out</Link>
-                </li>
-              </ul>
-            </div>}
-          </div>
-        </header>
+      <>
+        <Header />
         <Route path="/" component={HomeScreen} exact />
-        <Route path="/product/:id" component={ProductScreen} />
+        <Route path="/product/:id" component={ProductDetailScreen} />
         <Route path="/cart/:id?" component={CartScreen} />
         <Route path="/signin" component={SigninScreen} />
         <Route path="/signup" component={SignupScreen} />
@@ -67,9 +44,10 @@ function App(): React.ReactElement {
         <Route path="/placeorder" component={PlaceOrderScreen} />
         <Route path="/order/:id" component={OrderScreen} />
         <Route path="/orderhistory" component={OrderHistoryScreen} />
+        <Route path="/allproduct" component={AllProducts} />
         <RedirectSignInRoute path="/userprofile" component={ProfileScreen} />
-        <footer className="row center">All right reserved</footer>
-      </div>
+        <Footer />
+      </>
     </BrowserRouter>
   );
 }

@@ -1,7 +1,7 @@
 import { IProductCart } from '..'
 import { IProduct } from '../../components/Products'
 import { EPaymentMethod } from '../../screens/PaymentScreen'
-import { IUserLogin } from '../../screens/SigninScreen'
+import { IUserLogin } from '../../screens/Signin'
 import { EOrderDetail, EOrderHistory, EPlaceOrder, EProductDetail, EProductList, EUser } from '../action-types'
 import { ECartItems } from '../action-types/cartItems'
 import { IUserProfile } from '../reducers/users'

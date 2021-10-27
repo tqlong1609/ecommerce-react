@@ -1,95 +1,89 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { RouteComponentProps } from 'react-router'
-import { addCartItem, removeCartItem } from '../state/actions/cartItems'
-import { State } from '../state'
-import AlertBox from '../components/AlertBox'
-import { Link } from 'react-router-dom'
-
-interface IMatchProps {
-    id: string,
-}
-
-const CartScreen: React.FC<RouteComponentProps<IMatchProps>> = (props) => {
-    const dispatch = useDispatch()
-    const cartProducts = useSelector((state: State) => state.cartProducts)
-    const { user } = useSelector((state: State) => state.userLogin)
-    const { productsCart } = cartProducts
-
-    const changeQty = (productID: string, value: React.ChangeEvent<HTMLSelectElement>) => {
-        dispatch(addCartItem(productID, +value.target.value))
-    }
-
-    const onDeleteProduct = (productID: string) => {
-        dispatch(removeCartItem(productID))
-    }
-
-    const onCLickCheckout = () => {
-        if (productsCart.length > 0) {
-            props.history.push(!user ? '/signin?redirect=shipping' : '/shipping')
-        }
-    }
-
+import React, { Fragment } from 'react'
+const CartScreen: React.FC = () => {
     return (
-        <div className="row top">
-            <div className="col-2">
-                <h1>Shopping Cart</h1>
-                {
-                    productsCart.length > 0 ? (
-                        <ul>
-                            {
-                                productsCart.map(product => {
-                                    return (
-                                        <li key={product._id} className="row">
-                                            <div>
-                                                <img className="small" src={product.image} alt={product.name} />
-                                            </div>
-                                            <div className="min-30">
-                                                <Link to={`/product/${product._id}`}>{product.name}</Link>
-                                            </div>
-                                            <div>
-                                                <select value={product.qty}
-                                                    onChange={e => changeQty(product._id, e)}>
-                                                    {
-                                                        [...Array(product.countInStock).keys()].map(item => {
-                                                            return (
-                                                                <option key={item} value={item + 1}>{item + 1}</option>
-                                                            )
-                                                        })
-                                                    }
-                                                </select>
-                                            </div>
-                                            <div>
-                                                ${product.price}
-                                            </div>
-                                            <div>
-                                                <button onClick={() => onDeleteProduct(product._id)}>Delete</button>
-                                            </div>
-                                        </li>
-                                    )
-                                })
-                            }
-                        </ul>
-                    ) : <AlertBox variant='info'>Cart is empty <Link to="/">Go Shopping</Link></AlertBox>
-                }
+        <Fragment>
+            <div className="small-container products-cart">
+                <table>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Subtotal</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div className="product-row">
+                                <img src="/images/buy-1.jpg" alt="gallery-1" />
+                                <div className="product-info">
+                                    <h4>Intelligent Cotton Fish</h4>
+                                    <p>Price: $50.00</p>
+                                    <a href="#">Remove</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <input type="number" value="1" min="1" />
+                        </td>
+                        <td>
+                            <h4>$50.00</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div className="product-row">
+                                <img src="/images/buy-2.jpg" alt="gallery-1" />
+                                <div className="product-info">
+                                    <h4>Intelligent Cotton Fish</h4>
+                                    <p>Price: $50.00</p>
+                                    <a href="#">Remove</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <input type="number" value="1" min="1" />
+                        </td>
+                        <td>
+                            <h4>$50.00</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div className="product-row">
+                                <img src="/images/buy-3.jpg" alt="gallery-1" />
+                                <div className="product-info">
+                                    <h4>Intelligent Cotton Fish</h4>
+                                    <p>Price: $50.00</p>
+                                    <a href="#">Remove</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <input type="number" value="1" min="1" />
+                        </td>
+                        <td>
+                            <h4>$50.00</h4>
+                        </td>
+                    </tr>
+                </table>
 
-            </div>
-            <div className="col-1">
-                <div className="card card-body">
-                    <ul>
-                        <li>
-                            <h2>
-                                Subtotal: ({productsCart.reduce((sum: number, e) => sum + e.qty, 0)} items) : ${productsCart.reduce((price, e2) => price + e2.qty * e2.price, 0)}
-                            </h2>
-                        </li>
-                        <li>
-                            <button className={`primary block ${productsCart.length <= 0 && 'disabled'}`} onClick={onCLickCheckout}>Proceed to Checkout</button>
-                        </li>
-                    </ul>
+                <div className="total-product">
+                    <table>
+                        <tr>
+                            <td>Subtotal</td>
+                            <td>$200.00</td>
+                        </tr>
+                        <tr>
+                            <td>Tax</td>
+                            <td>$35.00</td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td>$230.00</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
-        </div>
-    )
+        </Fragment>
+    );
 }
 
 export default CartScreen

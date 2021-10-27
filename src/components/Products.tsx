@@ -12,27 +12,25 @@ export interface IProduct {
   brand: string,
   rating: number,
   numReviewer: number,
-  description: string
+  description: string,
+  smallImages?: string[]
 }
 
 interface IProductsProps {
-  product: IProduct
+  product: IProduct,
+  numReviewer?: number
 }
 
 const Products: React.FC<IProductsProps> = (props) => {
   const { product } = props;
   return (
-    <div key={product._id} className="card">
-      <Link to={`/product/${product._id}`} >
-        <img className="medium" src={product.image} alt={product.name} />
+    <div className="col-4">
+      <Link to={`/product/${product._id}`}>
+        <img src={product.image} alt={`product-${product._id}`} />
+        <h4>{product.name}</h4>
+        <Rating rating={product.rating} />
+        <p>${product.price.toFixed(2)}</p>
       </Link>
-      <div className="card-body">
-        <Link to={`/product/${product._id}`}>
-          <h2>{product.name}</h2>
-        </Link>
-        <Rating rating={product.rating} numReviewer={product.numReviewer} />
-        <div className="price">${product.price}</div>
-      </div>
     </div>
   );
 }

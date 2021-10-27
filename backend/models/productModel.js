@@ -10,10 +10,11 @@ const productSchema = new mongoose.Schema(
     rating: { type: Number, required: true },
     numReviewer: { type: Number, required: true },
     description: { type: String, required: true },
+    smallImages: { type: [String] },
   },
   {
     timestamps: true,
-  },
+  }
 );
 
 const Product = mongoose.model("Product", productSchema);

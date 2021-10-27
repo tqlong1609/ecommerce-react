@@ -1,0 +1,688 @@
+:root {
+  --light-orange: #ff523b;
+  --light-gray: #555;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.narbar {
+  display: flex;
+  padding: 20px;
+  align-items: center;
+}
+
+nav {
+  text-align: right;
+  flex: 1;
+}
+
+nav ul {
+  display: inline-block;
+  list-style-type: none;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--light-gray);
+}
+
+p {
+  color: var(--light-gray);
+}
+
+.container {
+  max-width: 1300px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.col-2 {
+  flex-basis: 50%;
+  min-width: 300px;
+}
+
+.col-2 img {
+  max-width: 100%;
+  margin: 25px 0;
+}
+
+h1 {
+  font-size: 50px;
+  line-height: 60px;
+  margin: 25px 0;
+}
+
+.btn {
+  background: var(--light-orange);
+  padding: 8px 30px;
+  border-radius: 50px;
+  color: #fff;
+  display: inline-block;
+  margin: 20px 0;
+  transition: background 0.4s;
+}
+
+.btn:hover {
+  background: #ff2508;
+}
+
+.header {
+  background: radial-gradient(#fff, #ffd6d6);
+}
+
+.header .row {
+  padding-top: 70px;
+}
+
+.categories {
+  margin: 70px 0;
+}
+
+.col-3 {
+  flex-basis: 30%;
+  min-width: 250px;
+}
+
+.col-3 img {
+  max-width: 100%;
+}
+
+.small-container {
+  max-width: 1080px;
+  margin: auto;
+  padding: 25px 0;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 80px;
+  position: relative;
+  line-height: 50px;
+}
+
+.title::after {
+  content: "";
+  width: 80px;
+  height: 5px;
+  position: absolute;
+  background: #ff832b;
+  border-radius: 5px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.col-4 {
+  flex-basis: 25%;
+  flex-wrap: wrap;
+  padding: 10px;
+  min-width: 200px;
+  transition: transform 0.3s;
+  margin-bottom: 20px;
+}
+
+.col-4:hover {
+  transform: translateY(-10px);
+}
+
+.col-4 img {
+  max-width: 100%;
+}
+
+.col-4 h4 {
+  font-weight: normal;
+  color: var(--light-gray);
+}
+i.fas {
+  color: #ff832b;
+}
+
+.col-4 p {
+  font-size: 14px;
+}
+
+.offer {
+  background: radial-gradient(#fff, #ffd6d6);
+  margin-top: 80px;
+  padding: 20px 0;
+}
+
+.offer-image {
+  padding: 50px;
+}
+
+small {
+  color: var(--light-gray);
+  display: inline-block;
+}
+
+.testimonial {
+  margin-top: 80px;
+}
+
+.testimonial .col-3 {
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+  padding: 40px 20px;
+  cursor: pointer;
+  transition: transform 0.5s;
+  margin-bottom: 20px;
+}
+
+.testimonial .col-3:hover {
+  transform: translateY(-10px);
+}
+
+i.fa-quote-left {
+  font-size: 40px;
+  color: #ff832b;
+}
+
+.testimonial .col-3 p {
+  font-size: 14px;
+  margin: 20px 0;
+  color: #777;
+}
+
+.testimonial .col-3 img {
+  border-radius: 50%;
+  width: 70px;
+  margin-top: 30px;
+}
+
+.testimonial .col-3 h3 {
+  color: var(--light-gray);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.brands {
+  margin: 100px auto;
+}
+
+.col-5 {
+  width: 160px;
+}
+
+.col-5 img {
+  width: 100%;
+  filter: grayscale(100%);
+  cursor: pointer;
+  transition: filter 0.5s;
+}
+
+.col-5 img:hover {
+  filter: grayscale(0%);
+}
+
+.footer {
+  background: #000;
+  color: #8a8a8a;
+  font-size: 14px;
+  padding: 60px 0 20px;
+  text-align: center;
+}
+
+.footer p {
+  color: #808080;
+}
+
+.footer h3 {
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.footer-col-1,
+.footer-col-2,
+.footer-col-3 {
+  min-width: 250px;
+  margin-bottom: 20px;
+}
+
+.footer .logo-app {
+  margin-top: 20px;
+}
+
+.footer .logo-app img {
+  width: 130px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.footer-col-1 {
+  flex-basis: 30%;
+}
+
+.footer-col-2 {
+  flex: 1;
+}
+
+.footer-col-2 img {
+  width: 180px;
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.menu-icon {
+  margin-left: 20px;
+  display: none;
+}
+
+@media only screen and (max-width: 800px) {
+  nav ul {
+    background: #333;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    transition: max-height 0.5s;
+  }
+
+  nav ul li {
+    display: block;
+    margin: 10px 40px 10px 0;
+  }
+
+  nav ul li a {
+    color: #fff;
+    font-size: 15px;
+  }
+
+  .menu-icon {
+    display: block;
+    cursor: pointer;
+  }
+}
+
+.row-2 {
+  justify-content: space-between;
+  margin: 100px 10px 50px;
+}
+
+select {
+  border: 1px solid var(--light-orange);
+  padding: 5px;
+}
+
+select:focus {
+  outline: none;
+}
+
+select option {
+  font-size: 15px;
+}
+
+.page-btn {
+  margin: 0 auto 80px;
+}
+
+.page-btn span {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--light-orange);
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: background 0.2s;
+}
+
+.page-btn span:hover {
+  background: var(--light-orange);
+  color: #fff;
+}
+
+/* Select custom */
+/* The container must be positioned relative: */
+.custom-select {
+  position: relative;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element: */
+}
+
+.select-selected {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid var(--light-orange);
+  border-radius: 3px;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 20px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid red;
+  border-color: var(--light-orange) transparent transparent transparent;
+  /* background: red; */
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent var(--light-orange) transparent;
+  top: 12px;
+  /* background: red; */
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,
+.select-selected {
+  /* color: #ffffff; */
+  padding: 8px 16px;
+  /* border: 1px solid transparent; */
+  /* border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent; */
+  cursor: pointer;
+  color: var(--light-gray);
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  background-color: #fff;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  margin-top: 10px;
+  border: 1px solid var(--light-orange);
+  border-radius: 3px;
+}
+
+.select-items div {
+  padding: 10px 30px;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.same-as-selected {
+  /* margin-top: 10px; */
+}
+
+.select-items div:hover {
+  background-color: var(--light-orange);
+  color: #fff;
+}
+
+a,.disable-select {
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+/* Single Product */
+.single-product {
+  margin-top: 80px;
+  padding: 0;
+}
+
+.single-product .row {
+  align-items: flex-start;
+}
+
+.single-product .col-2 img {
+  margin: 0;
+}
+
+.single-product h4 {
+  color: var(--light-gray);
+  font-size: 20px;
+}
+
+.single-product select {
+  padding: 10px;
+  display: block;
+  margin: 20px 0;
+}
+
+.single-product input {
+  padding: 0 5px;
+  display: inline-block;
+  width: 50px;
+  height: 40px;
+  margin-right: 10px;
+  border: 1px solid #ff2508;
+  font-size: 20px;
+}
+
+.single-product h3 {
+  margin-top: 10px;
+}
+
+.single-product .fa {
+  color: #ff2508;
+  margin-left: 10px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.img-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.img-col {
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table tr th {
+  background: var(--light-orange);
+  color: #fff;
+  font-weight: normal;
+  font-size: 15px;
+  text-align: left;
+  padding: 5px 10px;
+}
+
+table tr td {
+  padding: 5px 10px;
+}
+
+.product-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-row img {
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+}
+
+.products-cart h4 {
+  font-weight: 600;
+  color: var(--light-gray);
+}
+
+.products-cart p {
+  font-size: 15px;
+}
+
+.product-info a {
+  font-size: 13px;
+  color: var(--light-orange);
+}
+
+.products-cart input {
+  width: 50px;
+  height: 40px;
+  color: var(--light-gray);
+  font-size: 15px;
+  padding-left: 3px;
+}
+
+.total-product {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.total-product table {
+  width: 100%;
+  max-width: 370px;
+  border-top: 3px solid var(--light-orange);
+}
+
+td:last-child {
+  text-align: right;
+}
+
+th:last-child {
+  text-align: right;
+}
+
+/* account */
+.account-page {
+  background: radial-gradient(#fff, #ffd6d6);
+}
+
+.form-account {
+  width: 300px;
+  height: 400px;
+  background: #fff;
+  margin: auto;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+.header-form {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  position: relative;
+}
+
+.header-form span {
+  font-weight: bold;
+  color: #555;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 10px;
+}
+
+.form-account form {
+  padding: 0 20px;
+  position: absolute;
+  top: 130px;
+  max-width: 300px;
+}
+
+.form-account .btn {
+  display: block;
+  width: 100;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+}
+
+.form-account input {
+  width: 100%;
+  height: 35px;
+  padding: 10px;
+  margin: 5px auto;
+  border: 1px solid #ccc;
+}
+
+.form-account a {
+  display: block;
+  font-size: 12px;
+}
+
+#Indicator {
+  width: 30%;
+  height: 3px;
+  background: var(--light-orange);
+  border: none;
+  top: 40px;
+  position: absolute;
+  left: 0;
+  transform: translateX(30%);
+  transition: transform 0.3s;
+}
+
+#RegisterForm {
+  left: -300px;
+  transition: transform 0.3s;
+}
+
+#LoginForm {
+  left: 0;
+  transition: transform 0.3s;
+}
+
+@media only screen and (max-width: 600px) {
+  .row {
+    text-align: center;
+  }
+
+  .col-1,
+  .col-2,
+  .col-3 {
+    flex-basis: 100%;
+    padding: 10px;
+  }
+
+  .single-product .col-2 {
+    text-align: left;
+  }
+
+  .single-product h1 {
+    font-size: 25px;
+  }
+
+  .single-product .col-2 {
+    padding: 20px;
+  }
+
+  .total-product table {
+    max-width: 100%;
+  }
+
+  .account-page {
+    padding-bottom: 30px;
+  }
+}

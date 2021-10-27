@@ -1,4 +1,4 @@
-import { IUserLogin } from "../../screens/SigninScreen";
+import { IUserLogin } from "../../screens/Signin";
 import { EUser } from "../action-types";
 import { ActionUser } from "../actions";
 
