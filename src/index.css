@@ -16,6 +16,11 @@ body {
   height: 100%;
 }
 
+:root {
+  --light-orange: #ff523b;
+  --light-gray: #555;
+}
+
 .grid-container {
   display: grid;
   grid-template-areas: "header" "main" "footer";
@@ -110,13 +115,26 @@ a.brand {
   color: white;
 }
 
+.cart_badge {
+  position: relative;
+}
+
 .badge {
-  background-color: #f02020;
+  position: absolute;
+  display: flex;
+  background-color: var(--light-orange);
+  width: 20px;
+  height: 20px;
+  right: -10px;
+  top: -13px;
   border-radius: 50%;
-  font-size: 1.4rem;
-  padding: 0.2rem 0.7rem;
-  color: #ffffff;
-  margin-left: 0.2rem;
+  /* text-align: center; */
+  align-items: center;
+  font-size: 11px;
+  margin: auto 0;
+  color: white;
+  /* padding: 2px 5px; */
+  justify-content: center;
 }
 
 /* ----- */

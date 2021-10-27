@@ -265,7 +265,7 @@ i.fa-quote-left {
 .footer .logo-app img {
   width: 130px;
   cursor: pointer;
-  margin-bottom: 10px;
+  margin: 0 10px 5px;
 }
 
 .footer-col-1 {
@@ -541,9 +541,10 @@ table tr td {
   font-size: 15px;
 }
 
-.product-info a {
+.product-info span.remove {
   font-size: 13px;
   color: var(--light-orange);
+  cursor: pointer;
 }
 
 .products-cart input {

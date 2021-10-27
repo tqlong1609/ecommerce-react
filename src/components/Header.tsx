@@ -1,8 +1,11 @@
 import React, { useEffect, useRef } from 'react'
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { State } from '../state';
 
 export const Header: React.FC = () => {
     const refMenu = useRef<HTMLUListElement>(null)
+    const productsCart = useSelector((state: State) => state.cartProducts.productsCart)
     useEffect(() => {
         if (refMenu && refMenu.current) {
             if (refMenu.current.style.maxHeight || refMenu.current.style.maxHeight === "") {
@@ -43,12 +46,16 @@ export const Header: React.FC = () => {
                         </ul>
                     </nav>
                     <Link to="/cart">
+                        <div className="cart_badge">
+
                         <img
                             src="/images/cart.png"
                             alt="cart"
                             width="30px"
                             height="30px"
-                        />
+                            />
+                        {productsCart.length > 0 && <span className="badge">{productsCart.length}</span>}
+                            </div>
                     </Link>
                     <img
                         src="/images/menu.png"
