@@ -272,7 +272,7 @@ form label {
 .dropdown-content {
   display: none;
   position: absolute;
-  margin-top: 0.5rem;
+  /* margin-top: 0.5rem; */
   left: 10px;
   border-radius: 5px;
   padding: 1rem;

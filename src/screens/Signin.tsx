@@ -21,12 +21,12 @@ const SigninScreen: React.FC<RouteComponentProps> = (props) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    // const redirect = props.location.search.split('=')?.[1] === 'shipping' ? 'shipping' : ''
-    // useEffect(() => {
-    //     if (user) {
-    //         props.history.push('/' + redirect)
-    //     }
-    // }, [user, props.history, redirect])
+    const redirect = props.location.search.split('=')?.[1] === 'shipping' ? 'shipping' : ''
+    useEffect(() => {
+        if (user) {
+            props.history.push('/' + redirect)
+        }
+    }, [user, props.history, redirect])
 
     const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value)

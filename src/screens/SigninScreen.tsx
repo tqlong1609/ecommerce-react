@@ -1,8 +1,23 @@
-import React, { Fragment, useRef } from 'react'
-const SigninScreen: React.FC = () => {
+import React, { Fragment, useEffect, useRef } from 'react'
+import { useSelector } from 'react-redux'
+import { RouteComponentProps } from 'react-router'
+import LoginForm from '../components/LoginForm'
+import RegisterForm from '../components/RegisterForm'
+import { State } from '../state'
+
+const SigninScreen: React.FC<RouteComponentProps> = (props) => {
     const loginForm = useRef<HTMLFormElement>(null)
     const registerForm = useRef<HTMLFormElement>(null)
     const indicator = useRef<HTMLHRElement>(null)
+    const { user } = useSelector((state: State) => state.userLogin)
+
+    const redirect = props.location.search.split('=')?.[1] === 'shipping' ? 'shipping' : ''
+    useEffect(() => {
+        if (user) {
+            props.history.push('/' + redirect)
+        }
+    }, [user, props.history, redirect])
+
     const onRegisterIndicator = () => {
         indicator.current!.style.transform = "translateX(190%)"
         registerForm.current!.style.transform = "translateX(300px)";
@@ -14,6 +29,7 @@ const SigninScreen: React.FC = () => {
         registerForm.current!.style.transform = "translateX(0)";
         loginForm.current!.style.transform = "translateX(0)";
     };
+
     return (
         <Fragment>
             <div className="account-page">
@@ -35,44 +51,8 @@ const SigninScreen: React.FC = () => {
                                     >
                                     <hr id="Indicator" ref={indicator} />
                                 </div>
-                                <form id="LoginForm" ref={loginForm}>
-                                    <input
-                                        type="text"
-                                        name="username"
-                                        id="username"
-                                        placeholder="Username"
-                                    />
-                                    <input
-                                        type="password"
-                                        name="password"
-                                        id="password"
-                                        placeholder="Password"
-                                    />
-                                    <button type="submit" className="btn">Login</button>
-                                    <a href="#">Forgot Password</a>
-                                </form>
-
-                                <form id="RegisterForm" ref={registerForm}>
-                                    <input
-                                        type="text"
-                                        name="username"
-                                        id="username"
-                                        placeholder="Username"
-                                    />
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        id="email"
-                                        placeholder="Email"
-                                    />
-                                    <input
-                                        type="password"
-                                        name="password"
-                                        id="password"
-                                        placeholder="Password"
-                                    />
-                                    <button type="submit" className="btn">Register</button>
-                                </form>
+                                <LoginForm ref={loginForm} />
+                                <RegisterForm ref={registerForm} />
                             </div>
                         </div>
                     </div>
