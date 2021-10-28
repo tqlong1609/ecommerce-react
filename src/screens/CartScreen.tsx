@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
 import { Link } from 'react-router-dom'
@@ -23,6 +23,13 @@ const CartScreen: React.FC<RouteComponentProps> = (props) => {
             props.history.push(!user ? '/signin?redirect=shipping' : '/shipping')
         }
     }
+
+    useEffect(() => {
+        if(productsCart.length <= 0) {
+            props.history.goBack()
+        }
+    }, [productsCart])
+
     return (
         <Fragment>
             <div className="small-container products-cart">

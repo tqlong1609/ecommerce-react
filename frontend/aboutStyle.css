@@ -1,0 +1,98 @@
+:root {
+  --light-orange: #ff523b;
+  --light-gray: #555;
+}
+
+.about-container {
+  text-align: center;
+  padding: 0 25px;
+}
+
+.about-me {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.main-info {
+  color: var(--light-orange);
+  font-weight: 400;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.row-header {
+}
+
+.row-header p {
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.row-header button {
+  margin-bottom: 20px;
+}
+
+.img-box {
+  filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5));
+  position: relative;
+}
+
+.img-box img {
+  display: block;
+  clip-path: circle();
+  width: 50%;
+  margin: 0 auto !important;
+}
+
+/* button */
+button {
+  border: none;
+  color: var(--light-orange);
+  padding: 0.7em 1.7em;
+  font-size: 18px;
+  border-radius: 0.5em;
+  background: #e8e8e8;
+  border: 1px solid #e8e8e8;
+  transition: all 0.3s;
+  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+}
+
+button:hover {
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+button:active {
+  box-shadow: 4px 4px 12px #c5c5c5, -4px -4px 12px #ffffff;
+}
+
+.list-info {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  flex-direction: column;
+}
+
+.list-info .shadow-icon {
+  border-radius: 50%;
+  background: #e0e0e0;
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 10px;
+}
+
+@media screen and (max-width: 700px) {
+  .about-me {
+    margin-bottom: 0;
+  }
+
+  .list-info {
+      position: relative;
+      flex-direction: row;
+  }
+}

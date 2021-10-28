@@ -595,6 +595,7 @@ th:last-child {
   justify-content: space-around;
   padding: 10px 0;
   position: relative;
+  margin-bottom: 30px;
 }
 
 .header-form span {

@@ -71,7 +71,7 @@ export const Header: React.FC = () => {
                             </li>
                         </ul>
                     </nav>
-                    <Link to="/cart">
+                    <Link to={productsCart.length > 0 ? '/cart' : '#'}>
                         <div className="cart_badge">
                             <img
                                 src="/images/cart.png"
