@@ -25,7 +25,7 @@ const CartScreen: React.FC<RouteComponentProps> = (props) => {
     }
 
     useEffect(() => {
-        if(productsCart.length <= 0) {
+        if (productsCart.length <= 0) {
             props.history.goBack()
         }
     }, [productsCart])
@@ -55,11 +55,11 @@ const CartScreen: React.FC<RouteComponentProps> = (props) => {
                                             </div>
                                         </div>
                                     </td>
-                                    <td>
+                                    <td className="right">
                                         <input type="number" value={product.qty} min="1"
                                             onChange={e => changeQty(product._id, product.size, e)} />
                                     </td>
-                                    <td>
+                                    <td className="right">
                                         <h4>${product.price * product.qty}</h4>
                                     </td>
                                 </tr>
@@ -84,9 +84,9 @@ const CartScreen: React.FC<RouteComponentProps> = (props) => {
                         </tr>
                     </table>
                 </div>
-
-                {/* TODO */}
-                <button className={`primary block ${productsCart.length <= 0 && 'disabled'}`} onClick={onCLickCheckout}>Proceed to Checkout</button>
+                <div className="btn-checkout">
+                    <button className="btn square-o" onClick={onCLickCheckout}>Process to Checkout</button>
+                </div>
             </div>
         </Fragment>
     );

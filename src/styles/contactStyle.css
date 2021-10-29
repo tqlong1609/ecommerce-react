@@ -1,0 +1,138 @@
+.contact-container {
+  text-align: center;
+}
+
+.info-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.info-container i {
+  color: #ff523b;
+  font-size: 20px;
+}
+
+.info-container h5 {
+  margin: 10px 0;
+  font-size: 15px;
+}
+
+.info-container p {
+  font-size: 13px;
+}
+
+.info-box {
+  padding: 20px 10px;
+  margin: 10px;
+  border-radius: 5px;
+  width: 300px;
+  background: linear-gradient(145deg, #cacaca, #f0f0f0);
+  box-shadow: 5px 5px 10px #aaaaaa, -5px -5px 10px #ffffff;
+}
+
+.about-container form {
+  padding: 0 20px;
+}
+
+.about-container form input {
+  display: block;
+  padding: 10px 20px;
+  width: 90%;
+  border-radius: 20px;
+  text-shadow: 2px 2px 5px 5px #f00;
+  border: none;
+  font-size: 15px;
+  border-radius: 5px;
+  border: solid 1.5px #d3d3d3;
+  -webkit-transition: 1s; /* Safari */
+  transition: 1s;
+  margin: 10px 0px;
+}
+
+.input-info {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.about-container input[type="text"]:hover {
+  box-shadow: 0 0 5pt 0.5pt #d3d3d3;
+}
+.about-container input[type="text"]:focus,
+.about-container form textarea:focus {
+  box-shadow: 0 0 5pt 2pt #d3d3d3;
+  outline-width: 0px;
+}
+
+.about-container form textarea {
+  width: 100%;
+  border: solid 1.5px #d3d3d3;
+  -webkit-transition: 1s; /* Safari */
+  transition: 1s;
+  font-size: 15px;
+  padding: 10px;
+  resize: none;
+  font-family: "Poppins", sans-serif;
+  margin-top: 20px;
+}
+
+.row-info {
+  flex-direction: row;
+}
+
+button.btn-send {
+  font-family: inherit;
+  font-size: 20px;
+  background: #ff523b;
+  color: white;
+  padding: 0.7em 1em;
+  padding-left: 0.9em;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.2s;
+  margin: 10px auto;
+}
+
+button.btn-send span {
+  display: block;
+  margin-left: 0.3em;
+  transition: all 0.3s ease-in-out;
+}
+
+button.btn-send svg {
+  display: block;
+  transform-origin: center center;
+  transition: transform 0.3s ease-in-out;
+}
+
+button.btn-send:hover .svg-wrapper {
+  animation: fly-1 0.6s ease-in-out infinite alternate;
+}
+
+button.btn-send:hover svg {
+  transform: translateX(1.2em) rotate(45deg) scale(1.1);
+}
+
+button.btn-send:hover span {
+  transform: translateX(5em);
+}
+
+button.btn-send:active {
+  transform: scale(0.95);
+}
+
+@keyframes fly-1 {
+  from {
+    transform: translateY(0.1em);
+  }
+
+  to {
+    transform: translateY(-0.1em);
+  }
+}

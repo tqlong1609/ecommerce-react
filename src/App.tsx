@@ -20,6 +20,8 @@ import SigninScreen from "./screens/SigninScreen";
 import { SignupScreen } from "./screens/SignupScreen";
 import { signOut } from "./state/actions/users";
 import { State } from './state/reducers'
+import AboutScreen from "./screens/AboutScreen";
+import ContactScreen from "./screens/ContactScreen";
 
 function App(): React.ReactElement {
   const productsCart = useSelector((state: State) => state.cartProducts.productsCart)
@@ -45,6 +47,8 @@ function App(): React.ReactElement {
         <Route path="/order/:id" component={OrderScreen} />
         <Route path="/orderhistory" component={OrderHistoryScreen} />
         <Route path="/allproduct" component={AllProducts} />
+        <Route path="/about" component={AboutScreen} />
+        <Route path="/contact" component={ContactScreen} />
         <RedirectSignInRoute path="/userprofile" component={ProfileScreen} />
         <Footer />
       </>

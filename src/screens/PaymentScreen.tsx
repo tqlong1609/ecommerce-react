@@ -12,7 +12,7 @@ export enum EPaymentMethod {
 
 export const PaymentScreen: React.FC<RouteComponentProps> = (props) => {
     const { shippingAddress } = useSelector((state: State) => state.cartProducts)
-    if(!shippingAddress) {
+    if (!shippingAddress) {
         props.history.push('/shipping')
     }
     const [paymentMethod, setPaymentMethod] = useState<EPaymentMethod>(EPaymentMethod.PAYPAL)
@@ -26,28 +26,33 @@ export const PaymentScreen: React.FC<RouteComponentProps> = (props) => {
     return (
         <div>
             <CheckoutSteps step1 step2 step3 />
-            <form onSubmit={onSubmit}>
-                <div>
-                    <h2>Payment Method</h2>
-                </div>
-                <div>
+            <div className="small-container">
+                <form onSubmit={onSubmit}>
                     <div>
-                        <input type="radio" name="paymentMethod" id="paypal" value={'PAYPAL'}
-                            checked={paymentMethod === EPaymentMethod.PAYPAL ? true : false} required
-                            onChange={e => setPaymentMethod(e.target.value as EPaymentMethod)} />
-                        <label htmlFor="paypal">Paypal</label>
+                        <h2>Payment Method</h2>
                     </div>
-                </div>
-                <div>
                     <div>
-                        <input type="radio" name="paymentMethod"
-                            checked={paymentMethod === EPaymentMethod.PAYPAL ? false : true} id="stripe" value={'STRIPE'} required
-                            onChange={e => setPaymentMethod(e.target.value as EPaymentMethod)} />
-                        <label htmlFor="stripe">Stripe</label>
+                        <div>
+                            <input type="radio" name="paymentMethod" id="paypal" value={'PAYPAL'}
+                                checked={paymentMethod === EPaymentMethod.PAYPAL ? true : false} required
+                                onChange={e => setPaymentMethod(e.target.value as EPaymentMethod)} />
+                            <label htmlFor="paypal">Paypal</label>
+                        </div>
                     </div>
-                </div>
-                <button className="primary block" type="submit">Continue</button>
-            </form>
+                    <div>
+                        <div>
+                            <input type="radio" name="paymentMethod"
+                                checked={paymentMethod === EPaymentMethod.PAYPAL ? false : true} id="stripe" value={'STRIPE'} required
+                                onChange={e => setPaymentMethod(e.target.value as EPaymentMethod)} />
+                            <label htmlFor="stripe">Stripe</label>
+                        </div>
+                    </div>
+                    <div className="btn-checkout">
+                        <button className="btn square-o" type="submit">Continue</button>
+                    </div>
+                </form>
+            </div>
+
         </div>
     );
 }

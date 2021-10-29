@@ -67,7 +67,9 @@ export const ProfileScreen: React.FC = () => {
                         <label htmlFor="confirm_password">Confirm password</label>
                         <input type="password" name="confirm_password" id="confirm_password" placeholder="Enter confirm password" onChange={e => setConfirmPassword(e.target.value)} />
                     </div>
-                    <button className="primary block">Update</button>
+                    <div className="btn-checkout">
+                    <button className="btn square-o">Update</button>
+                </div>
                 </>}
             </form>
         </div>

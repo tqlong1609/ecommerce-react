@@ -26,28 +26,27 @@ const LoginForm = React.forwardRef<HTMLFormElement>((props, ref) => {
 
     return (
         <>
-            {isLoading ? <LoadingBox /> : error ? <AlertBox variant="danger">{error}</AlertBox> :
-                <form id="LoginForm" ref={ref} onSubmit={onClickSignIn}>
-                    <input
-                        type="email"
-                        name="email"
-                        id="email"
-                        placeholder="Email"
-                        onChange={onChangeEmail}
-                        value={email}
-                    />
-                    <input
-                        type="password"
-                        name="password"
-                        id="password"
-                        placeholder="Password"
-                        onChange={onChangePassword}
-                        value={password}
-                    />
-                    <button type="submit" className="btn">Login</button>
-                    <a href="#">Forgot Password</a>
-                </form>
-            }
+            {isLoading ? <LoadingBox /> : error ? <AlertBox variant="danger">{error}</AlertBox> : null}
+            <form id="LoginForm" ref={ref} onSubmit={onClickSignIn}>
+                <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="Email"
+                    onChange={onChangeEmail}
+                    value={email}
+                />
+                <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="Password"
+                    onChange={onChangePassword}
+                    value={password}
+                />
+                <button type="submit" className="btn">Login</button>
+                <a href="#">Forgot Password</a>
+            </form>
         </>
     );
 })

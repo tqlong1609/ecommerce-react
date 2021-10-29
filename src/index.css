@@ -143,8 +143,8 @@ img {
 }
 
 img.small {
-  max-width: 5rem;
-  width: 100%;
+  max-width: 100px;
+  max-height: 100px;
 }
 
 img.medium {

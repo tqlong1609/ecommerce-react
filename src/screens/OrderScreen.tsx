@@ -64,7 +64,7 @@ export const OrderScreen: React.FC<RouteComponentProps<OrderScreenProps>> = (pro
     }
     return (
         <div>
-            {isLoading ? <LoadingBox /> : error ? <AlertBox variant="danger">{error}</AlertBox> : <div>
+            {isLoading ? <LoadingBox /> : error ? <AlertBox variant="danger">{error}</AlertBox> : <div className="small-container">
                 <h2>Order {order?._id}</h2>
                 <div className="row top">
                     <div className="col-2">

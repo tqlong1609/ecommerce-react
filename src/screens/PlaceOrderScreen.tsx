@@ -42,7 +42,7 @@ export const PlaceOrderScreen: React.FC<RouteComponentProps> = (props) => {
     return (
         <div>
             <CheckoutSteps step1 step2 step3 step4 />
-            <div className="row top">
+            <div className="row top small-container">
                 <div className="col-2">
                     <ul>
                         <li>
@@ -88,7 +88,7 @@ export const PlaceOrderScreen: React.FC<RouteComponentProps> = (props) => {
                     </ul>
                 </div>
                 <div className="col-1">
-                    <div className="card card-body">
+                    <div className="card card-body place-order">
                         <ul>
                             <li>
                                 <h2>Order Summary</h2>
@@ -120,11 +120,13 @@ export const PlaceOrderScreen: React.FC<RouteComponentProps> = (props) => {
                                 </div>
                             </li>
                             <li>
-                                <button className={`primary block ${cart.productsCart.length === 0 && 'disabled'}`}
-                                    disabled={cart.productsCart.length === 0}
-                                    onClick={onClickOrder}
-                                >
-                                    Place Order</button>
+                                <div className="btn-checkout">
+                                    <button className={`btn square-o ${cart.productsCart.length === 0 && 'disabled'}`}
+                                        disabled={cart.productsCart.length === 0}
+                                        onClick={onClickOrder}
+                                    >
+                                        Place Order</button>
+                                </div>
                                 {isLoading && <LoadingBox />}
                                 {error && <AlertBox variant="danger">{error}</AlertBox>}
                             </li>

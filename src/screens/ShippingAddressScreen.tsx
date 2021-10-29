@@ -28,42 +28,45 @@ export const ShippingAddressScreen: React.FC<RouteComponentProps> = (props) => {
     return (
         <div>
             <CheckoutSteps step1 step2 />
-            <form onSubmit={onSubmit} className="form">
-                <h2>Shipping Address</h2>
-                <div>
-                    <label htmlFor="name">Full Name</label>
-                    <input type="text" name="name" id="name" placeholder="Enter full name"
-                        value={name} onChange={e => setName(e.target.value)} required />
-                </div>
-                <div>
-                    <label htmlFor="address">Address</label>
-                    <input type="text" name="address" id="address"
-                        placeholder="Enter address"
-                        value={address} onChange={e => setAddress(e.target.value)} required />
-                </div>
-                <div>
-                    <label htmlFor="city">City</label>
-                    <input type="text" name="city" id="city"
-                        placeholder="Enter city"
-                        value={city} onChange={e => setCity(e.target.value)} required />
-                </div>
-                <div>
-                    <label htmlFor="postal_code">Postal Code</label>
-                    <input type="number" name="postal_code" id="postal_code"
-                        value={postalCode + ''} onChange={e => setpostalCode(+e.target.value)} required />
-                </div>
-                <div>
-                    <label htmlFor="country">Country</label>
-                    <input type="text" name="country" id="country"
-                        placeholder="Enter country"
-                        value={country} onChange={e => setCountry(e.target.value)} required />
-                </div>
-                <div>
-                    <label htmlFor="location">Location</label>
-                    <button name="location" id="location" className="primary choose_map">Choose On Map</button>
-                </div>
-                <button type="submit" className="primary block">Continue</button>
-            </form>
+            <div className="small-container">
+
+                <form onSubmit={onSubmit} className="form">
+                    <h2>Shipping Address</h2>
+                    <div>
+                        <label htmlFor="name">Full Name</label>
+                        <input type="text" name="name" id="name" placeholder="Enter full name"
+                            value={name} onChange={e => setName(e.target.value)} required />
+                    </div>
+                    <div>
+                        <label htmlFor="address">Address</label>
+                        <input type="text" name="address" id="address"
+                            placeholder="Enter address"
+                            value={address} onChange={e => setAddress(e.target.value)} required />
+                    </div>
+                    <div>
+                        <label htmlFor="city">City</label>
+                        <input type="text" name="city" id="city"
+                            placeholder="Enter city"
+                            value={city} onChange={e => setCity(e.target.value)} required />
+                    </div>
+                    <div>
+                        <label htmlFor="postal_code">Postal Code</label>
+                        <input type="number" name="postal_code" id="postal_code"
+                            value={postalCode + ''} onChange={e => setpostalCode(+e.target.value)} required />
+                    </div>
+                    <div>
+                        <label htmlFor="country">Country</label>
+                        <input type="text" name="country" id="country"
+                            placeholder="Enter country"
+                            value={country} onChange={e => setCountry(e.target.value)} required />
+                    </div>
+                    <div className="btn-checkout">
+                        <button type="submit" className="btn square-o">Continue</button>
+
+                    </div>
+                </form>
+            </div>
+
         </div>
     );
 }

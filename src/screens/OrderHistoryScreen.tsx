@@ -14,11 +14,11 @@ export const OrderHistoryScreen: React.FC<RouteComponentProps> = (props) => {
         dispatch(orderHistory())
     }, [])
     return (
-        <div>
+        <div className="small-container">
             <h1>Order History</h1>
             {
                 isLoading ? <LoadingBox /> : error ? <AlertBox variant="danger">{error}</AlertBox> :
-                    <table>
+                    <table className="table-order">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -50,9 +50,7 @@ export const OrderHistoryScreen: React.FC<RouteComponentProps> = (props) => {
                                                 {order.isDelivered ? order.deliveredAt?.substring(0, 10) : 'No'}
                                             </td>
                                             <td>
-                                                <button className="small" onClick={() => props.history.push(`/order/${order._id}`)}>
-                                                    Action
-                                                </button>
+                                                <a className='btn-detail' onClick={() => props.history.push(`/order/${order._id}`)}>Detail</a>
                                             </td>
                                         </tr>
                                     )

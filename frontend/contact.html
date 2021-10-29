@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="aboutStyle.css" />
+    <link rel="stylesheet" href="contactStyle.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -53,37 +54,82 @@
     </div>
 
     <div class="about-container">
-      <h4 class="main-info">Main Info</h4>
-      <h2 class="about-me">About Me</h2>
-      <div class="row row-header">
-        <div class="col-2">
-          <div class="img-box">
-            <img src="/frontend/images/profile.jpg" alt="profile" />
-            <div class="list-info">
-              <div class="shadow-icon">
-                <i class="fab fa-facebook-f"></i>
-              </div>
-              <div class="shadow-icon">
-                <i class="fab fa-instagram"></i>
-              </div>
-              <div class="shadow-icon">
-                <i class="fab fa-linkedin-in"></i>
-              </div>
-            </div>
-          </div>
+      <h4 class="main-info">Contact</h4>
+      <h2 class="about-me">Get In Touch</h2>
+      <div class="info-container">
+        <div class="phone-container info-box">
+          <i class="fas fa-phone"></i>
+          <h5>Phone</h5>
+          <p>984.912.4121</p>
         </div>
-        <div class="col-2">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores
-            distinctio rerum omnis numquam a temporibus expedita aliquam nemo
-            consequuntur ut aperiam, impedit velit quas, consectetur eos qui
-            asperiores eaque quae.
-          </p>
-
-          <button>Download CV</button>
-          <button>Contact Me</button>
+        <div class="email-container info-box">
+          <i class="fas fa-envelope"></i>
+          <h5>Email</h5>
+          <p>Sandy.Braun34@gmail.com</p>
+        </div>
+        <div class="address-container info-box">
+          <i class="fas fa-map-marker-alt"></i>
+          <h5>Address</h5>
+          <p>Apt. 979 Josefina Estates Port Breanaport</p>
         </div>
       </div>
+      <form>
+        <div class="row">
+          <div class="col-2 input-info">
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Name"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email"
+              required
+            />
+            <input
+              type="text"
+              name="subject"
+              id="subject"
+              placeholder="Subject"
+              required
+            />
+          </div>
+          <div class="col-2">
+            <textarea
+              name="message"
+              id="message"
+              cols="30"
+              rows="10"
+              placeholder="Message"
+            ></textarea>
+          </div>
+        </div>
+        <div>
+          <button class="btn-send">
+            <div class="svg-wrapper-1">
+              <div class="svg-wrapper">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                >
+                  <path fill="none" d="M0 0h24v24H0z"></path>
+                  <path
+                    fill="currentColor"
+                    d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+            <span>Send</span>
+          </button>
+        </div>
+      </form>
     </div>
 
     <!-- Footer -->

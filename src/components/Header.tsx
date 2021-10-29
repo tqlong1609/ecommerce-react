@@ -50,8 +50,8 @@ export const Header: React.FC = () => {
                         <ul ref={refMenu}>
                             <li><Link to="/" onClick={onHideMenu}>Home</Link></li>
                             <li><Link to="/allproduct" onClick={onHideMenu}>Products</Link></li>
-                            <li><Link to="#" onClick={onHideMenu}>About</Link></li>
-                            <li><Link to="#" onClick={onHideMenu}>Contact</Link></li>
+                        <li><Link to="/about" onClick={onHideMenu}>About</Link></li>
+                            <li><Link to="/contact" onClick={onHideMenu}>Contact</Link></li>
                             <li>
                                 {!user ? <Link to="/signin" onClick={onHideMenu}>Account</Link> : <div className="dropdown">
                                     <Link to="#"> {user.name} <i className="fa fa-caret-down"></i> </Link>

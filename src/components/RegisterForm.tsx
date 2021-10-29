@@ -20,35 +20,34 @@ const RegisterForm = React.forwardRef<HTMLFormElement>
 
         return (
             <>
-                {isLoading ? <LoadingBox /> : error ? <AlertBox variant="danger">{error}</AlertBox> :
-                    <form id="RegisterForm" ref={ref} onSubmit={onSubmitSignUp}>
-                        <input
-                            type="text"
-                            name="username"
-                            id="username"
-                            placeholder="Username"
-                            value={name}
-                            onChange={e => setName(e.target.value)}
-                        />
-                        <input
-                            type="email"
-                            name="email"
-                            id="email"
-                            placeholder="Email"
-                            value={email}
-                            onChange={e => setEmail(e.target.value)}
-                        />
-                        <input
-                            type="password"
-                            name="password"
-                            id="password"
-                            placeholder="Password"
-                            value={password}
-                            onChange={e => setPassword(e.target.value)}
-                        />
-                        <button type="submit" className="btn">Register</button>
-                    </form>
-                }
+                {isLoading ? <LoadingBox /> : error ? <AlertBox variant="danger">{error}</AlertBox> : null}
+                <form id="RegisterForm" ref={ref} onSubmit={onSubmitSignUp}>
+                    <input
+                        type="text"
+                        name="username"
+                        id="username"
+                        placeholder="Username"
+                        value={name}
+                        onChange={e => setName(e.target.value)}
+                    />
+                    <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
+                    />
+                    <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
+                    />
+                    <button type="submit" className="btn">Register</button>
+                </form>
             </>
         );
     })
