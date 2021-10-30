@@ -23,3 +23,40 @@ export const listProducts = async (dispatch: Dispatch<ActionProductList>) => {
   }
 };
 
+export const getDecProducts = async (dispatch: Dispatch<ActionProductList>) => {
+  dispatch({
+    type: EProductList.PRODUCT_LIST_SORT_DECREASE_REQUEST,
+  })
+  try {
+  const { data } = await axios.get("/api/products/featured");
+    dispatch({
+      type: EProductList.PRODUCT_LIST_SORT_DECREASE_SUCCESS,
+      payload: data
+    })
+  } catch (error) {
+
+    dispatch({
+      type: EProductList.PRODUCT_LIST_SORT_DECREASE_FAIL,
+      payload: (error as IError).message
+    })
+  }
+};
+
+export const getDecLatestProducts = async (dispatch: Dispatch<ActionProductList>) => {
+  dispatch({
+    type: EProductList.LATEST_PRODUCT_LIST_SORT_DECREASE_REQUEST,
+  })
+  try {
+  const { data } = await axios.get("/api/products/latest");
+    dispatch({
+      type: EProductList.LATEST_PRODUCT_LIST_SORT_DECREASE_SUCCESS,
+      payload: data
+    })
+  } catch (error) {
+
+    dispatch({
+      type: EProductList.LATEST_PRODUCT_LIST_SORT_DECREASE_FAIL,
+      payload: (error as IError).message
+    })
+  }
+};

@@ -11,6 +11,7 @@ const productSchema = new mongoose.Schema(
     numReviewer: { type: Number, required: true },
     description: { type: String, required: true },
     smallImages: { type: [String] },
+    time: { type: Number, required: true },
   },
   {
     timestamps: true,

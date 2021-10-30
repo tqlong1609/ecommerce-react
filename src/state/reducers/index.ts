@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { IProduct } from '../../components/Products';
 import { productsCart, IProductCartState } from './cartItem';
 import { productDetail } from './productDetail';
-import { productList } from './productList'
+import { productList, productListFeature, productListLatest } from './productList'
 import { usersLogin, usersProfile, usersRegister, usersUpdate } from './users';
 import { EPaymentMethod } from "../../screens/PaymentScreen";
 import { IPlaceOrderPostingResponse } from '../actions/placeOrder';
@@ -63,7 +63,9 @@ const reducer = combineReducers({
     orderPayment: orderPayment,
     orderHistory: orderHistory,
     userProfile: usersProfile,
-    userUpdate: usersUpdate
+    userUpdate: usersUpdate,
+    productListFeature: productListFeature,
+    productListLatest: productListLatest
 });
 
 export default reducer

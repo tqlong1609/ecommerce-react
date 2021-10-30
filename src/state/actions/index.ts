@@ -26,6 +26,34 @@ interface ProductListFailAction {
     payload: string
 }
 
+interface DecProductListRequestAction {
+    type: EProductList.PRODUCT_LIST_SORT_DECREASE_REQUEST
+}
+
+interface DecProductListSuccessAction {
+    type: EProductList.PRODUCT_LIST_SORT_DECREASE_SUCCESS
+    payload: Array<IProduct>
+}
+
+interface DecProductListFailAction {
+    type: EProductList.PRODUCT_LIST_SORT_DECREASE_FAIL
+    payload: string
+}
+
+interface Latest_DecProductListRequestAction {
+    type: EProductList.LATEST_PRODUCT_LIST_SORT_DECREASE_REQUEST
+}
+
+interface Latest_DecProductListSuccessAction {
+    type: EProductList.LATEST_PRODUCT_LIST_SORT_DECREASE_SUCCESS
+    payload: Array<IProduct>
+}
+
+interface Latest_DecProductListFailAction {
+    type: EProductList.LATEST_PRODUCT_LIST_SORT_DECREASE_FAIL
+    payload: string
+}
+
 // product detail
 interface ProductDetailRequestAction {
     type: EProductDetail.PRODUCT_DETAIL_REQUEST
@@ -196,7 +224,7 @@ interface IProfileUserUpdateReset {
 export interface IErrorResponse {
     response: { data: { message: string }, status: number }
 }
-export type ActionProductList = ProductListRequestAction | ProductListSuccessAction | ProductListFailAction
+export type ActionProductList = ProductListRequestAction | ProductListSuccessAction | ProductListFailAction | DecProductListSuccessAction | DecProductListRequestAction | DecProductListFailAction | Latest_DecProductListRequestAction | Latest_DecProductListSuccessAction | Latest_DecProductListFailAction
 export type ActionProductDetail = ProductDetailRequestAction | ProductDetailSuccessAction | ProductDetailFailAction
 export type ActionCartProduct = IAddProductToCart | IRemoveProductFromCart | IShippingAddressRequest | IPaymentMethodRequest | IClearCart
 export type ActionUser = IUserSignIn | IUserSignInSuccess | IUserSignInFail | IUserSignOut | IUserRegisterRequest | IUserRegisterSuccess | IUserRegisterFail | IProfileUserRequest | IProfileUserSuccess | IProfileUserFail | IProfileUserUpdateRequest | IProfileUserUpdateReset | IProfileUserUpdateSuccess | IProfileUserUpdateFail

@@ -1,32 +1,54 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { IProduct } from '../components/Products';
+import Rating from '../components/Rating';
+import { State } from '../state';
+import { getDecLatestProducts, getDecProducts } from '../state/actions/productList';
 export interface IError {
   message: string
 }
 
+const MAX_PRODUCT_FEATURED = 4
+const MAX_PRODUCT_LATEST = 8
+
 const HomeScreen: React.FC = () => {
+  const dispatch = useDispatch()
+  const { products: productFeatured } = useSelector((state: State) => state.productListFeature)
+  const { products: productLatest } = useSelector((state: State) => state.productListLatest)
+
+  // console.log('products',products);
+  const onShowAlert = () => {
+    alert('Sorry! This function is not completed yet')
+  }
+
+  useEffect(() => {
+    dispatch(getDecProducts)
+    dispatch(getDecLatestProducts)
+  }, [])
   return (
     <Fragment>
       <div className="header">
-            <div className="container">
-            <div className="row">
-          <div className="col-2">
-            <h1>
-              Give Your Workout <br />
-              A New Style!
-            </h1>
-            <p>
-              Success isn&#39;t always about greatness. It&#39;s about consistency.
-              Consistent <br />
-              hard work gain success. Greatness will come.
-            </p>
-          <a href="#" className="btn">Explore Now &#8594;</a>
-          </div>
-          <div className="col-2">
-            <img src="/images/image1.png" alt="image1" />
-          </div>
-        </div>
+        <div className="container">
+          <div className="row">
+            <div className="col-2">
+              <h1>
+                Give Your Workout <br />
+                A New Style!
+              </h1>
+              <p>
+                Success isn&#39;t always about greatness. It&#39;s about consistency.
+                Consistent <br />
+                hard work gain success. Greatness will come.
+              </p>
+              <a className="btn" onClick={onShowAlert}>Explore Now &#8594;</a>
             </div>
+            <div className="col-2">
+              <img src="/images/image1.png" alt="image1" />
+            </div>
+          </div>
         </div>
+      </div>
       {/* <!-- categories --> */}
       <div className="categories">
         <div className="small-container">
@@ -41,7 +63,7 @@ const HomeScreen: React.FC = () => {
               <img src="/images/category-3.jpg" alt="category-3" />
             </div>
           </div>
-          
+
         </div>
       </div>
 
@@ -49,154 +71,31 @@ const HomeScreen: React.FC = () => {
       <div className="small-container">
         <h2 className="title">Featured Products</h2>
         <div className="row">
-          <div className="col-4">
-            <img src="/images/product-1.jpg" alt="product-1" />
-            <h4>Fantastic Rubber Shoes</h4>
-            <div className="rating">
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="far fa-star"></i>
-            </div>
-            <p>$50.00</p>
-          </div>
-          <div className="col-4">
-            <img src="/images/product-2.jpg" alt="product-1" />
-            <h4>Fantastic Rubber Shoes</h4>
-            <div className="rating">
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="far fa-star"></i>
-            </div>
-            <p>$50.00</p>
-          </div>
-          <div className="col-4">
-            <img src="/images/product-3.jpg" alt="product-1" />
-            <h4>Fantastic Rubber Shoes</h4>
-            <div className="rating">
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="far fa-star"></i>
-            </div>
-            <p>$50.00</p>
-          </div>
-          <div className="col-4">
-            <img src="/images/product-4.jpg" alt="product-1" />
-            <h4>Fantastic Rubber Shoes</h4>
-            <div className="rating">
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="far fa-star"></i>
-            </div>
-            <p>$50.00</p>
-          </div>
+          {
+            productFeatured && productFeatured?.length >= MAX_PRODUCT_FEATURED && productFeatured?.slice(0, MAX_PRODUCT_FEATURED)?.map(product => (
+              <Link to={`/product/${product._id}`} key={product._id} className="col-4">
+                <img src={product.image} alt={'product_' + product._id} />
+                <h4>{product.name}</h4>
+                <Rating rating={product.rating} />
+                <p>${product.price}</p>
+              </Link>
+            ))
+          }
         </div>
 
+        {/* Latest Product */}
         <h2 className="title">Latest Products</h2>
         <div className="row">
-          <div className="col-4">
-            <img src="/images/product-5.jpg" alt="product-1" />
-            <h4>Fantastic Rubber Shoes</h4>
-            <div className="rating">
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="far fa-star"></i>
-            </div>
-            <p>$50.00</p>
-          </div>
-          <div className="col-4">
-            <img src="/images/product-6.jpg" alt="product-1" />
-            <h4>Fantastic Rubber Shoes</h4>
-            <div className="rating">
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="far fa-star"></i>
-            </div>
-            <p>$50.00</p>
-          </div>
-          <div className="col-4">
-            <img src="/images/product-7.jpg" alt="product-1" />
-            <h4>Fantastic Rubber Shoes</h4>
-            <div className="rating">
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="far fa-star"></i>
-            </div>
-            <p>$50.00</p>
-          </div>
-          <div className="col-4">
-            <img src="/images/product-8.jpg" alt="product-1" />
-            <h4>Fantastic Rubber Shoes</h4>
-            <div className="rating">
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="far fa-star"></i>
-            </div>
-            <p>$50.00</p>
-          </div>
-          <div className="col-4">
-            <img src="/images/product-9.jpg" alt="product-1" />
-            <h4>Fantastic Rubber Shoes</h4>
-            <div className="rating">
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="far fa-star"></i>
-            </div>
-            <p>$50.00</p>
-          </div>
-          <div className="col-4">
-            <img src="/images/product-10.jpg" alt="product-1" />
-            <h4>Fantastic Rubber Shoes</h4>
-            <div className="rating">
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="far fa-star"></i>
-            </div>
-            <p>$50.00</p>
-          </div>
-          <div className="col-4">
-            <img src="/images/product-11.jpg" alt="product-1" />
-            <h4>Fantastic Rubber Shoes</h4>
-            <div className="rating">
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="far fa-star"></i>
-            </div>
-            <p>$50.00</p>
-          </div>
-          <div className="col-4">
-            <img src="/images/product-12.jpg" alt="product-1" />
-            <h4>Fantastic Rubber Shoes</h4>
-            <div className="rating">
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="far fa-star"></i>
-            </div>
-            <p>$50.00</p>
-          </div>
+          {
+            productLatest && productLatest?.length >= MAX_PRODUCT_LATEST && productLatest?.slice(0, MAX_PRODUCT_LATEST)?.map(product => (
+              <Link to={`/product/${product._id}`} key={product._id} className="col-4">
+                <img src={product.image} alt={'product_' + product._id} />
+                <h4>{product.name}</h4>
+                <Rating rating={product.rating} />
+                <p>${product.price}</p>
+              </Link>
+            ))
+          }
         </div>
       </div>
 
@@ -219,7 +118,7 @@ const HomeScreen: React.FC = () => {
                 culpa non aute laboris ea. Cupidatat enim nisi nostrud occaecat.
                 Esse anim sunt sint labore ex minim mollit incididunt fugiat
               </small>
-              <a href="#" className="btn">Buy Now &#8594;</a>
+              <a onClick={onShowAlert} className="btn">Buy Now &#8594;</a>
             </div>
           </div>
         </div>

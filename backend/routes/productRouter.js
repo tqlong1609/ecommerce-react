@@ -13,6 +13,26 @@ productRouter.get(
   })
 );
 
+
+productRouter.get(
+  '/featured',
+  expressAsyncHandler(async (req, res) => {
+    const getAllProducts = await Product.find({});
+    const featuredProducts = getAllProducts.sort((a, b) => b.numReviewer - a.numReviewer)
+    res.send(featuredProducts);
+  })
+);
+
+productRouter.get(
+  '/latest',
+  expressAsyncHandler(async (req, res) => {
+    const getAllProducts = await Product.find({});
+    const latestProducts = getAllProducts.sort((a, b) => b.time - a.time)
+    res.send(latestProducts);
+  })
+);
+
+
 productRouter.get(
   "/seed",
   expressAsyncHandler(async (req, res) => {
