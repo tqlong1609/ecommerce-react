@@ -37,6 +37,12 @@ export const Header: React.FC = () => {
         }
     }
 
+    const clickCart = () => {
+        if(productsCart.length <=0) {
+            alert('Please select products before going to cart')
+        }
+    }
+
     return (
         <div className="header">
             <div className="container">
@@ -71,7 +77,7 @@ export const Header: React.FC = () => {
                             </li>
                         </ul>
                     </nav>
-                    <Link to={productsCart.length > 0 ? '/cart' : '#'}>
+                    <Link to={productsCart.length > 0 ? '/cart' : '#'} onClick={clickCart}>
                         <div className="cart_badge">
                             <img
                                 src="/images/cart.png"

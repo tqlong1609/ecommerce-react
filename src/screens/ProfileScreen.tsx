@@ -24,9 +24,11 @@ export const ProfileScreen: React.FC = () => {
             setEmail(user?.email)
         }
     }, [dispatch, userProfile, user?._id])
+
     useEffect(() => {
         dispatch(resetProfileUpdate())
     }, [])
+
     const submitHandle = (e: React.FormEvent) => {
         e.preventDefault()
         if (password !== confirmPassword) {
@@ -39,6 +41,7 @@ export const ProfileScreen: React.FC = () => {
             }))
         }
     }
+    
     return (
         <div>
             <form onSubmit={submitHandle}>
