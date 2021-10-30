@@ -9,7 +9,7 @@ export interface IError {
   message: string
 }
 
-const MAX_PRODUCT_FEATURED = 4
+export const MAX_PRODUCT_FEATURED = 4
 const MAX_PRODUCT_LATEST = 8
 
 const HomeScreen: React.FC = () => {

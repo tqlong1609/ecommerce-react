@@ -1,11 +1,15 @@
 import React, { Fragment, useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
+import { Link } from 'react-router-dom'
 import AlertBox from '../components/AlertBox'
 import LoadingBox from '../components/LoadingBox'
+import Rating from '../components/Rating'
 import { State } from '../state'
 import { productDetail } from '../state/actions'
 import { addCartItem } from '../state/actions/cartItems'
+import { getDecProducts } from '../state/actions/productList'
+import { MAX_PRODUCT_FEATURED } from './HomeScreen'
 
 interface IProductDetailScreenProps {
     id: string
@@ -25,11 +29,17 @@ const ProductDetailScreen: React.FC<RouteComponentProps<IProductDetailScreenProp
     const dispatch = useDispatch()
     const id = props.match.params.id
     const { isLoading, error, product } = useSelector((state: State) => state.productDetail)
+    const { products: productFeatured } = useSelector((state: State) => state.productListFeature)
+
     const [valueQty, setValueQty] = useState<number>(1)
     const [size, setSize] = useState<string>('Select Size')
     useEffect(() => {
         dispatch(productDetail(id))
     }, [dispatch, id])
+
+    useEffect(() => {
+        dispatch(getDecProducts)
+    }, [])
 
     const productImg = useRef<HTMLImageElement>(null)
     const smallImg1 = useRef<HTMLImageElement>(null)
@@ -57,8 +67,9 @@ const ProductDetailScreen: React.FC<RouteComponentProps<IProductDetailScreenProp
         setValueQty(+value.target.value)
     }
 
+
     const onClickAddToCart = () => {
-        if(size !== sizes[0]) {
+        if (size !== sizes[0]) {
             dispatch(addCartItem(id, valueQty, size))
             props.history.push(`/cart/${id}?qty=${valueQty}`)
         } else {
@@ -166,54 +177,16 @@ const ProductDetailScreen: React.FC<RouteComponentProps<IProductDetailScreenProp
             {/* <!-- Relative products --> */}
             <div className="small-container">
                 <div className="row">
-                    <div className="col-4">
-                        <img src="/images/product-9.jpg" alt="product-1" />
-                        <h4>Fantastic Rubber Shoes</h4>
-                        <div className="rating">
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="far fa-star"></i>
-                        </div>
-                        <p>$50.00</p>
-                    </div>
-                    <div className="col-4">
-                        <img src="/images/product-10.jpg" alt="product-1" />
-                        <h4>Fantastic Rubber Shoes</h4>
-                        <div className="rating">
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="far fa-star"></i>
-                        </div>
-                        <p>$50.00</p>
-                    </div>
-                    <div className="col-4">
-                        <img src="/images/product-11.jpg" alt="product-1" />
-                        <h4>Fantastic Rubber Shoes</h4>
-                        <div className="rating">
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="far fa-star"></i>
-                        </div>
-                        <p>$50.00</p>
-                    </div>
-                    <div className="col-4">
-                        <img src="/images/product-12.jpg" alt="product-1" />
-                        <h4>Fantastic Rubber Shoes</h4>
-                        <div className="rating">
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="far fa-star"></i>
-                        </div>
-                        <p>$50.00</p>
-                    </div>
+                    {
+                        productFeatured && productFeatured?.length >= MAX_PRODUCT_FEATURED && productFeatured?.slice(0, MAX_PRODUCT_FEATURED)?.map(product => (
+                            <Link to={`/product/${product._id}`} key={product._id} className="col-4">
+                                <img src={product.image} alt={'product_' + product._id} />
+                                <h4>{product.name}</h4>
+                                <Rating rating={product.rating} />
+                                <p>${product.price}</p>
+                            </Link>
+                        ))
+                    }
                 </div>
             </div>
         </Fragment>

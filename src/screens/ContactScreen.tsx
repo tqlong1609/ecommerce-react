@@ -1,4 +1,5 @@
 import React from 'react'
+import { ADDRESS, EMAIL, NUMBER_PHONE } from '../constants/info';
 
 const ContactScreen: React.FC = () => {
     return (
@@ -9,17 +10,17 @@ const ContactScreen: React.FC = () => {
                 <div className="phone-container info-box">
                     <i className="fas fa-phone"></i>
                     <h5>Phone</h5>
-                    <p>984.912.4121</p>
+                    <p>{NUMBER_PHONE}</p>
                 </div>
                 <div className="email-container info-box">
                     <i className="fas fa-envelope"></i>
                     <h5>Email</h5>
-                    <p>Sandy.Braun34@gmail.com</p>
+                    <p>{EMAIL}</p>
                 </div>
                 <div className="address-container info-box">
                     <i className="fas fa-map-marker-alt"></i>
                     <h5>Address</h5>
-                    <p>Apt. 979 Josefina Estates Port Breanaport</p>
+                    <p>{ADDRESS}</p>
                 </div>
             </div>
             <form>

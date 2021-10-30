@@ -1,5 +1,6 @@
 import React from 'react'
 import { RouteComponentProps } from 'react-router';
+import { DESCRIPTION, FACEBOOK_URL, INSTAGRAM_URL, LINKEDIN_URL } from '../constants';
 const AboutScreen: React.FC<RouteComponentProps> = (props) => {
 
     const onPressContact = () => {
@@ -16,23 +17,26 @@ const AboutScreen: React.FC<RouteComponentProps> = (props) => {
                         <img src="/images/profile.jpg" alt="profile" />
                         <div className="list-info">
                             <div className="shadow-icon">
-                                <i className="fab fa-facebook-f"></i>
+                                <a href={FACEBOOK_URL} target="_blank" rel="noreferrer">
+                                    <i className="fab fa-facebook-f"></i>
+                                </a>
                             </div>
                             <div className="shadow-icon">
-                                <i className="fab fa-instagram"></i>
+                                <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer">
+                                    <i className="fab fa-instagram"></i>
+                                </a>
                             </div>
                             <div className="shadow-icon">
-                                <i className="fab fa-linkedin-in"></i>
+                                <a href={LINKEDIN_URL} target="_blank" rel="noreferrer">
+                                    <i className="fab fa-linkedin-in"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="col-2">
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores
-                        distinctio rerum omnis numquam a temporibus expedita aliquam nemo
-                        consequuntur ut aperiam, impedit velit quas, consectetur eos qui
-                        asperiores eaque quae.
+                        {DESCRIPTION}
                     </p>
 
                     <button>Download CV</button>
