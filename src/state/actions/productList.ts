@@ -4,12 +4,18 @@ import { ActionProductList } from '.';
 import { IError } from "../../screens/HomeScreen";
 import { EProductList } from '../action-types';
 
-export const listProducts = async (dispatch: Dispatch<ActionProductList>) => {
+export const listProducts = (page: number, size: number) => async (dispatch: Dispatch<ActionProductList>) => {
   dispatch({
     type: EProductList.PRODUCT_LIST_REQUEST,
   })
   try {
-    const { data } = await axios.get("/api/products");
+    console.log('page',page);
+    console.log('size',size);
+    
+    
+    const { data } = await axios.get(`/api/products/paging?page=${page}&size=${size}`);
+    console.log('data',data);
+    
     dispatch({
       type: EProductList.PRODUCT_LIST_SUCCESS,
       payload: data

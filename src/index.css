@@ -86,6 +86,7 @@ textarea:hover,
 select:hover,
 button:hover {
   border: 0.1rem rgb(83, 81, 81) solid;
+  cursor: pointer;
 }
 
 a {

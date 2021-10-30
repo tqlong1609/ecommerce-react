@@ -351,7 +351,11 @@ select option {
   transition: background 0.2s;
 }
 
-.page-btn span:hover {
+.page-btn span.active {
+  background: var(--light-orange);
+}
+
+.page-btn span:not('active'):hover {
   background: var(--light-orange);
   color: #fff;
 }

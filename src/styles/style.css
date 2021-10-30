@@ -386,9 +386,8 @@ select option {
   transition: background 0.2s;
 }
 
-.page-btn span:hover {
+.page-btn span.active {
   background: var(--light-orange);
-  color: #fff;
 }
 
 /* Select custom */
@@ -470,7 +469,7 @@ select option {
   color: #fff;
 }
 
-a,.disable-select {
+.page-btn span,a,.disable-select {
   user-select: none; /* supported by Chrome and Opera */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */

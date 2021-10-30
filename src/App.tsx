@@ -5,7 +5,7 @@ import { BrowserRouter, Link, Route } from "react-router-dom";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { RedirectSignInRoute } from "./components/RedirectSignInRoute";
-import { AllProducts } from "./screens/AllProducts";
+import { AllProducts } from "./screens/AllProductsScreen";
 import CartScreen from "./screens/CartScreen";
 import HomeScreen from "./screens/HomeScreen";
 import { OrderHistoryScreen } from "./screens/OrderHistoryScreen";
