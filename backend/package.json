@@ -2,7 +2,7 @@
   "name": "server",
   "type": "module",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "index.js",
   "license": "MIT",
   "scripts": {
     "start": "nodemon server.js"
