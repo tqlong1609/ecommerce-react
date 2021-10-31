@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
-import path from "path";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 import express from "express";
 import userRouter from "./routes/userRoute.js";
 import productRouter from "./routes/productRouter.js";
@@ -10,9 +11,10 @@ env.config(); // config environment .env file
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-const buildPath = path.join(__dirname, '..', 'build');
-app.use(express.static(buildPath));
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+// const buildPath = path.join(__dirname, '..', 'build');
+app.use(express.static(__dirname));
 
 // const buildPath = path.join(__dirname, '..', 'build');
 // app.use(express.static(buildPath));
