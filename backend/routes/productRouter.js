@@ -9,7 +9,6 @@ productRouter.get(
   "/",
   expressAsyncHandler(async (req, res) => {
     const getAllProducts = await Product.find({});
-    console.log('12');
     res.send(getAllProducts);
   })
 );

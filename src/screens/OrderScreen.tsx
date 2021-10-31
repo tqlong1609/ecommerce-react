@@ -35,6 +35,8 @@ export const OrderScreen: React.FC<RouteComponentProps<OrderScreenProps>> = (pro
     useEffect(() => {
         const getPayPalSDKClientId = async () => {
             const { data } = await axios.get('/api/config/paypal')
+            console.log('data',data);
+            
             const script = document.createElement('script')
             script.type = 'text/javascript'
             script.src = `https://www.paypal.com/sdk/js?client-id=${data}`
@@ -49,12 +51,12 @@ export const OrderScreen: React.FC<RouteComponentProps<OrderScreenProps>> = (pro
             dispatch(getOrderById(id))
         } else {
             if (!order.isPaid) {
+                console.log('window?.paypal',window?.paypal);
+                
                 if (!window?.paypal) {
                     getPayPalSDKClientId()
-                    console.log('getPayPalSDKClientId', getPayPalSDKClientId);
                 } else {
                     setIsSdkPaypal(true)
-                    console.log('setIsSdkPaypal');
                 }
             }
         }

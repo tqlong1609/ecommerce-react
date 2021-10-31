@@ -9,13 +9,7 @@ export const listProducts = (page: number, size: number) => async (dispatch: Dis
     type: EProductList.PRODUCT_LIST_REQUEST,
   })
   try {
-    console.log('page',page);
-    console.log('size',size);
-    
-    
     const { data } = await axios.get(`/api/products/paging?page=${page}&size=${size}`);
-    console.log('data',data);
-    
     dispatch({
       type: EProductList.PRODUCT_LIST_SUCCESS,
       payload: data

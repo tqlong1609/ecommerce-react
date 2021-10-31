@@ -17,7 +17,6 @@ const HomeScreen: React.FC = () => {
   const { products: productFeatured } = useSelector((state: State) => state.productListFeature)
   const { products: productLatest } = useSelector((state: State) => state.productListLatest)
 
-  // console.log('products',products);
   const onShowAlert = () => {
     alert('Sorry! This function is not completed yet')
   }

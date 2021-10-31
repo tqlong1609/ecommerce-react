@@ -28,6 +28,7 @@ app.use("/api/users", userRouter);
 app.use("/api/products", productRouter);
 app.use("/api/orders", orderRouter);
 app.get("/api/config/paypal", async (req, res) => {
+  // console.log('process.env.PAYPAL_CLIENT_API',);
   if (process.env.PAYPAL_CLIENT_API) {
     res.send(process.env.PAYPAL_CLIENT_API);
   } else {
