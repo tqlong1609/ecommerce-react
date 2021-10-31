@@ -39,8 +39,13 @@ const AboutScreen: React.FC<RouteComponentProps> = (props) => {
                         {DESCRIPTION}
                     </p>
 
-                    <button>Download CV</button>
-                    <button onClick={onPressContact}>Contact Me</button>
+                    <button>
+                        <a href="/fileCV.pdf" download rel="noopener noreferrer" target="_blank">
+                            Download CV
+                        </a>
+                    </button>
+                    <button onClick={onPressContact}>
+                        Contact Me</button>
                 </div>
             </div>
         </div>
