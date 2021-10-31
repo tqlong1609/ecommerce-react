@@ -36,7 +36,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start_server": "nodemon --watch backend --exec node --experimental-modules backend/server.js"
+    "start_server": "nodemon --watch backend --exec node --experimental-modules backend/server.js",
+    "heroku-postbuild": "npm run start_server"
   },
   "eslintConfig": {
     "extends": [
