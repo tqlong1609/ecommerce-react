@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { FormEvent, useRef } from 'react'
 import { ADDRESS, EMAIL, NUMBER_PHONE } from '../constants/info';
+import emailjs from 'emailjs-com'
 
 const ContactScreen: React.FC = () => {
+    const form = useRef<HTMLFormElement>(null);
+    const sendEmail = (e: any) => {
+        e.preventDefault();
+        emailjs.sendForm('service_bfsl917', 'template_lxc88rl', form.current as HTMLFormElement, 'user_n8nH3r7Xhb5Iuc4BhmeYs').then(res => {
+            alert('Send Email Success')
+        }).catch(err => {
+            alert(err)
+        })
+        form.current?.reset()
+    };
+
     return (
         <div className="about-container">
             <h4 className="main-info">Contact</h4>
@@ -23,7 +35,7 @@ const ContactScreen: React.FC = () => {
                     <p>{ADDRESS}</p>
                 </div>
             </div>
-            <form>
+            <form onSubmit={sendEmail} ref={form}>
                 <div className="row row-info">
                     <div className="col-2 input-info">
                         <input
@@ -59,7 +71,7 @@ const ContactScreen: React.FC = () => {
                     </div>
                 </div>
                 <div>
-                    <button className="btn-send">
+                    <button className="btn-send" type="submit">
                         <div className="svg-wrapper-1">
                             <div className="svg-wrapper">
                                 <svg
