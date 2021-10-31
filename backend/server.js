@@ -1,18 +1,18 @@
 import mongoose from "mongoose";
+import path from "path";
+import express from "express";
 import userRouter from "./routes/userRoute.js";
 import productRouter from "./routes/productRouter.js";
 import env from "dotenv";
 import orderRouter from "./routes/orderRouter.js";
-const path = require('path');
-const express = require('express');
 env.config(); // config environment .env file
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const buildPath = path.join(__dirname, '..', 'build');
-app.use(express.static(buildPath));
+// const buildPath = path.join(__dirname, '..', 'build');
+// app.use(express.static(buildPath));
 
 const connection = "mongodb+srv://dbUser:quanglong@cluster0.gffgt.mongodb.net/test?retryWrites=true&w=majority";
 // mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/amazona");
