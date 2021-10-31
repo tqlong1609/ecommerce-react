@@ -10,8 +10,11 @@ env.config(); // config environment .env file
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/amazona");
-
+const connection = "mongodb+srv://dbUser:123@cluster0.gffgt.mongodb.net/test?retryWrites=true&w=majority";
+// mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/amazona");
+mongoose.connect(connection,{ useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
+    .then(() => console.log("Database Connected Successfully"))
+    .catch(err => console.log(err));
 app.use("/api/users", userRouter);
 app.use("/api/products", productRouter);
 app.use("/api/orders", orderRouter);
